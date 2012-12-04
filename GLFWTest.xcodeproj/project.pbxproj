@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		D60A7A0F166520C900AE87C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A0E166520C900AE87C5 /* main.cpp */; };
 		D60A7A11166520C900AE87C5 /* GLFWTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D60A7A10166520C900AE87C5 /* GLFWTest.1 */; };
+		D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A17166521EC00AE87C5 /* libglfw.a */; };
+		D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A191665228300AE87C5 /* OpenGL.framework */; };
+		D60C6650166DE78A005C7CC8 /* Texture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAD166B8B7900C6E53C /* Texture2D.cpp */; };
+		D60C6656166DEAC6005C7CC8 /* liblua.5.1.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */; };
+		D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6657166DF004005C7CC8 /* OpenAL.framework */; };
+		D60C665C166DF203005C7CC8 /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60C665A166DF203005C7CC8 /* Manager.cpp */; };
+		D634CDD2166C9DF300BA5F0B /* ShapeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB8166B95E800C6E53C /* ShapeElement.cpp */; };
+		D634CDD3166C9DFC00BA5F0B /* GLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A1B1665282300AE87C5 /* GLFW.cpp */; };
+		D6965BAF166B8B7900C6E53C /* GlyphBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */; };
+		D6965BB1166B8B7900C6E53C /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAA166B8B7900C6E53C /* Manager.cpp */; };
+		D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965BB4166B921E00C6E53C /* libfreetype.a */; };
+		D6965BBA166B95E900C6E53C /* ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */; };
+		D6965BC3166BA42500C6E53C /* Fontex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BC1166BA42500C6E53C /* Fontex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +41,28 @@
 		D60A7A0A166520C900AE87C5 /* GLFWTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFWTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60A7A0E166520C900AE87C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D60A7A10166520C900AE87C5 /* GLFWTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GLFWTest.1; sourceTree = "<group>"; };
+		D60A7A17166521EC00AE87C5 /* libglfw.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw.a; path = /usr/local/Cellar/glfw/2.7.6/lib/libglfw.a; sourceTree = "<absolute>"; };
+		D60A7A191665228300AE87C5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		D60A7A1B1665282300AE87C5 /* GLFW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFW.cpp; sourceTree = "<group>"; };
+		D60A7A1C1665282300AE87C5 /* GLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFW.h; sourceTree = "<group>"; };
+		D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.4.dylib; path = /usr/local/Cellar/lua/5.1.4/lib/liblua.5.1.4.dylib; sourceTree = "<absolute>"; };
+		D60C6657166DF004005C7CC8 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		D60C665A166DF203005C7CC8 /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
+		D60C665B166DF203005C7CC8 /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		D6590D30166CB7AD004A504A /* GLHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLHeader.h; sourceTree = "<group>"; };
+		D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphBitmap.cpp; sourceTree = "<group>"; };
+		D6965BA8166B8B7900C6E53C /* GlyphBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphBitmap.h; sourceTree = "<group>"; };
+		D6965BAA166B8B7900C6E53C /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
+		D6965BAB166B8B7900C6E53C /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		D6965BAD166B8B7900C6E53C /* Texture2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture2D.cpp; sourceTree = "<group>"; };
+		D6965BAE166B8B7900C6E53C /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
+		D6965BB4166B921E00C6E53C /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = /usr/local/Cellar/freetype/2.4.10/lib/libfreetype.a; sourceTree = "<absolute>"; };
+		D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeContainer.cpp; sourceTree = "<group>"; };
+		D6965BB7166B95E800C6E53C /* ShapeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeContainer.h; sourceTree = "<group>"; };
+		D6965BB8166B95E800C6E53C /* ShapeElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeElement.cpp; sourceTree = "<group>"; };
+		D6965BB9166B95E800C6E53C /* ShapeElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeElement.h; sourceTree = "<group>"; };
+		D6965BC1166BA42500C6E53C /* Fontex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fontex.cpp; sourceTree = "<group>"; };
+		D6965BC2166BA42500C6E53C /* Fontex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fontex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +70,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */,
+				D60C6656166DEAC6005C7CC8 /* liblua.5.1.4.dylib in Frameworks */,
+				D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */,
+				D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */,
+				D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,10 +100,72 @@
 		D60A7A0D166520C900AE87C5 /* GLFWTest */ = {
 			isa = PBXGroup;
 			children = (
+				D6965BA5166B8B7900C6E53C /* aps */,
+				D60A7A191665228300AE87C5 /* OpenGL.framework */,
+				D60C6657166DF004005C7CC8 /* OpenAL.framework */,
+				D60A7A17166521EC00AE87C5 /* libglfw.a */,
+				D6965BB4166B921E00C6E53C /* libfreetype.a */,
+				D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */,
+				D60A7A1B1665282300AE87C5 /* GLFW.cpp */,
+				D60A7A1C1665282300AE87C5 /* GLFW.h */,
 				D60A7A0E166520C900AE87C5 /* main.cpp */,
 				D60A7A10166520C900AE87C5 /* GLFWTest.1 */,
 			);
 			path = GLFWTest;
+			sourceTree = "<group>";
+		};
+		D60C6659166DF203005C7CC8 /* lua */ = {
+			isa = PBXGroup;
+			children = (
+				D60C665A166DF203005C7CC8 /* Manager.cpp */,
+				D60C665B166DF203005C7CC8 /* Manager.h */,
+			);
+			path = lua;
+			sourceTree = "<group>";
+		};
+		D6965BA5166B8B7900C6E53C /* aps */ = {
+			isa = PBXGroup;
+			children = (
+				D60C6659166DF203005C7CC8 /* lua */,
+				D6965BC0166BA41400C6E53C /* fontex */,
+				D6965BA6166B8B7900C6E53C /* font */,
+				D6965BAC166B8B7900C6E53C /* gl */,
+			);
+			path = aps;
+			sourceTree = "<group>";
+		};
+		D6965BA6166B8B7900C6E53C /* font */ = {
+			isa = PBXGroup;
+			children = (
+				D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */,
+				D6965BA8166B8B7900C6E53C /* GlyphBitmap.h */,
+				D6965BAA166B8B7900C6E53C /* Manager.cpp */,
+				D6965BAB166B8B7900C6E53C /* Manager.h */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		D6965BAC166B8B7900C6E53C /* gl */ = {
+			isa = PBXGroup;
+			children = (
+				D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */,
+				D6965BB7166B95E800C6E53C /* ShapeContainer.h */,
+				D6965BB8166B95E800C6E53C /* ShapeElement.cpp */,
+				D6965BB9166B95E800C6E53C /* ShapeElement.h */,
+				D6965BAD166B8B7900C6E53C /* Texture2D.cpp */,
+				D6965BAE166B8B7900C6E53C /* Texture2D.h */,
+				D6590D30166CB7AD004A504A /* GLHeader.h */,
+			);
+			path = gl;
+			sourceTree = "<group>";
+		};
+		D6965BC0166BA41400C6E53C /* fontex */ = {
+			isa = PBXGroup;
+			children = (
+				D6965BC1166BA42500C6E53C /* Fontex.cpp */,
+				D6965BC2166BA42500C6E53C /* Fontex.h */,
+			);
+			path = fontex;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +220,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60A7A0F166520C900AE87C5 /* main.cpp in Sources */,
+				D6965BAF166B8B7900C6E53C /* GlyphBitmap.cpp in Sources */,
+				D6965BB1166B8B7900C6E53C /* Manager.cpp in Sources */,
+				D6965BBA166B95E900C6E53C /* ShapeContainer.cpp in Sources */,
+				D6965BC3166BA42500C6E53C /* Fontex.cpp in Sources */,
+				D634CDD2166C9DF300BA5F0B /* ShapeElement.cpp in Sources */,
+				D634CDD3166C9DFC00BA5F0B /* GLFW.cpp in Sources */,
+				D60C6650166DE78A005C7CC8 /* Texture2D.cpp in Sources */,
+				D60C665C166DF203005C7CC8 /* Manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +290,18 @@
 		D60A7A15166520C900AE87C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = " ";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/freetype2,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/2.7.6/lib,
+					"\"$(SRCROOT)/GLFWTest/aps/font\"",
+					/usr/local/Cellar/freetype/2.4.10/lib,
+					/usr/local/Cellar/lua/5.1.4/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -187,6 +309,18 @@
 		D60A7A16166520C900AE87C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = " ";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/freetype2,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/2.7.6/lib,
+					"\"$(SRCROOT)/GLFWTest/aps/font\"",
+					/usr/local/Cellar/freetype/2.4.10/lib,
+					/usr/local/Cellar/lua/5.1.4/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -210,6 +344,7 @@
 				D60A7A16166520C900AE87C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
