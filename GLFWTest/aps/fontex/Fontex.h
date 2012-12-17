@@ -28,7 +28,7 @@ namespace aps
 		public:
 			Fontex(font::Manager fontManager);
 			StringShape utf8StringShape(std::string text, std::string fontName, int size);
-			StringShape utf8StringShape(std::string text, std::string fontName, int size, std::array<double, 4> color);
+			StringShape utf8StringShape(std::string text, std::string fontName, int size, gl::Color color);
 			
 		private:
 			class Impl;

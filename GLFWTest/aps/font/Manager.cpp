@@ -125,7 +125,9 @@ public:
 		return delta.x / 64.0;
 	}
 	
-	std::string errorMessage() { return errorMessage_; }
+	std::string errorMessage() const { return errorMessage_; }
+	
+	void errorClear() { errorMessage_ = ""; }
 	
 private:
 	Library library_;
@@ -154,4 +156,6 @@ double Manager::kerning(std::string name, unsigned int left, unsigned int right,
 	return pImpl->kerning(name, left, right, size);
 }
 
-std::string Manager::errorMessage() { return pImpl->errorMessage(); }
+std::string Manager::errorMessage() const { return pImpl->errorMessage(); }
+
+void Manager::errorClear() { return pImpl->errorClear(); }

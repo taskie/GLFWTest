@@ -30,7 +30,7 @@ namespace aps
 			{
 				gl::ShapeContainer shape;
 				shape.pushChild(shape_);
-				return shape;
+				return shape_;
 			}
 			
 			unsigned int character() { return character_; }
@@ -68,7 +68,7 @@ public:
 		return utf8StringShape(text, fontName, size, color);
 	}
 	
-	StringShape utf8StringShape(std::string text, std::string fontName, int size, std::array<double, 4> color)
+	StringShape utf8StringShape(std::string text, std::string fontName, int size, aps::gl::Color color)
 	{
 		std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> ucs2conv;
 		std::u16string ucs2 = ucs2conv.from_bytes(text);
@@ -89,13 +89,11 @@ public:
 			pen += shape.advance();
 		}
 		
-		stringShape.setScale(1.0 / size);
-		
 		return StringShape(stringShape, size, pen);
 	}
 	
 private:
-	Shape getShape(std::string fontName, std::size_t charCode, int size, std::array<double, 4> color)
+	Shape getShape(std::string fontName, std::size_t charCode, int size, aps::gl::Color color)
 	{
 		auto fontDictIter = cache_.find(fontName);
 		if (fontDictIter == cache_.end())
@@ -161,7 +159,6 @@ StringShape::StringShape(gl::ShapeContainer shape, int size, int width)
 aps::gl::ShapeContainer StringShape::get() {
 	gl::ShapeContainer shape;
 	shape.pushChild(shape_);
-	shape.setScale(size_);
 	return shape;
 }
 
@@ -177,7 +174,7 @@ Fontex::Fontex(font::Manager fontManager)
 	
 }
 
-StringShape Fontex::utf8StringShape(std::string text, std::string fontName, int size, std::array<double, 4> color)
+StringShape Fontex::utf8StringShape(std::string text, std::string fontName, int size, aps::gl::Color color)
 {
 	return pImpl_->utf8StringShape(text, fontName, size, color);
 }

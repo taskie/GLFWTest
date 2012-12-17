@@ -29,9 +29,24 @@ ShapeElement& ShapeElement::color(double r, double g, double b, double a)
 	return *this;
 }
 
+ShapeElement& ShapeElement::color(Color color)
+{
+	nowColor_ = std::array<double, 4>({color.r(), color.g(), color.b(), color.a()});
+	return *this;
+}
+
 ShapeElement& ShapeElement::texCoord(double s, double t, double r, double q)
 {
 	nowTexCoord_ = std::array<double, 4>({s, t, r, q});
+	return *this;
+}
+
+ShapeElement& ShapeElement::setColorForce(aps::gl::Color color)
+{
+	for (std::size_t i = 0; i < colors_.size(); ++i)
+	{
+		colors_.at(i) = color[i % 4];
+	}
 	return *this;
 }
 
@@ -80,7 +95,7 @@ void ShapeElement::push(std::vector<double>* v, std::array<double, 4> tp)
 	for (double x : tp) v->push_back(x);
 }
 
-ShapeElement& ShapeElement::draw(GLenum mode)
+ShapeElement& ShapeElement::draw(ShapeElement::DrawMode mode)
 {
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
@@ -90,7 +105,7 @@ ShapeElement& ShapeElement::draw(GLenum mode)
 	glColorPointer(4, GL_DOUBLE, 0, &colors_[0]);
 	glTexCoordPointer(4, GL_DOUBLE, 0, &texCoords_[0]);
 	
-	glDrawArrays(mode, 0, static_cast<GLsizei>(vertexes_.size()) / 4);
+	glDrawArrays(static_cast<GLenum>(mode), 0, static_cast<GLsizei>(vertexes_.size()) / 4);
 	
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);

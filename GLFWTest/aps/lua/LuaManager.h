@@ -1,5 +1,5 @@
 //
-//  Manager.h
+//  LuaManager.h
 //  LuaPolys
 //
 //  Copyright (c) 2012 Alprosys. All rights reserved.
@@ -9,7 +9,7 @@
 
 #include <memory>
 #include <string>
-#include <vector>
+#include <deque>
 #include <functional>
 #include <boost/variant.hpp>
 
@@ -25,14 +25,14 @@ namespace aps
 		
 		typedef boost::variant<int, double, bool, const char*, std::string, Nil> LuaValue;
 		
-		typedef std::vector<LuaValue> LuaTuple;
+		typedef std::deque<LuaValue> LuaTuple;
 		
-		class Manager
+		class LuaManager
 		{
 		public:
-			Manager();
-			Manager(lua_State* state);
-			~Manager();
+			LuaManager();
+			LuaManager(lua_State* state);
+			~LuaManager();
 			
 			lua_State* vm();
 			
@@ -45,8 +45,8 @@ namespace aps
 			void registerFunction(std::string name);
 			
 		private:
-			Manager& operator =(const Manager& src);
-			Manager(const Manager& src);
+			LuaManager& operator =(const LuaManager& src);
+			LuaManager(const LuaManager& src);
 			
 			struct LuaStateDeleter
 			{

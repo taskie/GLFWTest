@@ -12,16 +12,33 @@
 		D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A17166521EC00AE87C5 /* libglfw.a */; };
 		D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A191665228300AE87C5 /* OpenGL.framework */; };
 		D60C6650166DE78A005C7CC8 /* Texture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAD166B8B7900C6E53C /* Texture2D.cpp */; };
-		D60C6656166DEAC6005C7CC8 /* liblua.5.1.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */; };
 		D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6657166DF004005C7CC8 /* OpenAL.framework */; };
-		D60C665C166DF203005C7CC8 /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60C665A166DF203005C7CC8 /* Manager.cpp */; };
+		D60C665C166DF203005C7CC8 /* LuaManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60C665A166DF203005C7CC8 /* LuaManager.cpp */; };
+		D61880B5167192B2006E94EE /* MersenneTwister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D61880B3167192B2006E94EE /* MersenneTwister.cpp */; };
+		D61880B916719473006E94EE /* aps_random_MersenneTwister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D61880B616719473006E94EE /* aps_random_MersenneTwister.cpp */; };
 		D634CDD2166C9DF300BA5F0B /* ShapeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB8166B95E800C6E53C /* ShapeElement.cpp */; };
 		D634CDD3166C9DFC00BA5F0B /* GLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A1B1665282300AE87C5 /* GLFW.cpp */; };
+		D6760C0B1675E3D6005B9821 /* ShapeEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6760C091675E3D6005B9821 /* ShapeEngine.cpp */; };
+		D6760C2016778BAA005B9821 /* liblua.5.1.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */; };
 		D6965BAF166B8B7900C6E53C /* GlyphBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */; };
 		D6965BB1166B8B7900C6E53C /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAA166B8B7900C6E53C /* Manager.cpp */; };
 		D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965BB4166B921E00C6E53C /* libfreetype.a */; };
 		D6965BBA166B95E900C6E53C /* ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */; };
 		D6965BC3166BA42500C6E53C /* Fontex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BC1166BA42500C6E53C /* Fontex.cpp */; };
+		D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD449D166E4365009F9455 /* libtolua++.a */; };
+		D6FD44A3166E4399009F9455 /* aps_font_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */; };
+		D6FD44AA166E45DD009F9455 /* aps_gl_ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A4166E45DD009F9455 /* aps_gl_ShapeContainer.cpp */; };
+		D6FD44AB166E45DD009F9455 /* aps_gl_ShapeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A6166E45DD009F9455 /* aps_gl_ShapeElement.cpp */; };
+		D6FD44AC166E45DD009F9455 /* aps_gl_Texture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A8166E45DD009F9455 /* aps_gl_Texture2D.cpp */; };
+		D6FD44B0166E47CD009F9455 /* aps_fontex_Fontex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44AF166E47CD009F9455 /* aps_fontex_Fontex.cpp */; };
+		D6FD44B9166E4991009F9455 /* BindToLua.h in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44B8166E496A009F9455 /* BindToLua.h */; };
+		D6FD44C0166E6E3C009F9455 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44BE166E6E3C009F9455 /* Color.cpp */; };
+		D6FD44C5166E74F0009F9455 /* aps_gl_Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44C3166E74EF009F9455 /* aps_gl_Color.cpp */; };
+		D6FE77AF1670D89600EF11D8 /* ButtonInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FE77A91670D89600EF11D8 /* ButtonInput.cpp */; };
+		D6FE77B01670D89600EF11D8 /* ButtonState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FE77AB1670D89600EF11D8 /* ButtonState.cpp */; };
+		D6FE77B11670D89600EF11D8 /* KeyBoardInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FE77AD1670D89600EF11D8 /* KeyBoardInput.cpp */; };
+		D6FE77B81670E4D200EF11D8 /* aps_input_ButtonState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FE77B21670E4CE00EF11D8 /* aps_input_ButtonState.cpp */; };
+		D6FE77B91670E4D200EF11D8 /* aps_input_KeyBoardInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FE77B51670E4D000EF11D8 /* aps_input_KeyBoardInput.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,9 +64,17 @@
 		D60A7A1C1665282300AE87C5 /* GLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFW.h; sourceTree = "<group>"; };
 		D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.4.dylib; path = /usr/local/Cellar/lua/5.1.4/lib/liblua.5.1.4.dylib; sourceTree = "<absolute>"; };
 		D60C6657166DF004005C7CC8 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
-		D60C665A166DF203005C7CC8 /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
-		D60C665B166DF203005C7CC8 /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		D60C665A166DF203005C7CC8 /* LuaManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaManager.cpp; sourceTree = "<group>"; };
+		D60C665B166DF203005C7CC8 /* LuaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaManager.h; sourceTree = "<group>"; };
+		D61880B3167192B2006E94EE /* MersenneTwister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MersenneTwister.cpp; sourceTree = "<group>"; };
+		D61880B4167192B2006E94EE /* MersenneTwister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MersenneTwister.h; sourceTree = "<group>"; };
+		D61880B616719473006E94EE /* aps_random_MersenneTwister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_random_MersenneTwister.cpp; path = tolua/aps_random_MersenneTwister.cpp; sourceTree = "<group>"; };
+		D61880B716719473006E94EE /* aps_random_MersenneTwister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_random_MersenneTwister.h; path = tolua/aps_random_MersenneTwister.h; sourceTree = "<group>"; };
+		D61880B816719473006E94EE /* aps_random_MersenneTwister.tolua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = aps_random_MersenneTwister.tolua; path = tolua/aps_random_MersenneTwister.tolua; sourceTree = "<group>"; };
 		D6590D30166CB7AD004A504A /* GLHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLHeader.h; sourceTree = "<group>"; };
+		D6760C091675E3D6005B9821 /* ShapeEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeEngine.cpp; sourceTree = "<group>"; };
+		D6760C0A1675E3D6005B9821 /* ShapeEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeEngine.h; sourceTree = "<group>"; };
+		D6760C1E16778ACE005B9821 /* libluajit-5.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluajit-5.1.a"; path = "/usr/local/Cellar/luajit/2.0.0/lib/libluajit-5.1.a"; sourceTree = "<absolute>"; };
 		D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphBitmap.cpp; sourceTree = "<group>"; };
 		D6965BA8166B8B7900C6E53C /* GlyphBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphBitmap.h; sourceTree = "<group>"; };
 		D6965BAA166B8B7900C6E53C /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
@@ -63,6 +88,40 @@
 		D6965BB9166B95E800C6E53C /* ShapeElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeElement.h; sourceTree = "<group>"; };
 		D6965BC1166BA42500C6E53C /* Fontex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fontex.cpp; sourceTree = "<group>"; };
 		D6965BC2166BA42500C6E53C /* Fontex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fontex.h; sourceTree = "<group>"; };
+		D6FD449D166E4365009F9455 /* libtolua++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtolua++.a"; path = "/usr/local/Cellar/tolua++/1.0.93/lib/libtolua++.a"; sourceTree = "<absolute>"; };
+		D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_font_Manager.cpp; path = tolua/aps_font_Manager.cpp; sourceTree = "<group>"; };
+		D6FD44A2166E4399009F9455 /* aps_font_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_font_Manager.h; path = tolua/aps_font_Manager.h; sourceTree = "<group>"; };
+		D6FD44A4166E45DD009F9455 /* aps_gl_ShapeContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_gl_ShapeContainer.cpp; path = tolua/aps_gl_ShapeContainer.cpp; sourceTree = "<group>"; };
+		D6FD44A5166E45DD009F9455 /* aps_gl_ShapeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_gl_ShapeContainer.h; path = tolua/aps_gl_ShapeContainer.h; sourceTree = "<group>"; };
+		D6FD44A6166E45DD009F9455 /* aps_gl_ShapeElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_gl_ShapeElement.cpp; path = tolua/aps_gl_ShapeElement.cpp; sourceTree = "<group>"; };
+		D6FD44A7166E45DD009F9455 /* aps_gl_ShapeElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_gl_ShapeElement.h; path = tolua/aps_gl_ShapeElement.h; sourceTree = "<group>"; };
+		D6FD44A8166E45DD009F9455 /* aps_gl_Texture2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_gl_Texture2D.cpp; path = tolua/aps_gl_Texture2D.cpp; sourceTree = "<group>"; };
+		D6FD44A9166E45DD009F9455 /* aps_gl_Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_gl_Texture2D.h; path = tolua/aps_gl_Texture2D.h; sourceTree = "<group>"; };
+		D6FD44AF166E47CD009F9455 /* aps_fontex_Fontex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_fontex_Fontex.cpp; path = tolua/aps_fontex_Fontex.cpp; sourceTree = "<group>"; };
+		D6FD44B1166E47DC009F9455 /* aps_fontex_Fontex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_fontex_Fontex.h; path = tolua/aps_fontex_Fontex.h; sourceTree = "<group>"; };
+		D6FD44B2166E47E8009F9455 /* aps_font_Manager.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_font_Manager.tolua; path = tolua/aps_font_Manager.tolua; sourceTree = "<group>"; };
+		D6FD44B3166E47E8009F9455 /* aps_fontex_Fontex.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_fontex_Fontex.tolua; path = tolua/aps_fontex_Fontex.tolua; sourceTree = "<group>"; };
+		D6FD44B4166E47E9009F9455 /* aps_gl_ShapeContainer.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_gl_ShapeContainer.tolua; path = tolua/aps_gl_ShapeContainer.tolua; sourceTree = "<group>"; };
+		D6FD44B5166E47E9009F9455 /* aps_gl_ShapeElement.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_gl_ShapeElement.tolua; path = tolua/aps_gl_ShapeElement.tolua; sourceTree = "<group>"; };
+		D6FD44B6166E47E9009F9455 /* aps_gl_Texture2D.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_gl_Texture2D.tolua; path = tolua/aps_gl_Texture2D.tolua; sourceTree = "<group>"; };
+		D6FD44B8166E496A009F9455 /* BindToLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindToLua.h; path = tolua/BindToLua.h; sourceTree = "<group>"; };
+		D6FD44BE166E6E3C009F9455 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		D6FD44BF166E6E3C009F9455 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		D6FD44C2166E74EF009F9455 /* aps_gl_Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_gl_Color.h; path = tolua/aps_gl_Color.h; sourceTree = "<group>"; };
+		D6FD44C3166E74EF009F9455 /* aps_gl_Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_gl_Color.cpp; path = tolua/aps_gl_Color.cpp; sourceTree = "<group>"; };
+		D6FD44C4166E74F0009F9455 /* aps_gl_Color.tolua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = aps_gl_Color.tolua; path = tolua/aps_gl_Color.tolua; sourceTree = "<group>"; };
+		D6FE77A91670D89600EF11D8 /* ButtonInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonInput.cpp; sourceTree = "<group>"; };
+		D6FE77AA1670D89600EF11D8 /* ButtonInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonInput.h; sourceTree = "<group>"; };
+		D6FE77AB1670D89600EF11D8 /* ButtonState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonState.cpp; sourceTree = "<group>"; };
+		D6FE77AC1670D89600EF11D8 /* ButtonState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonState.h; sourceTree = "<group>"; };
+		D6FE77AD1670D89600EF11D8 /* KeyBoardInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyBoardInput.cpp; sourceTree = "<group>"; };
+		D6FE77AE1670D89600EF11D8 /* KeyBoardInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyBoardInput.h; sourceTree = "<group>"; };
+		D6FE77B21670E4CE00EF11D8 /* aps_input_ButtonState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_input_ButtonState.cpp; path = tolua/aps_input_ButtonState.cpp; sourceTree = "<group>"; };
+		D6FE77B31670E4CE00EF11D8 /* aps_input_ButtonState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_input_ButtonState.h; path = tolua/aps_input_ButtonState.h; sourceTree = "<group>"; };
+		D6FE77B41670E4CF00EF11D8 /* aps_input_ButtonState.tolua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = aps_input_ButtonState.tolua; path = tolua/aps_input_ButtonState.tolua; sourceTree = "<group>"; };
+		D6FE77B51670E4D000EF11D8 /* aps_input_KeyBoardInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_input_KeyBoardInput.cpp; path = tolua/aps_input_KeyBoardInput.cpp; sourceTree = "<group>"; };
+		D6FE77B61670E4D100EF11D8 /* aps_input_KeyBoardInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_input_KeyBoardInput.h; path = tolua/aps_input_KeyBoardInput.h; sourceTree = "<group>"; };
+		D6FE77B71670E4D100EF11D8 /* aps_input_KeyBoardInput.tolua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = aps_input_KeyBoardInput.tolua; path = tolua/aps_input_KeyBoardInput.tolua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +130,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */,
-				D60C6656166DEAC6005C7CC8 /* liblua.5.1.4.dylib in Frameworks */,
 				D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */,
+				D6760C2016778BAA005B9821 /* liblua.5.1.4.dylib in Frameworks */,
+				D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */,
 				D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */,
 				D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */,
 			);
@@ -100,10 +160,13 @@
 		D60A7A0D166520C900AE87C5 /* GLFWTest */ = {
 			isa = PBXGroup;
 			children = (
+				D6FD44A0166E4387009F9455 /* tolua */,
 				D6965BA5166B8B7900C6E53C /* aps */,
 				D60A7A191665228300AE87C5 /* OpenGL.framework */,
 				D60C6657166DF004005C7CC8 /* OpenAL.framework */,
 				D60A7A17166521EC00AE87C5 /* libglfw.a */,
+				D6760C1E16778ACE005B9821 /* libluajit-5.1.a */,
+				D6FD449D166E4365009F9455 /* libtolua++.a */,
 				D6965BB4166B921E00C6E53C /* libfreetype.a */,
 				D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */,
 				D60A7A1B1665282300AE87C5 /* GLFW.cpp */,
@@ -117,15 +180,26 @@
 		D60C6659166DF203005C7CC8 /* lua */ = {
 			isa = PBXGroup;
 			children = (
-				D60C665A166DF203005C7CC8 /* Manager.cpp */,
-				D60C665B166DF203005C7CC8 /* Manager.h */,
+				D60C665A166DF203005C7CC8 /* LuaManager.cpp */,
+				D60C665B166DF203005C7CC8 /* LuaManager.h */,
 			);
 			path = lua;
+			sourceTree = "<group>";
+		};
+		D61880B2167192B2006E94EE /* random */ = {
+			isa = PBXGroup;
+			children = (
+				D61880B3167192B2006E94EE /* MersenneTwister.cpp */,
+				D61880B4167192B2006E94EE /* MersenneTwister.h */,
+			);
+			path = random;
 			sourceTree = "<group>";
 		};
 		D6965BA5166B8B7900C6E53C /* aps */ = {
 			isa = PBXGroup;
 			children = (
+				D61880B2167192B2006E94EE /* random */,
+				D6FE77A81670D89600EF11D8 /* input */,
 				D60C6659166DF203005C7CC8 /* lua */,
 				D6965BC0166BA41400C6E53C /* fontex */,
 				D6965BA6166B8B7900C6E53C /* font */,
@@ -155,6 +229,10 @@
 				D6965BAD166B8B7900C6E53C /* Texture2D.cpp */,
 				D6965BAE166B8B7900C6E53C /* Texture2D.h */,
 				D6590D30166CB7AD004A504A /* GLHeader.h */,
+				D6FD44BE166E6E3C009F9455 /* Color.cpp */,
+				D6FD44BF166E6E3C009F9455 /* Color.h */,
+				D6760C091675E3D6005B9821 /* ShapeEngine.cpp */,
+				D6760C0A1675E3D6005B9821 /* ShapeEngine.h */,
 			);
 			path = gl;
 			sourceTree = "<group>";
@@ -166,6 +244,54 @@
 				D6965BC2166BA42500C6E53C /* Fontex.h */,
 			);
 			path = fontex;
+			sourceTree = "<group>";
+		};
+		D6FD44A0166E4387009F9455 /* tolua */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */,
+				D6FD44A2166E4399009F9455 /* aps_font_Manager.h */,
+				D6FD44B2166E47E8009F9455 /* aps_font_Manager.tolua */,
+				D6FD44AF166E47CD009F9455 /* aps_fontex_Fontex.cpp */,
+				D6FD44B1166E47DC009F9455 /* aps_fontex_Fontex.h */,
+				D6FD44B3166E47E8009F9455 /* aps_fontex_Fontex.tolua */,
+				D6FD44C3166E74EF009F9455 /* aps_gl_Color.cpp */,
+				D6FD44C2166E74EF009F9455 /* aps_gl_Color.h */,
+				D6FD44C4166E74F0009F9455 /* aps_gl_Color.tolua */,
+				D6FD44A4166E45DD009F9455 /* aps_gl_ShapeContainer.cpp */,
+				D6FD44A5166E45DD009F9455 /* aps_gl_ShapeContainer.h */,
+				D6FD44B4166E47E9009F9455 /* aps_gl_ShapeContainer.tolua */,
+				D6FD44A6166E45DD009F9455 /* aps_gl_ShapeElement.cpp */,
+				D6FD44A7166E45DD009F9455 /* aps_gl_ShapeElement.h */,
+				D6FD44B5166E47E9009F9455 /* aps_gl_ShapeElement.tolua */,
+				D6FD44A8166E45DD009F9455 /* aps_gl_Texture2D.cpp */,
+				D6FD44A9166E45DD009F9455 /* aps_gl_Texture2D.h */,
+				D6FD44B6166E47E9009F9455 /* aps_gl_Texture2D.tolua */,
+				D6FE77B21670E4CE00EF11D8 /* aps_input_ButtonState.cpp */,
+				D6FE77B31670E4CE00EF11D8 /* aps_input_ButtonState.h */,
+				D6FE77B41670E4CF00EF11D8 /* aps_input_ButtonState.tolua */,
+				D6FE77B51670E4D000EF11D8 /* aps_input_KeyBoardInput.cpp */,
+				D6FE77B61670E4D100EF11D8 /* aps_input_KeyBoardInput.h */,
+				D6FE77B71670E4D100EF11D8 /* aps_input_KeyBoardInput.tolua */,
+				D61880B616719473006E94EE /* aps_random_MersenneTwister.cpp */,
+				D61880B716719473006E94EE /* aps_random_MersenneTwister.h */,
+				D61880B816719473006E94EE /* aps_random_MersenneTwister.tolua */,
+				D6FD44B8166E496A009F9455 /* BindToLua.h */,
+			);
+			name = tolua;
+			sourceTree = "<group>";
+		};
+		D6FE77A81670D89600EF11D8 /* input */ = {
+			isa = PBXGroup;
+			children = (
+				D6FE77A91670D89600EF11D8 /* ButtonInput.cpp */,
+				D6FE77AA1670D89600EF11D8 /* ButtonInput.h */,
+				D6FE77AB1670D89600EF11D8 /* ButtonState.cpp */,
+				D6FE77AC1670D89600EF11D8 /* ButtonState.h */,
+				D6FE77AD1670D89600EF11D8 /* KeyBoardInput.cpp */,
+				D6FE77AE1670D89600EF11D8 /* KeyBoardInput.h */,
+			);
+			path = input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +353,23 @@
 				D634CDD2166C9DF300BA5F0B /* ShapeElement.cpp in Sources */,
 				D634CDD3166C9DFC00BA5F0B /* GLFW.cpp in Sources */,
 				D60C6650166DE78A005C7CC8 /* Texture2D.cpp in Sources */,
-				D60C665C166DF203005C7CC8 /* Manager.cpp in Sources */,
+				D60C665C166DF203005C7CC8 /* LuaManager.cpp in Sources */,
+				D6FD44A3166E4399009F9455 /* aps_font_Manager.cpp in Sources */,
+				D6FD44AA166E45DD009F9455 /* aps_gl_ShapeContainer.cpp in Sources */,
+				D6FD44AB166E45DD009F9455 /* aps_gl_ShapeElement.cpp in Sources */,
+				D6FD44AC166E45DD009F9455 /* aps_gl_Texture2D.cpp in Sources */,
+				D6FD44B0166E47CD009F9455 /* aps_fontex_Fontex.cpp in Sources */,
+				D6FD44B9166E4991009F9455 /* BindToLua.h in Sources */,
+				D6FD44C0166E6E3C009F9455 /* Color.cpp in Sources */,
+				D6FD44C5166E74F0009F9455 /* aps_gl_Color.cpp in Sources */,
+				D6FE77AF1670D89600EF11D8 /* ButtonInput.cpp in Sources */,
+				D6FE77B01670D89600EF11D8 /* ButtonState.cpp in Sources */,
+				D6FE77B11670D89600EF11D8 /* KeyBoardInput.cpp in Sources */,
+				D6FE77B81670E4D200EF11D8 /* aps_input_ButtonState.cpp in Sources */,
+				D6FE77B91670E4D200EF11D8 /* aps_input_KeyBoardInput.cpp in Sources */,
+				D61880B5167192B2006E94EE /* MersenneTwister.cpp in Sources */,
+				D61880B916719473006E94EE /* aps_random_MersenneTwister.cpp in Sources */,
+				D6760C0B1675E3D6005B9821 /* ShapeEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +443,8 @@
 					"\"$(SRCROOT)/GLFWTest/aps/font\"",
 					/usr/local/Cellar/freetype/2.4.10/lib,
 					/usr/local/Cellar/lua/5.1.4/lib,
+					"\"/usr/local/Cellar/tolua++/1.0.93/lib\"",
+					/usr/local/Cellar/luajit/2.0.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -320,6 +464,8 @@
 					"\"$(SRCROOT)/GLFWTest/aps/font\"",
 					/usr/local/Cellar/freetype/2.4.10/lib,
 					/usr/local/Cellar/lua/5.1.4/lib,
+					"\"/usr/local/Cellar/tolua++/1.0.93/lib\"",
+					/usr/local/Cellar/luajit/2.0.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

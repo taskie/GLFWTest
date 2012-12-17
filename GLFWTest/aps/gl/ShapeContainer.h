@@ -5,6 +5,7 @@
 #include <memory>
 #include <array>
 
+#include "Color.h"
 #include "ShapeElement.h"
 #include "Texture2D.h"
 
@@ -16,19 +17,29 @@ namespace aps
 		{
 		public:
 			ShapeContainer();
-			ShapeContainer(ShapeElement shapeElement, GLenum mode);
+			ShapeContainer(ShapeElement shapeElement);
+			ShapeContainer(ShapeElement shapeElement, ShapeElement::DrawMode mode);
 			~ShapeContainer() = default;
 			
 			ShapeElement* operator->();
 			
-			ShapeContainer& setMode(GLenum mode);
+			ShapeContainer& point();
+			ShapeContainer& lines();
+			ShapeContainer& lineLoop();
+			ShapeContainer& lineStrip();
+			ShapeContainer& triangles();
+			ShapeContainer& triangleStrip();
+			ShapeContainer& polygon();
+			
+			ShapeContainer& setMode(ShapeElement::DrawMode mode);
 			ShapeContainer& setAnchor(double x = 0, double y = 0, double z = 0);
 			ShapeContainer& setPosition(double x = 0, double y = 0, double z = 0);
 			ShapeContainer& setScale(double scale);
 			ShapeContainer& setScale(double x, double y, double z = 1);
 			ShapeContainer& setRotate(double angle = 0, double x = 0, double y = 0, double z = 1);
+			ShapeContainer& setColorForce(Color color);
 			
-			GLenum mode();
+			ShapeElement::DrawMode mode();
 			std::array<double, 3> anchor();
 			std::array<double, 3> position();
 			std::array<double, 3> scale();
@@ -38,7 +49,7 @@ namespace aps
 			void setTexture(Texture2D texture);
 			
 			static ShapeContainer rectWithTexture(Texture2D texture);
-			static ShapeContainer rectWithTexture(Texture2D texture, std::array<double, 4> color);
+			static ShapeContainer rectWithTexture(Texture2D texture, Color color);
 			
 			void draw() const;
 			
@@ -46,7 +57,7 @@ namespace aps
 			std::shared_ptr<ShapeElement> shapeElement_;
 			std::shared_ptr<Texture2D> texture_;
 			std::vector<ShapeContainer> children_;
-			GLenum mode_;
+			ShapeElement::DrawMode mode_;
 			
 			std::array<double, 3> anchor_;
 			std::array<double, 3> position_;

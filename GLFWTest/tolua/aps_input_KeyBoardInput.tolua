@@ -1,0 +1,11 @@
+$#include "../aps/input/KeyBoardInput.h"
+
+$using namespace aps::input;
+
+module input
+{
+	class KeyBoardInput
+	{
+		ButtonState buttonState(std::string key);
+	};
+}

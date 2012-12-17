@@ -1,0 +1,13 @@
+$#include "../aps/lua/LuaManager.h"
+
+$using namespace aps::lua;
+
+module lua
+{
+
+class LuaManager
+{
+	bool doFile(std::string path);
+}
+
+}

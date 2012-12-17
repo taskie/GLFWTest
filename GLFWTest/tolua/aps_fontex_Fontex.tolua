@@ -1,0 +1,25 @@
+$#include "../aps/fontex/Fontex.h"
+
+$using namespace aps::fontex;
+$using namespace aps::gl;
+$using namespace aps::font;
+
+module fontex
+{
+
+class StringShape
+{
+	StringShape(ShapeContainer shape, int size, int width);
+	ShapeContainer get();
+	int size();
+	int width();
+};
+
+class Fontex
+{
+	Fontex(Manager fontManager);
+	StringShape utf8StringShape(std::string text, std::string fontName, int size);
+	StringShape utf8StringShape(std::string text, std::string fontName, int size, Color color);
+};
+
+}

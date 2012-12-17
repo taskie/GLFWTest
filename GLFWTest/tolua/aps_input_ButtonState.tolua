@@ -1,0 +1,14 @@
+$#include "../aps/input/ButtonState.h"
+
+$using namespace aps::input;
+
+module input
+{
+	class ButtonState
+	{
+		ButtonState();
+		bool pressed();
+		bool just();
+		int holdingTime();
+	};
+}

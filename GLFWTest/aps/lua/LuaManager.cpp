@@ -1,11 +1,11 @@
 //
-//  Manager.cpp
+//  LuaManager.cpp
 //  LuaPolys
 //
 //  Copyright (c) 2012 Alprosys. All rights reserved.
 //
 
-#include "Manager.h"
+#include "LuaManager.h"
 
 #include <iostream>
 #include <boost/foreach.hpp>
@@ -13,11 +13,11 @@
 
 using namespace aps::lua;
 
-// class Manager
+// class LuaManager
 // public:
 
-Manager::Manager()
-: Manager(lua_open())
+LuaManager::LuaManager()
+: LuaManager(lua_open())
 {
 	luaL_openlibs(vm());
 	
@@ -31,23 +31,23 @@ Manager::Manager()
 	uniqueVM_ = std::unique_ptr<lua_State, LuaStateDeleter>(vm_);
 }
 
-Manager::Manager(lua_State* state)
+LuaManager::LuaManager(lua_State* state)
 : vm_(state)
 {
 
 }
 
-Manager::~Manager()
+LuaManager::~LuaManager()
 {
 	
 }
 
-lua_State* Manager::vm()
+lua_State* LuaManager::vm()
 {
 	return vm_;
 }
 
-bool Manager::doFile(std::string path)
+bool LuaManager::doFile(std::string path)
 {
 	int loadresult = luaL_loadfile(vm(), path.c_str());
 	if (loadresult) {
@@ -58,7 +58,7 @@ bool Manager::doFile(std::string path)
 	return protectedCall(0, 0, 0);
 }
 
-bool Manager::doString(std::string source)
+bool LuaManager::doString(std::string source)
 {
 	int loadresult = luaL_loadstring(vm(), source.c_str());
 	if (loadresult) {
@@ -69,7 +69,7 @@ bool Manager::doString(std::string source)
 	return protectedCall(0, 0, 0);
 }
 
-void Manager::push(LuaValue x)
+void LuaManager::push(LuaValue x)
 {
 	switch(x.which()) {
 		case 0: lua_pushnumber(vm(), boost::get<int>(x)); break;
@@ -81,12 +81,12 @@ void Manager::push(LuaValue x)
 	}
 }
 
-void Manager::pushValuesToStack(LuaTuple xs)
+void LuaManager::pushValuesToStack(LuaTuple xs)
 {
 	BOOST_FOREACH (LuaValue x, xs) push(x);
 }
 
-LuaValue Manager::peek(int index)
+LuaValue LuaManager::peek(int index)
 {
 	int type = lua_type(vm(), index);
 	switch(type) {
@@ -98,7 +98,7 @@ LuaValue Manager::peek(int index)
 	}
 }
 
-LuaTuple Manager::peekValuesFromStack(int count)
+LuaTuple LuaManager::peekValuesFromStack(int count)
 {
 	LuaTuple result;
 	for (int i = 0; i < count; i++) {
@@ -108,7 +108,7 @@ LuaTuple Manager::peekValuesFromStack(int count)
 	return result;
 }
 
-LuaTuple Manager::callFunction(std::string func, LuaTuple args)
+LuaTuple LuaManager::callFunction(std::string func, LuaTuple args)
 {
 	int old_top = lua_gettop(vm());
 	
@@ -136,16 +136,16 @@ LuaTuple Manager::callFunction(std::string func, LuaTuple args)
 }
 
 template <LuaTuple(*F)(LuaTuple), int N>
-void Manager::registerFunction(std::string name)
+void LuaManager::registerFunction(std::string name)
 {
 	lua_CFunction func = cppFunctionToLuaCFunction<F, N>;
 	lua_register(vm(), name.c_str(), func);
 }
 
-// class Manager
+// class LuaManager
 // private:
 
-void Manager::dumpStack()
+void LuaManager::dumpStack()
 {
 	int stackSize = lua_gettop(vm());
 	for(int i = stackSize; i >= 1; i--) {
@@ -174,7 +174,7 @@ void Manager::dumpStack()
 	std::cout << std::endl;
 }
 
-void Manager::analyzeError(int callresult)
+void LuaManager::analyzeError(int callresult)
 {
 	std::string reason;
 	switch (callresult) {
@@ -189,7 +189,7 @@ void Manager::analyzeError(int callresult)
 	std::cerr << "* Lua: " << reason << std::endl << mes << std::endl;
 }
 
-bool Manager::protectedCall(int argc, int resc, int errfunc)
+bool LuaManager::protectedCall(int argc, int resc, int errfunc)
 {
 	int callresult = lua_pcall(vm(), argc, resc, errfunc);
 	if (callresult != 0) {
@@ -200,19 +200,19 @@ bool Manager::protectedCall(int argc, int resc, int errfunc)
 }
 
 template <LuaTuple(*F)(LuaTuple), int N>
-int Manager::cppFunctionToLuaCFunction(lua_State* L)
+int LuaManager::cppFunctionToLuaCFunction(lua_State* L)
 {
-	Manager Manager(L);
-	auto args = Manager.peekValuesFromStack(N);
+	LuaManager LuaManager(L);
+	auto args = LuaManager.peekValuesFromStack(N);
 	auto result = F(args);
-	Manager.pushValuesToStack(result);
+	LuaManager.pushValuesToStack(result);
 	return static_cast<int>(result.size());
 }
 
-// struct Manager::LuaStateDeleter
+// struct LuaManager::LuaStateDeleter
 // public:
 
-void Manager::LuaStateDeleter::operator()(lua_State* vm) const
+void LuaManager::LuaStateDeleter::operator()(lua_State* vm) const
 {
 	lua_close(vm);
 }

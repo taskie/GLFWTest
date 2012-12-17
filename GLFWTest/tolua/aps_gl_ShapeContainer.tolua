@@ -1,0 +1,45 @@
+$#include "../aps/gl/ShapeContainer.h"
+
+$using namespace aps::gl;
+
+typedef unsigned int GLenum;
+
+module gl
+{
+
+class ShapeContainer
+{
+	ShapeContainer();
+	ShapeContainer(ShapeElement shapeElement);
+	~ShapeContainer();
+
+	ShapeContainer& point();
+	ShapeContainer& lines();
+	ShapeContainer& lineLoop();
+	ShapeContainer& lineStrip();
+	ShapeContainer& triangles();
+	ShapeContainer& triangleStrip();
+	ShapeContainer& polygon();
+
+	ShapeContainer& setAnchor(double x = 0, double y = 0, double z = 0);
+	ShapeContainer& setPosition(double x = 0, double y = 0, double z = 0);
+	ShapeContainer& setScale(double scale);
+	ShapeContainer& setScale(double x, double y, double z = 1);
+	ShapeContainer& setRotate(double angle = 0, double x = 0, double y = 0, double z = 1);
+	ShapeContainer& setColorForce(Color color);
+	
+	std::array<double, 3> anchor();
+	std::array<double, 3> position();
+	std::array<double, 3> scale();
+	std::array<double, 4> rotate();
+	
+	void pushChild(ShapeContainer child);
+	void setTexture(Texture2D texture);
+	
+	static ShapeContainer rectWithTexture(Texture2D texture);
+	static ShapeContainer rectWithTexture(Texture2D texture, Color color);
+	
+	void draw() const;
+};
+
+}

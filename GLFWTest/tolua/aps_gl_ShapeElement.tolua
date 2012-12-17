@@ -1,0 +1,31 @@
+$#include "../aps/gl/ShapeElement.h"
+
+$using namespace aps::gl;
+
+typedef unsigned int GLenum;
+
+module gl
+{
+
+class ShapeElement
+{
+	ShapeElement();
+	
+	ShapeElement& vertex(double x, double y, double z = 0.0, double w = 1.0);
+	ShapeElement& color(double r, double g, double b, double a = 1.0);
+	ShapeElement& color(Color color);
+	ShapeElement& texCoord(double s, double t = 0.0, double r = 0.0, double q = 1.0);
+			
+	enum DrawMode
+	{
+		Point, Lines, LineLoop, LineStrip, Triangles, TriangleStrip, PolyGon
+	};
+	
+	ShapeElement& draw(DrawMode mode);
+	
+	ShapeElement& rectangle(double x, double y, double w, double h);
+	ShapeElement& regularPolygon(int n, double r);
+	ShapeElement& circle(double r);
+};
+
+}

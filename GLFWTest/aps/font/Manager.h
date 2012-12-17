@@ -16,7 +16,8 @@ namespace aps
 			bool loadFont(std::string name, std::string filePath, long faceIndex);
 			GlyphBitmap getGlyphBitmap(std::string name, unsigned long charCode, int size);
 			double kerning(std::string name, unsigned int left, unsigned int right, int size);
-			std::string errorMessage();
+			std::string errorMessage() const;
+			void errorClear();
 			
 		private:
 			class Impl;

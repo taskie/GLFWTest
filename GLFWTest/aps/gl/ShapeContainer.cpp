@@ -5,12 +5,18 @@
 using namespace aps::gl;
 
 ShapeContainer::ShapeContainer()
-: ShapeContainer(ShapeElement(), GL_POINTS)
+: ShapeContainer(ShapeElement(), ShapeElement::Point)
 {
 	
 }
 
-ShapeContainer::ShapeContainer(ShapeElement shapeElement, GLenum mode)
+ShapeContainer::ShapeContainer(ShapeElement shapeElement)
+: ShapeContainer(shapeElement, ShapeElement::Point)
+{
+	
+}
+
+ShapeContainer::ShapeContainer(ShapeElement shapeElement, ShapeElement::DrawMode mode)
 : mode_(mode)
 , anchor_({0, 0, 0})
 , position_({0, 0, 0})
@@ -26,7 +32,15 @@ ShapeElement* ShapeContainer::operator->()
 	return shapeElement_.get();
 }
 
-ShapeContainer& ShapeContainer::setMode(GLenum mode)
+ShapeContainer& ShapeContainer::point() { return setMode(ShapeElement::Point); }
+ShapeContainer& ShapeContainer::lines() { return setMode(ShapeElement::Lines); }
+ShapeContainer& ShapeContainer::lineLoop() { return setMode(ShapeElement::LineLoop); }
+ShapeContainer& ShapeContainer::lineStrip() { return setMode(ShapeElement::LineStrip); }
+ShapeContainer& ShapeContainer::triangles() { return setMode(ShapeElement::Triangles); }
+ShapeContainer& ShapeContainer::triangleStrip() { return setMode(ShapeElement::TriangleStrip); }
+ShapeContainer& ShapeContainer::polygon() { return setMode(ShapeElement::PolyGon); }
+
+ShapeContainer& ShapeContainer::setMode(ShapeElement::DrawMode mode)
 {
 	mode_ = mode;
 	return *this;
@@ -62,7 +76,14 @@ ShapeContainer& ShapeContainer::setRotate(double angle, double x, double y, doub
 	return *this;
 }
 
-GLenum ShapeContainer::mode() { return mode_; }
+ShapeContainer& ShapeContainer::setColorForce(aps::gl::Color color)
+{
+	if (shapeElement_) shapeElement_->setColorForce(color);
+	for (auto shape : children_) shape.setColorForce(color);
+	return *this;
+}
+
+ShapeElement::DrawMode ShapeContainer::mode() { return mode_; }
 std::array<double, 3> ShapeContainer::anchor() { return anchor_; }
 std::array<double, 3> ShapeContainer::position() { return position_; }
 std::array<double, 3> ShapeContainer::scale() { return scale_; }
@@ -89,8 +110,8 @@ void ShapeContainer::draw() const
 	std::tie(x, y, z) = position_;
 	glTranslated(x, y, z);
 	
-	std::tie(x, y, z) = anchor_;
-	glTranslated(x, y, z);
+	// std::tie(x, y, z) = anchor_;
+	// glTranslated(x, y, z);
 	
 	std::tie(angle, x, y, z) = rotate_;
 	glRotated(angle, x, y, z);
@@ -129,14 +150,14 @@ ShapeContainer ShapeContainer::rectWithTexture(aps::gl::Texture2D texture)
 	return rectWithTexture(texture, color);
 }
 
-ShapeContainer ShapeContainer::rectWithTexture(aps::gl::Texture2D texture, std::array<double, 4> color)
+ShapeContainer ShapeContainer::rectWithTexture(aps::gl::Texture2D texture, aps::gl::Color color)
 {
 	auto elem = ShapeElement();
 	elem.color(color[0], color[1], color[2], color[3])
 	.texCoord(0, 0).vertex(0, 0).texCoord(1, 0).vertex(1, 0)
 	.texCoord(1, 1).vertex(1, 1).texCoord(0, 1).vertex(0, 1);
 	
-	auto shape = ShapeContainer(elem, GL_QUADS);
+	auto shape = ShapeContainer(elem, ShapeElement::PolyGon);
 	shape.setTexture(texture);
 	shape.setScale(texture.width(), texture.height());
 	

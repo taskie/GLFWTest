@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <memory>
 
 #include <GL/glfw.h>
 
@@ -18,7 +19,15 @@
 #include "aps/gl/Texture2D.h"
 #include "aps/gl/ShapeContainer.h"
 #include "aps/fontex/Fontex.h"
-#include "aps/lua/Manager.h"
+#include "aps/lua/LuaManager.h"
+#include "aps/input/KeyBoardInput.h"
+
+#include "tolua/BindToLua.h"
+
+#ifdef __APPLE__
+#include <unistd.h>
+#include <boost/algorithm/string.hpp>
+#endif
 
 class MyGLFW : public GLFW
 {
@@ -42,6 +51,7 @@ void MyGLFW::willOpenWindow()
 void MyGLFW::openWindow()
 {
 	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_WINDOW);
+//	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN);
 }
 
 void MyGLFW::didOpenWindow()
@@ -49,13 +59,32 @@ void MyGLFW::didOpenWindow()
 	glfwSetWindowTitle("GLFW + FreeType");
 }
 
-static aps::lua::Manager lua;
-static aps::gl::ShapeContainer shape;
-static aps::font::Manager fontManager;
+static std::unique_ptr<aps::lua::LuaManager> lua;
+static std::unique_ptr<aps::input::KeyBoardInput> keyBoardInput;
+static int frame;
+
+void GLFWCALL keyCallback(int key, int action)
+{
+	if (!keyBoardInput) return;
+	if (action == GLFW_PRESS)
+	{
+		keyBoardInput->down(key);
+	}
+	else
+	{
+		keyBoardInput->up(key);
+	}
+}
+
+static double oldTime = 0;
+
+static constexpr int fps = 60;
+static constexpr double spf = 1.0 / fps;
+static constexpr double delta = spf / 3;
 
 void MyGLFW::initialize()
 {
-	std::cout << glGetString(GL_VERSION) << std::endl;
+//	std::cout << glGetString(GL_VERSION) << std::endl;
 	
 	// blend
 	glDisable(GL_DEPTH_TEST);
@@ -81,27 +110,53 @@ void MyGLFW::initialize()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	
-	fontManager = aps::font::Manager();
-	// fontManager.loadFont("HiraMinPW3", "/Library/Fonts/Zapfino.ttf", 0);
-	fontManager.loadFont("M+ 2p thin", "/System/Library/Fonts/AquaKana.ttc", 0);
+	lua.reset(new aps::lua::LuaManager());
+	BindToLua(lua->vm());
 	
-	aps::fontex::Fontex fontex(fontManager);
+	keyBoardInput.reset(new aps::input::KeyBoardInput());
+	glfwSetKeyCallback(keyCallback);
+	tolua_pushusertype(lua->vm(), keyBoardInput.get(), "KeyBoardInput");
+	lua_setglobal(lua->vm(), "keyBoardInput");
 	
-	std::array<double, 4> color = {1, 1, 1, 1};
-	auto stringShape = fontex.utf8StringShape("アクアかな", "M+ 2p thin", 64, color);
-	shape = stringShape.get();
-	shape.setPosition(0, 100);
-	
+	for (; ; )
+	{
+		if (lua->doFile("scripts/main.lua")) break;
+		std::string x;
+		std::cin >> x;
+	}
+		
 	glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
+	oldTime = glfwGetTime();
 }
 
 void MyGLFW::draw()
 {
+	keyBoardInput->update();
+	
+	auto reloadKey = keyBoardInput->buttonState('R');
+	if (reloadKey.pressed() && reloadKey.just()) {
+		for (; ; ) {
+			if (lua->doFile("scripts/main.lua")) break;
+			std::string x;
+			std::cin >> x;
+		}
+	}
+	
+	lua->callFunction("update", aps::lua::LuaTuple());
+	
 	glClear(GL_COLOR_BUFFER_BIT);
-	
-	shape.draw();
-	
+	lua->callFunction("draw", aps::lua::LuaTuple());
 	glFlush();
+	
+	double nowTime = glfwGetTime();
+	
+	while (double diff = nowTime - oldTime < spf) {
+		if (diff < delta) glfwSleep(delta);
+		nowTime = glfwGetTime();
+	}
+	
+	oldTime = glfwGetTime();
+	++frame;
 }
 
 void MyGLFW::finalize()
@@ -111,6 +166,18 @@ void MyGLFW::finalize()
 
 int main(int argc, const char * argv[])
 {
+
+#ifdef __APPLE__
+	std::vector<std::string> v;
+	boost::split(v, argv[0], boost::is_any_of("/"));
+	v.pop_back();
+#ifdef NDEBUG
+	chdir((boost::join(v, "/") + "/..").c_str());
+#else
+	chdir((boost::join(v, "/") + "/").c_str());
+#endif
+#endif
+
 	MyGLFW glfw;
 	glfw.run();
 	return 0;

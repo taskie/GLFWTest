@@ -1,0 +1,19 @@
+$#include "../aps/font/Manager.h"
+
+$using namespace aps::font;
+
+module font
+{
+
+class Manager
+{
+public:
+	Manager();
+	bool loadFont(std::string name, std::string filePath, long faceIndex);
+	GlyphBitmap getGlyphBitmap(std::string name, unsigned long charCode, int size);
+	double kerning(std::string name, unsigned int left, unsigned int right, int size);
+	std::string errorMessage() const;
+	void errorClear();
+}
+
+}

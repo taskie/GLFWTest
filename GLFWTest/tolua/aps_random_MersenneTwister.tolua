@@ -1,0 +1,17 @@
+$#include "../aps/random/MersenneTwister.h"
+
+$using namespace aps::random;
+
+module random
+{
+	class MersenneTwister
+	{
+		MersenneTwister();
+		MersenneTwister(unsigned int seed);
+		unsigned int seed() const;
+		double next();
+		double next(double a, double b);
+		int nextInt();
+		int nextInt(double a, double b);
+	};
+}
