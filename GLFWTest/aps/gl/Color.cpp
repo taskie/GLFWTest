@@ -12,8 +12,8 @@
 
 using namespace aps::gl;
 
-Color::Color() : data_({0, 0, 0, 0}) {}
-Color::Color(double r, double g, double b, double a) : Color(std::array<double, 4>({r, g, b, a})) {}
+Color::Color() : data_{{0, 0, 0, 0}} {}
+Color::Color(double r, double g, double b, double a) : Color(std::array<double, 4>{{r, g, b, a}}) {}
 Color::Color(const std::array<double, 4>& data) : data_(data) {}
 Color::Color(const double data[4]) { std::copy(data, data + 4, data_.begin()); }
 

@@ -5,6 +5,7 @@
 
 #include <unordered_map>
 #include <exception>
+#include <stdexcept>
 
 namespace aps
 {

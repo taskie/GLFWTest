@@ -10,13 +10,13 @@ using namespace aps::gl;
 // public:
 
 ShapeElement::ShapeElement()
-: nowColor_({0, 0, 0, 1})
-, nowTexCoord_({0, 0, 0, 1})
+: nowColor_{{0, 0, 0, 1}}
+, nowTexCoord_{{0, 0, 0, 1}}
 { }
 
 ShapeElement& ShapeElement::vertex(double x, double y, double z, double w)
 {
-	std::array<double, 4> v({x, y, z, w});
+	std::array<double, 4> v{{x, y, z, w}};
 	push(&vertexes_, v);
 	push(&colors_, nowColor_);
 	push(&texCoords_, nowTexCoord_);
@@ -25,19 +25,19 @@ ShapeElement& ShapeElement::vertex(double x, double y, double z, double w)
 
 ShapeElement& ShapeElement::color(double r, double g, double b, double a)
 {
-	nowColor_ = std::array<double, 4>({r, g, b, a});
+	nowColor_ = std::array<double, 4>{{r, g, b, a}};
 	return *this;
 }
 
 ShapeElement& ShapeElement::color(Color color)
 {
-	nowColor_ = std::array<double, 4>({color.r(), color.g(), color.b(), color.a()});
+	nowColor_ = std::array<double, 4>{{color.r(), color.g(), color.b(), color.a()}};
 	return *this;
 }
 
 ShapeElement& ShapeElement::texCoord(double s, double t, double r, double q)
 {
-	nowTexCoord_ = std::array<double, 4>({s, t, r, q});
+	nowTexCoord_ = std::array<double, 4>{{s, t, r, q}};
 	return *this;
 }
 

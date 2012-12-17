@@ -18,10 +18,10 @@ ShapeContainer::ShapeContainer(ShapeElement shapeElement)
 
 ShapeContainer::ShapeContainer(ShapeElement shapeElement, ShapeElement::DrawMode mode)
 : mode_(mode)
-, anchor_({0, 0, 0})
-, position_({0, 0, 0})
-, scale_({1, 1, 1})
-, rotate_({0, 0, 0, 1})
+, anchor_{{0, 0, 0}}
+, position_{{0, 0, 0}}
+, scale_{{1, 1, 1}}
+, rotate_{{0, 0, 0, 1}}
 {
 	shapeElement_.reset(new ShapeElement(shapeElement));
 }
@@ -48,31 +48,31 @@ ShapeContainer& ShapeContainer::setMode(ShapeElement::DrawMode mode)
 
 ShapeContainer& ShapeContainer::setAnchor(double x, double y, double z)
 {
-	anchor_ = std::array<double, 3>({x, y, z});
+	anchor_ = std::array<double, 3>{{x, y, z}};
 	return *this;
 }
 
 ShapeContainer& ShapeContainer::setPosition(double x, double y, double z)
 {
-	position_ = std::array<double, 3>({x, y, z});
+	position_ = std::array<double, 3>{{x, y, z}};
 	return *this;
 }
 
 ShapeContainer& ShapeContainer::setScale(double scale)
 {
-	scale_ = std::array<double, 3>({scale, scale, scale});
+	scale_ = std::array<double, 3>{{scale, scale, scale}};
 	return *this;
 }
 
 ShapeContainer& ShapeContainer::setScale(double x, double y, double z)
 {
-	scale_ = std::array<double, 3>({x, y, z});
+	scale_ = std::array<double, 3>{{x, y, z}};
 	return *this;
 }
 
 ShapeContainer& ShapeContainer::setRotate(double angle, double x, double y, double z)
 {
-	rotate_ = std::array<double, 4>({angle, x, y, z});
+	rotate_ = std::array<double, 4>{{angle, x, y, z}};
 	return *this;
 }
 
@@ -107,19 +107,28 @@ void ShapeContainer::draw() const
 	
 	double angle, x, y, z;
 	
-	std::tie(x, y, z) = position_;
+	x = position_[0];
+	y = position_[1];
+	z = position_[2];
 	glTranslated(x, y, z);
 	
 	// std::tie(x, y, z) = anchor_;
 	// glTranslated(x, y, z);
 	
-	std::tie(angle, x, y, z) = rotate_;
+	angle = rotate_[0];
+	x = rotate_[1];
+	y = rotate_[2];
+	z = rotate_[3];
 	glRotated(angle, x, y, z);
 	
-	std::tie(x, y, z) = scale_;
+	x = scale_[0];
+	y = scale_[1];
+	z = scale_[2];
 	glScaled(x, y, z);
 	
-	std::tie(x, y, z) = anchor_;
+	x = anchor_[0];
+	y = anchor_[1];
+	z = anchor_[2];
 	glTranslated(-x, -y, -z);
 	
 	if (texture_)
@@ -146,7 +155,7 @@ void ShapeContainer::draw() const
 
 ShapeContainer ShapeContainer::rectWithTexture(aps::gl::Texture2D texture)
 {
-	std::array<double, 4> color = {1, 1, 1, 1};
+	std::array<double, 4> color{{1, 1, 1, 1}};
 	return rectWithTexture(texture, color);
 }
 

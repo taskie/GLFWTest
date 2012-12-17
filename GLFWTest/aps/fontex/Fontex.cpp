@@ -4,7 +4,9 @@
 
 #include <unordered_map>
 #include <locale>
+#ifndef _WIN32
 #include <codecvt>
+#endif
 #include <iterator>
 #include <boost/range/algorithm.hpp>
 
@@ -64,19 +66,24 @@ public:
 	
 	StringShape utf8StringShape(std::string text, std::string fontName, int size)
 	{
-		std::array<double, 4> color = {0, 0, 0, 1};
+		std::array<double, 4> color{{0, 0, 0, 1}};
 		return utf8StringShape(text, fontName, size, color);
 	}
 	
 	StringShape utf8StringShape(std::string text, std::string fontName, int size, aps::gl::Color color)
 	{
+#ifndef _WIN32
 		std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> ucs2conv;
 		std::u16string ucs2 = ucs2conv.from_bytes(text);
 		
 		std::vector<Shape> shapes;
 		boost::transform(ucs2, std::back_inserter(shapes),
 						 [this, fontName, size, color](std::size_t c){ return getShape(fontName, c, size, color); });
-		
+#else
+		std::vector<Shape> shapes;
+		boost::transform(text, std::back_inserter(shapes),
+						 [this, fontName, size, color](std::size_t c){ return getShape(fontName, c, size, color); });
+#endif
 		unsigned int old = 0;
 		int pen = 0;
 		gl::ShapeContainer stringShape;
