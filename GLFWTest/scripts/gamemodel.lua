@@ -19,7 +19,7 @@ function GameModel:new(stage, seed)
 	
 	self.frame = 0
 
-	self.bulletExpMode = false
+	self.bulletExpMode = true
 	self.players:add(stage:createPlayer(self))
 end
 
