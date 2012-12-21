@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D60934A61684DE2800F85074 /* JoystickInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934A41684DE2800F85074 /* JoystickInput.cpp */; };
 		D60A7A0F166520C900AE87C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A0E166520C900AE87C5 /* main.cpp */; };
 		D60A7A11166520C900AE87C5 /* GLFWTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D60A7A10166520C900AE87C5 /* GLFWTest.1 */; };
 		D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A17166521EC00AE87C5 /* libglfw.a */; };
@@ -68,6 +69,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D60934A41684DE2800F85074 /* JoystickInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoystickInput.cpp; sourceTree = "<group>"; };
+		D60934A51684DE2800F85074 /* JoystickInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickInput.h; sourceTree = "<group>"; };
 		D60A7A0A166520C900AE87C5 /* GLFWTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFWTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60A7A0E166520C900AE87C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D60A7A10166520C900AE87C5 /* GLFWTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GLFWTest.1; sourceTree = "<group>"; };
@@ -380,6 +383,8 @@
 				D6FE77AC1670D89600EF11D8 /* ButtonState.h */,
 				D6FE77AD1670D89600EF11D8 /* KeyBoardInput.cpp */,
 				D6FE77AE1670D89600EF11D8 /* KeyBoardInput.h */,
+				D60934A41684DE2800F85074 /* JoystickInput.cpp */,
+				D60934A51684DE2800F85074 /* JoystickInput.h */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				D691347C1683091E00BDBFB3 /* MediaFile.cpp in Sources */,
 				D691348116831A1600BDBFB3 /* BinaryReader.cpp in Sources */,
 				D61240D416846F2A00298B2E /* aps_sound_Mixer.cpp in Sources */,
+				D60934A61684DE2800F85074 /* JoystickInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
