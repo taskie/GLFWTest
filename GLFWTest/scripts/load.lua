@@ -57,8 +57,9 @@ dofile("scripts/enemy.lua")
 
 -- Mixer
 Mix = {}
-Mix.mixer = Mixer()
-Mix.mixer:loadMusic("febricula", "musics/febricula.ogg")
+
+Mix.mixer = sound.Mixer()
+Mix.mixer:loadMusic("febricula", "musics/febricula_2.wav")
 Mix.mixer:play("febricula")
 
 dofile("scripts/test.lua")

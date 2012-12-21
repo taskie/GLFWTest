@@ -14,9 +14,9 @@
 #include <vector>
 #include <fstream>
 #include <cstdint>
-#include <cstdlib>
+#include <cstring>
 
-#include "BinaryReader.h"
+#include "../binary/BinaryReader.h"
 
 namespace aps
 {

@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 #include <memory>
@@ -176,7 +177,12 @@ void MyGLFW::finalize()
 
 int main(int argc, const char * argv[])
 {
-
+#ifdef _WIN32
+    std::ofstream out("cout.txt");
+    std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
+    std::ofstream err("cerr.txt");
+    std::cerr.rdbuf(err.rdbuf()); //redirect std::cout to out.txt!
+#endif
 #ifdef __APPLE__
 	std::vector<std::string> v;
 	boost::split(v, argv[0], boost::is_any_of("/"));

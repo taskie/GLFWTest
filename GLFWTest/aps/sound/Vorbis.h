@@ -4,10 +4,15 @@
 #include <string>
 #include <vector>
 #include <cstdint>
-#include <cstdlib>
+#include <cstring>
 #include <stdexcept>
 #include <iostream>
-#include <vorbis/vorbisfile.h>
+
+extern "C"
+{
+#include <vorbis/codec.h>
+	#include <vorbis/vorbisfile.h>
+}
 
 namespace aps
 {

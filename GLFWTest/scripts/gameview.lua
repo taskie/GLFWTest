@@ -7,6 +7,7 @@ function GameView:new(model)
 end
 
 function GameView:update()
+	Mix.mixer:update()
 	self.sideBar:update()
 	return true
 end
