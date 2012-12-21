@@ -21,6 +21,9 @@
 #include "aps/fontex/Fontex.h"
 #include "aps/lua/LuaManager.h"
 #include "aps/input/KeyBoardInput.h"
+#include "aps/sound/Mixer.h"
+#include "aps/sound/Wave.h"
+#include "aps/al/Device.h"
 
 #include "tolua/BindToLua.h"
 
@@ -61,6 +64,9 @@ void MyGLFW::didOpenWindow()
 
 static std::unique_ptr<aps::lua::LuaManager> lua;
 static std::unique_ptr<aps::input::KeyBoardInput> keyBoardInput;
+static std::unique_ptr<aps::al::Device> device;
+static std::unique_ptr<aps::al::Context> context;
+static std::unique_ptr<aps::sound::Music> music;
 static int frame;
 
 void GLFWCALL keyCallback(int key, int action)
@@ -117,6 +123,10 @@ void MyGLFW::initialize()
 	glfwSetKeyCallback(keyCallback);
 	tolua_pushusertype(lua->vm(), keyBoardInput.get(), "KeyBoardInput");
 	lua_setglobal(lua->vm(), "keyBoardInput");
+	
+	device.reset(new aps::al::Device());
+	context.reset(new aps::al::Context(device->context()));
+	context->current();
 	
 	for (; ; )
 	{

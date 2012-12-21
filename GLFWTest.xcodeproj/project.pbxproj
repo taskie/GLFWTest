@@ -14,12 +14,25 @@
 		D60C6650166DE78A005C7CC8 /* Texture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAD166B8B7900C6E53C /* Texture2D.cpp */; };
 		D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6657166DF004005C7CC8 /* OpenAL.framework */; };
 		D60C665C166DF203005C7CC8 /* LuaManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60C665A166DF203005C7CC8 /* LuaManager.cpp */; };
+		D61240D416846F2A00298B2E /* aps_sound_Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D61240D216846F2A00298B2E /* aps_sound_Mixer.cpp */; };
 		D61880B5167192B2006E94EE /* MersenneTwister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D61880B3167192B2006E94EE /* MersenneTwister.cpp */; };
 		D61880B916719473006E94EE /* aps_random_MersenneTwister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D61880B616719473006E94EE /* aps_random_MersenneTwister.cpp */; };
 		D634CDD2166C9DF300BA5F0B /* ShapeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB8166B95E800C6E53C /* ShapeElement.cpp */; };
 		D634CDD3166C9DFC00BA5F0B /* GLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A1B1665282300AE87C5 /* GLFW.cpp */; };
 		D6760C0B1675E3D6005B9821 /* ShapeEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6760C091675E3D6005B9821 /* ShapeEngine.cpp */; };
 		D6760C2016778BAA005B9821 /* liblua.5.1.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */; };
+		D69134501680872700BDBFB3 /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691344C1680872700BDBFB3 /* Buffer.cpp */; };
+		D69134511680872700BDBFB3 /* Source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691344E1680872700BDBFB3 /* Source.cpp */; };
+		D69134561680893E00BDBFB3 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69134541680893E00BDBFB3 /* Device.cpp */; };
+		D69134591680B8D700BDBFB3 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69134571680B8D700BDBFB3 /* Context.cpp */; };
+		D691345B1680CBDA00BDBFB3 /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D691345A1680CBD900BDBFB3 /* libogg.a */; };
+		D691345E1680CC3400BDBFB3 /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D691345C1680CC3400BDBFB3 /* libvorbis.a */; };
+		D691345F1680CC3400BDBFB3 /* libvorbisfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D691345D1680CC3400BDBFB3 /* libvorbisfile.a */; };
+		D6913471168234CD00BDBFB3 /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691346D168234CD00BDBFB3 /* Mixer.cpp */; };
+		D6913472168234CD00BDBFB3 /* Vorbis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691346F168234CD00BDBFB3 /* Vorbis.cpp */; };
+		D69134751682354400BDBFB3 /* Wave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69134731682354400BDBFB3 /* Wave.cpp */; };
+		D691347C1683091E00BDBFB3 /* MediaFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691347A1683091E00BDBFB3 /* MediaFile.cpp */; };
+		D691348116831A1600BDBFB3 /* BinaryReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691347F16831A1600BDBFB3 /* BinaryReader.cpp */; };
 		D6965BAF166B8B7900C6E53C /* GlyphBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */; };
 		D6965BB1166B8B7900C6E53C /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAA166B8B7900C6E53C /* Manager.cpp */; };
 		D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965BB4166B921E00C6E53C /* libfreetype.a */; };
@@ -66,6 +79,9 @@
 		D60C6657166DF004005C7CC8 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D60C665A166DF203005C7CC8 /* LuaManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaManager.cpp; sourceTree = "<group>"; };
 		D60C665B166DF203005C7CC8 /* LuaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaManager.h; sourceTree = "<group>"; };
+		D61240D216846F2A00298B2E /* aps_sound_Mixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_sound_Mixer.cpp; path = tolua/aps_sound_Mixer.cpp; sourceTree = "<group>"; };
+		D61240D316846F2A00298B2E /* aps_sound_Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_sound_Mixer.h; path = tolua/aps_sound_Mixer.h; sourceTree = "<group>"; };
+		D61240D616846F3300298B2E /* aps_sound_Mixer.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_sound_Mixer.tolua; path = tolua/aps_sound_Mixer.tolua; sourceTree = "<group>"; };
 		D61880B3167192B2006E94EE /* MersenneTwister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MersenneTwister.cpp; sourceTree = "<group>"; };
 		D61880B4167192B2006E94EE /* MersenneTwister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MersenneTwister.h; sourceTree = "<group>"; };
 		D61880B616719473006E94EE /* aps_random_MersenneTwister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_random_MersenneTwister.cpp; path = tolua/aps_random_MersenneTwister.cpp; sourceTree = "<group>"; };
@@ -75,6 +91,28 @@
 		D6760C091675E3D6005B9821 /* ShapeEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeEngine.cpp; sourceTree = "<group>"; };
 		D6760C0A1675E3D6005B9821 /* ShapeEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeEngine.h; sourceTree = "<group>"; };
 		D6760C1E16778ACE005B9821 /* libluajit-5.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluajit-5.1.a"; path = "/usr/local/Cellar/luajit/2.0.0/lib/libluajit-5.1.a"; sourceTree = "<absolute>"; };
+		D691344C1680872700BDBFB3 /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
+		D691344D1680872700BDBFB3 /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer.h; sourceTree = "<group>"; };
+		D691344E1680872700BDBFB3 /* Source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Source.cpp; sourceTree = "<group>"; };
+		D691344F1680872700BDBFB3 /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
+		D69134531680878A00BDBFB3 /* ALHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALHeader.h; sourceTree = "<group>"; };
+		D69134541680893E00BDBFB3 /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
+		D69134551680893E00BDBFB3 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		D69134571680B8D700BDBFB3 /* Context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Context.cpp; sourceTree = "<group>"; };
+		D69134581680B8D700BDBFB3 /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Context.h; sourceTree = "<group>"; };
+		D691345A1680CBD900BDBFB3 /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libogg.a; path = /usr/local/Cellar/libogg/1.3.0/lib/libogg.a; sourceTree = "<absolute>"; };
+		D691345C1680CC3400BDBFB3 /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = /usr/local/Cellar/libvorbis/1.3.3/lib/libvorbis.a; sourceTree = "<absolute>"; };
+		D691345D1680CC3400BDBFB3 /* libvorbisfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbisfile.a; path = /usr/local/Cellar/libvorbis/1.3.3/lib/libvorbisfile.a; sourceTree = "<absolute>"; };
+		D691346D168234CD00BDBFB3 /* Mixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mixer.cpp; sourceTree = "<group>"; };
+		D691346E168234CD00BDBFB3 /* Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixer.h; sourceTree = "<group>"; };
+		D691346F168234CD00BDBFB3 /* Vorbis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vorbis.cpp; sourceTree = "<group>"; };
+		D6913470168234CD00BDBFB3 /* Vorbis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vorbis.h; sourceTree = "<group>"; };
+		D69134731682354400BDBFB3 /* Wave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wave.cpp; sourceTree = "<group>"; };
+		D69134741682354400BDBFB3 /* Wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wave.h; sourceTree = "<group>"; };
+		D691347A1683091E00BDBFB3 /* MediaFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MediaFile.cpp; sourceTree = "<group>"; };
+		D691347B1683091E00BDBFB3 /* MediaFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFile.h; sourceTree = "<group>"; };
+		D691347F16831A1600BDBFB3 /* BinaryReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryReader.cpp; sourceTree = "<group>"; };
+		D691348016831A1600BDBFB3 /* BinaryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryReader.h; sourceTree = "<group>"; };
 		D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlyphBitmap.cpp; sourceTree = "<group>"; };
 		D6965BA8166B8B7900C6E53C /* GlyphBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphBitmap.h; sourceTree = "<group>"; };
 		D6965BAA166B8B7900C6E53C /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
@@ -129,6 +167,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D691345E1680CC3400BDBFB3 /* libvorbis.a in Frameworks */,
+				D691345F1680CC3400BDBFB3 /* libvorbisfile.a in Frameworks */,
+				D691345B1680CBDA00BDBFB3 /* libogg.a in Frameworks */,
 				D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */,
 				D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */,
 				D6760C2016778BAA005B9821 /* liblua.5.1.4.dylib in Frameworks */,
@@ -168,6 +209,9 @@
 				D6760C1E16778ACE005B9821 /* libluajit-5.1.a */,
 				D6FD449D166E4365009F9455 /* libtolua++.a */,
 				D6965BB4166B921E00C6E53C /* libfreetype.a */,
+				D691345C1680CC3400BDBFB3 /* libvorbis.a */,
+				D691345D1680CC3400BDBFB3 /* libvorbisfile.a */,
+				D691345A1680CBD900BDBFB3 /* libogg.a */,
 				D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */,
 				D60A7A1B1665282300AE87C5 /* GLFW.cpp */,
 				D60A7A1C1665282300AE87C5 /* GLFW.h */,
@@ -195,9 +239,52 @@
 			path = random;
 			sourceTree = "<group>";
 		};
+		D691344B1680872700BDBFB3 /* al */ = {
+			isa = PBXGroup;
+			children = (
+				D691344C1680872700BDBFB3 /* Buffer.cpp */,
+				D691344D1680872700BDBFB3 /* Buffer.h */,
+				D691344E1680872700BDBFB3 /* Source.cpp */,
+				D691344F1680872700BDBFB3 /* Source.h */,
+				D69134541680893E00BDBFB3 /* Device.cpp */,
+				D69134551680893E00BDBFB3 /* Device.h */,
+				D69134531680878A00BDBFB3 /* ALHeader.h */,
+				D69134571680B8D700BDBFB3 /* Context.cpp */,
+				D69134581680B8D700BDBFB3 /* Context.h */,
+			);
+			path = al;
+			sourceTree = "<group>";
+		};
+		D691346C168234CD00BDBFB3 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				D691346D168234CD00BDBFB3 /* Mixer.cpp */,
+				D691346E168234CD00BDBFB3 /* Mixer.h */,
+				D691346F168234CD00BDBFB3 /* Vorbis.cpp */,
+				D6913470168234CD00BDBFB3 /* Vorbis.h */,
+				D69134731682354400BDBFB3 /* Wave.cpp */,
+				D69134741682354400BDBFB3 /* Wave.h */,
+				D691347A1683091E00BDBFB3 /* MediaFile.cpp */,
+				D691347B1683091E00BDBFB3 /* MediaFile.h */,
+			);
+			path = sound;
+			sourceTree = "<group>";
+		};
+		D691347E16831A0500BDBFB3 /* binary */ = {
+			isa = PBXGroup;
+			children = (
+				D691347F16831A1600BDBFB3 /* BinaryReader.cpp */,
+				D691348016831A1600BDBFB3 /* BinaryReader.h */,
+			);
+			path = binary;
+			sourceTree = "<group>";
+		};
 		D6965BA5166B8B7900C6E53C /* aps */ = {
 			isa = PBXGroup;
 			children = (
+				D691347E16831A0500BDBFB3 /* binary */,
+				D691346C168234CD00BDBFB3 /* sound */,
+				D691344B1680872700BDBFB3 /* al */,
 				D61880B2167192B2006E94EE /* random */,
 				D6FE77A81670D89600EF11D8 /* input */,
 				D60C6659166DF203005C7CC8 /* lua */,
@@ -276,6 +363,9 @@
 				D61880B616719473006E94EE /* aps_random_MersenneTwister.cpp */,
 				D61880B716719473006E94EE /* aps_random_MersenneTwister.h */,
 				D61880B816719473006E94EE /* aps_random_MersenneTwister.tolua */,
+				D61240D216846F2A00298B2E /* aps_sound_Mixer.cpp */,
+				D61240D316846F2A00298B2E /* aps_sound_Mixer.h */,
+				D61240D616846F3300298B2E /* aps_sound_Mixer.tolua */,
 				D6FD44B8166E496A009F9455 /* BindToLua.h */,
 			);
 			name = tolua;
@@ -370,6 +460,16 @@
 				D61880B5167192B2006E94EE /* MersenneTwister.cpp in Sources */,
 				D61880B916719473006E94EE /* aps_random_MersenneTwister.cpp in Sources */,
 				D6760C0B1675E3D6005B9821 /* ShapeEngine.cpp in Sources */,
+				D69134501680872700BDBFB3 /* Buffer.cpp in Sources */,
+				D69134511680872700BDBFB3 /* Source.cpp in Sources */,
+				D69134561680893E00BDBFB3 /* Device.cpp in Sources */,
+				D69134591680B8D700BDBFB3 /* Context.cpp in Sources */,
+				D6913471168234CD00BDBFB3 /* Mixer.cpp in Sources */,
+				D6913472168234CD00BDBFB3 /* Vorbis.cpp in Sources */,
+				D69134751682354400BDBFB3 /* Wave.cpp in Sources */,
+				D691347C1683091E00BDBFB3 /* MediaFile.cpp in Sources */,
+				D691348116831A1600BDBFB3 /* BinaryReader.cpp in Sources */,
+				D61240D416846F2A00298B2E /* aps_sound_Mixer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +545,8 @@
 					/usr/local/Cellar/lua/5.1.4/lib,
 					"\"/usr/local/Cellar/tolua++/1.0.93/lib\"",
 					/usr/local/Cellar/luajit/2.0.0/lib,
+					/usr/local/Cellar/libogg/1.3.0/lib,
+					/usr/local/Cellar/libvorbis/1.3.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -466,6 +568,8 @@
 					/usr/local/Cellar/lua/5.1.4/lib,
 					"\"/usr/local/Cellar/tolua++/1.0.93/lib\"",
 					/usr/local/Cellar/luajit/2.0.0/lib,
+					/usr/local/Cellar/libogg/1.3.0/lib,
+					/usr/local/Cellar/libvorbis/1.3.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

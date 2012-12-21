@@ -1,0 +1,18 @@
+$#include "../aps/sound/Mixer.h"
+
+$using namespace aps::sound;
+
+module sound
+{
+	class Mixer
+	{
+		Mixer();
+		void loadMusic(std::string key, std::string path);
+		void loadSound(std::string key, std::string path);
+		void play(std::string key);
+		void pause(std::string key);
+		void stop(std::string key);
+		void rewind(std::string key);
+		void update();
+	};
+}

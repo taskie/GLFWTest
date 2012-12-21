@@ -19,6 +19,7 @@
 #include "aps_input_ButtonState.h"
 #include "aps_input_KeyBoardInput.h"
 #include "aps_random_MersenneTwister.h"
+#include "aps_sound_Mixer.h"
 
 void BindToLua(lua_State* L)
 {
@@ -31,6 +32,7 @@ void BindToLua(lua_State* L)
 	tolua_aps_input_ButtonState_open(L);
 	tolua_aps_input_KeyBoardInput_open(L);
 	tolua_aps_random_MersenneTwister_open(L);
+	tolua_aps_sound_Mixer_open(L);
 }
 
 #endif
