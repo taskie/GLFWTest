@@ -55,11 +55,10 @@ dofile("scripts/gameview.lua")
 dofile("scripts/abstractenemy.lua")
 dofile("scripts/enemy.lua")
 
--- Mixer
-Mix = {}
-
-Mix.mixer = sound.Mixer()
-Mix.mixer:loadMusic("febricula", "musics/febricula_2.wav")
-Mix.mixer:play("febricula")
+-- Mxr
+Mxr = {}
+Mxr.mixer = sound.Mixer()
+Mxr.mixer:loadMusic("febricula", "musics/febricula.ogg")
+Mxr.mixer:play("febricula")
 
 dofile("scripts/test.lua")

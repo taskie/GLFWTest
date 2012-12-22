@@ -1,0 +1,12 @@
+$#include "../aps/input/JoystickInput.h"
+
+$using namespace aps::input;
+
+module input
+{
+	class JoystickInput
+	{
+		ButtonState buttonState(int num) const;
+		XYState xyState(int num) const;
+	};
+}

@@ -1,0 +1,16 @@
+$#include "../aps/input/XYState.h"
+
+$using namespace aps::input;
+
+module input
+{
+	class XYState
+	{
+		XYState();
+		void setXY(double x, double y);
+		double x() const;
+		double y() const;
+		double circledX() const;
+		double circledY() const;
+	};
+}

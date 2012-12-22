@@ -25,6 +25,7 @@
 #include "aps/sound/Mixer.h"
 #include "aps/sound/Wave.h"
 #include "aps/al/Device.h"
+#include "aps/input/JoystickInput.h"
 
 #include "tolua/BindToLua.h"
 
@@ -46,28 +47,29 @@ class MyGLFW : public GLFW
 void MyGLFW::willOpenWindow()
 {
 	/*
-	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
-	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
-	glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	 glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
+	 glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
+	 glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	 */
+	glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
 }
 
 void MyGLFW::openWindow()
 {
 	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_WINDOW);
-//	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN);
+	//	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN);
 }
 
 void MyGLFW::didOpenWindow()
 {
-	glfwSetWindowTitle("GLFW + FreeType");
+	glfwSetWindowTitle("MYSTiG Next");
 }
 
 static std::unique_ptr<aps::lua::LuaManager> lua;
 static std::unique_ptr<aps::input::KeyBoardInput> keyBoardInput;
+static std::unique_ptr<aps::input::JoystickInput> joystickInput;
 static std::unique_ptr<aps::al::Device> device;
 static std::unique_ptr<aps::al::Context> context;
-static std::unique_ptr<aps::sound::Music> music;
 static int frame;
 
 void GLFWCALL keyCallback(int key, int action)
@@ -91,7 +93,7 @@ static constexpr double delta = spf / 3;
 
 void MyGLFW::initialize()
 {
-//	std::cout << glGetString(GL_VERSION) << std::endl;
+	//	std::cout << glGetString(GL_VERSION) << std::endl;
 	
 	// blend
 	glDisable(GL_DEPTH_TEST);
@@ -125,6 +127,10 @@ void MyGLFW::initialize()
 	tolua_pushusertype(lua->vm(), keyBoardInput.get(), "KeyBoardInput");
 	lua_setglobal(lua->vm(), "keyBoardInput");
 	
+	joystickInput.reset(new aps::input::JoystickInput());
+	tolua_pushusertype(lua->vm(), joystickInput.get(), "JoystickInput");
+	lua_setglobal(lua->vm(), "joystickInput");
+	
 	device.reset(new aps::al::Device());
 	context.reset(new aps::al::Context(device->context()));
 	context->current();
@@ -135,7 +141,7 @@ void MyGLFW::initialize()
 		std::string x;
 		std::cin >> x;
 	}
-		
+	
 	glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
 	oldTime = glfwGetTime();
 }
@@ -153,6 +159,33 @@ void MyGLFW::draw()
 		}
 	}
 	
+	{
+		joystickInput->update();
+		bool joyStickon = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_PRESENT);
+		
+		if (joyStickon)
+		{
+			int joyStickAxes = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_AXES);
+			int joyStickButtons = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_BUTTONS);
+			
+			std::vector<float> positions(joyStickAxes);
+			glfwGetJoystickPos(GLFW_JOYSTICK_1, &positions[0], joyStickAxes);
+			for (int i = 0; i < positions.size(); i += 2) {
+				joystickInput->setXY(i / 2, positions[i], positions[i + 1]);
+			}
+			
+			std::vector<unsigned char> buttons(joyStickButtons);
+			glfwGetJoystickButtons(GLFW_JOYSTICK_1, &buttons[0], joyStickButtons);
+			for (int i = 0; i < buttons.size(); ++i) {
+				if (buttons[i]) {
+					joystickInput->down(i);
+				} else {
+					joystickInput->up(i);
+				}
+			}
+		}
+	}
+		
 	lua->callFunction("update", aps::lua::LuaTuple());
 	
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -177,12 +210,14 @@ void MyGLFW::finalize()
 
 int main(int argc, const char * argv[])
 {
+/*
 #ifdef _WIN32
     std::ofstream out("cout.txt");
     std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
     std::ofstream err("cerr.txt");
     std::cerr.rdbuf(err.rdbuf()); //redirect std::cout to out.txt!
 #endif
+*/
 #ifdef __APPLE__
 	std::vector<std::string> v;
 	boost::split(v, argv[0], boost::is_any_of("/"));
@@ -193,7 +228,7 @@ int main(int argc, const char * argv[])
 	chdir((boost::join(v, "/") + "/").c_str());
 #endif
 #endif
-
+	
 	MyGLFW glfw;
 	glfw.run();
 	return 0;

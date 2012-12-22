@@ -12,7 +12,7 @@ function Stage:createEnemy(model, enemytype, exp)
 	end
 end
 
-local expFrame = 0
+local expframe = 0
 local exp = 0
 
 function Stage:next(model)
@@ -25,8 +25,8 @@ function Stage:next(model)
 	self:createEnemy(model, Enm.Base, exp)
 	self:createEnemy(model, Enm.Block, exp)
 	
-	expFrame = expFrame + 1
-	exp = math.floor(expFrame)
+	expframe = expframe + 1
+	exp = math.floor(expframe / 10)
 end
 
 function Stage:createPlayer(model)

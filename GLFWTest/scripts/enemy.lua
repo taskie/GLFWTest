@@ -111,7 +111,7 @@ function Enm.Sniper:fire()
  	local interval = 60 + math.floor(30 / self.level)
  	if self.level >= 30 then interval = 30 end
 	if self.frame % interval == 0 then
-		local num = 2 + self.level
+		local num = 2 + math.ceil(self.level / 2)
 		if num > 10 then num = 10 end
 		for i = 0, num - 1 do
 			self:shoot(self.x, self.y, self.rot, 1.5 + 0.5 * i, 3, 1)

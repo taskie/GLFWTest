@@ -16,7 +16,7 @@ Buffer::~Buffer()
 	
 }
 
-ALuint Buffer::name() const { return *name_; }
+ALuint Buffer::name() const { return (name_) ? *name_ : 0; }
 
 void Buffer::setData(std::int16_t *data, std::size_t arraySize, long frequency, bool isStereo)
 {

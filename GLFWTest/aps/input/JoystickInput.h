@@ -10,22 +10,25 @@
 #include <string>
 
 #include "ButtonInput.h"
+#include "XYInput.h"
 
 namespace aps
 {
 	namespace input
 	{
-		class KeyBoardInput
+		class JoystickInput
 		{
 		public:
-			void up(int key);
-			void down(int key);
+			void up(int num);
+			void down(int num);
+			void setXY(int num, double x, double y);
 			void update();
-			ButtonState buttonState(int key) const;
-			ButtonState buttonState(std::string key) const;
+			ButtonState buttonState(int num) const;
+			XYState xyState(int num) const;
 			
 		private:
 			ButtonInput buttonInput_;
+			XYInput xyInput_;
 		};
 	}
 }

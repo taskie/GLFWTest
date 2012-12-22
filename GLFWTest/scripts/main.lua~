@@ -1,0 +1,13 @@
+print("hello, world!")
+
+local elem = ShapeElement():color(1,1,1):vertex(0,0):vertex(100,100)
+local shape = ShapeContainer(elem, GL_LINES)
+local strshape2 = fontex:utf8StringShape("UTF-8の日本語も行けるのでは！？", "M+ 2p thin", 32, Color(1, 1, 1, 1))
+
+function update()
+end
+
+function draw()
+  strshape2:get():setPosition(100, 100):draw()
+  shape:draw()
+end
