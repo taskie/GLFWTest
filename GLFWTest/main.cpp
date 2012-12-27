@@ -181,13 +181,13 @@ void MyGLFW::draw()
 			
 			std::vector<float> positions(joyStickAxes);
 			glfwGetJoystickPos(GLFW_JOYSTICK_1, &positions[0], joyStickAxes);
-			for (int i = 0; i < positions.size(); i += 2) {
+			for (std::size_t i = 0; i < positions.size(); i += 2) {
 				joystickInput->setXY(i / 2, positions[i], positions[i + 1]);
 			}
 			
 			std::vector<unsigned char> buttons(joyStickButtons);
 			glfwGetJoystickButtons(GLFW_JOYSTICK_1, &buttons[0], joyStickButtons);
-			for (int i = 0; i < buttons.size(); ++i) {
+			for (std::size_t i = 0; i < buttons.size(); ++i) {
 				if (buttons[i]) {
 					joystickInput->down(i);
 				} else {
@@ -229,14 +229,12 @@ void MyGLFW::finalize()
 
 int main(int argc, const char * argv[])
 {
-/*
 #ifdef _WIN32
     std::ofstream out("cout.txt");
     std::cout.rdbuf(out.rdbuf());
     std::ofstream err("cerr.txt");
     std::cerr.rdbuf(err.rdbuf());
 #endif
-*/
 #ifdef __APPLE__
 	std::vector<std::string> v;
 	boost::split(v, argv[0], boost::is_any_of("/"));

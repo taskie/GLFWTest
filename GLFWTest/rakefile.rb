@@ -21,5 +21,5 @@ file Out => Objects do |t|
 end
 
 rule '.o' => '.cpp' do |t|
-  sh "#{Compiler} -std=c++11 -Wall -O3 #{HeaderFlags} -c #{t.source} -o #{t.source.ext('o')}"
+  sh "#{Compiler} -std=c++11 -Wall -g #{HeaderFlags} -c #{t.source} -o #{t.source.ext('o')}"
 end

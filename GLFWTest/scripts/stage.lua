@@ -26,12 +26,13 @@ function Stage:new(isHell)
 	self.isCleared = false
 	
 	self.bgms = {}
-	self.bgms[1] = ""
-	self.bgms[4] = ""
-	self.bgms[7] = ""
-	self.bgms[11] = ""
-	self.bgms[14] = ""
-	self.bgms[17] = ""
+	self.bgms[1] = "conduit"
+	self.bgms[4] = "retrofire"
+	self.bgms[7] = "influx"
+	self.bgms[11] = "febricula_inf"
+	self.bgms[14] = "cascade_inf"
+	self.bgms[17] = "stig_inf"
+	self.nowPlaying = false
 	
 	self.frame = 0
 end
@@ -76,9 +77,13 @@ function Stage:next(model)
 	self.stageFrame = 0
 	self.count = self.count + 1
 	
-	local bgm = self.bgms[self.stageNum]
+	local bgm = self.bgms[self.count % 20]
 	if bgm ~= nil then
-		-- MXR:playBGM(bgm)
+		if self.nowPlaying then
+			Mxr:stop(self.nowPlaying)
+		end
+		Mxr:rewindAndPlay(bgm)
+		self.nowPlaying = bgm
 	end
 end
 

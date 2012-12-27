@@ -106,7 +106,7 @@ std::vector<char> BinaryReader::securedCharArray(std::size_t size)
 	std::vector<char> s;
 	s.reserve(size);
 	
-	for (int i = 0; i < size; ++i)
+	for (std::size_t i = 0; i < size; ++i)
 	{
 		char c; pIn_->get(c);
 		if (!pIn_->good()) break;

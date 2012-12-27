@@ -17,6 +17,10 @@ dofile("scripts/const.lua")
 
 -- Mxr
 dofile("scripts/mixer.lua")
+local musics = {"conduit", "retrofire", "influx", "febricula_inf", "cascade_inf", "stig_inf"}
+for i, music in ipairs(musics) do
+	Mxr:loadVorbisMusic(music)
+end
 
 -- Input
 dofile("scripts/input.lua")

@@ -35,7 +35,7 @@ void Source::pushBuffer(aps::al::Buffer buffer)
 
 void Source::popProcessedBuffers()
 {
-	ALint processedNum = processedBuffersLength();
+	std::size_t processedNum = processedBuffersLength();
 	if (processedNum == 0) return;
 	
 	if (processedNum >= queuedBuffers_.size()) {
@@ -43,7 +43,7 @@ void Source::popProcessedBuffers()
 	}
 	
 	std::vector<ALuint> ids(processedNum);
-	for (int i = 0; i < processedNum; ++i) ids[i] = queuedBuffers_[i].name();
+	for (std::size_t i = 0; i < processedNum; ++i) ids[i] = queuedBuffers_[i].name();
 	alSourceUnqueueBuffers(name(), processedNum, &ids[0]);
 	queuedBuffers_.erase(queuedBuffers_.begin(), std::next(queuedBuffers_.begin(), processedNum));
 }
