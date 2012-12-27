@@ -23,8 +23,8 @@ function Test.field()
 	field:update()
 end
 
-stage = stage or Stage()
-model = model or GameModel(stage)
+stage = Stage()
+model = GameModel(stage)
 view = GameView(model)
 
 function Test.update()

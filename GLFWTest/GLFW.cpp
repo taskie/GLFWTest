@@ -61,6 +61,11 @@ void GLFW::draw()
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
+void GLFW::quit()
+{
+	glfwCloseWindow();
+}
+
 void GLFW::finalize()
 {
 	

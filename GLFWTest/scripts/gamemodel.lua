@@ -20,11 +20,12 @@ function GameModel:new(stage, seed)
 	self.frame = 0
 
 	self.bulletExpMode = true
+	self.enemyWithEnemyMode = true
 	self.players:add(stage:createPlayer(self))
 end
 
 function GameModel:update()
-	self.stage:next(self)
+	self.stage:update(self)
 	
 	self.players:update()
 	self.enemies:update()
@@ -43,7 +44,9 @@ end
 function GameModel:collision()
 	self:collisionWithBullet(self.players, self.enemiesBullets)
 	self:collisionWithBullet(self.enemies, self.playersBullets)
-	self:collisionWithBullet(self.enemies, self.enemiesBullets)
+	if self.enemyWithEnemyMode then
+		self:collisionWithBullet(self.enemies, self.enemiesBullets)
+	end
 end
 
 function GameModel:collisionWithBullet(actorField, bulletField)

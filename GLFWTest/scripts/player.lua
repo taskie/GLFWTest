@@ -4,25 +4,33 @@ playerShape:pushChild(Rct.Regular(3, 13, "lineLoop", Col.black))
 playerShape:pushChild(Rct.Circle(3, "polygon", Col.orange))
 playerShape:pushChild(Rct.Circle(3, "lineLoop", Col.orange))
 
+local particles = {}
+local particlesColor = {0, 0, 0, 0.4}
+particles[1] = Rct.Path({{13, 0}, {-6.5, 11.25}}, "lines", particlesColor, 0, 0)
+particles[2] = Rct.Path({{-6.5, 11.25}, {-6.5, -11.25}}, "lines", particlesColor, 0, 0)
+particles[3] = Rct.Path({{-6.5, -11.25}, {13, 0}}, "lines", particlesColor, 0, 0)
+
 subclass ("Player", Character)
 {
-	shape = playerShape
+	shape = playerShape,
+	particles = particles
 }
 
 function Player:new(x, y, rot, model, input)
-	local param = { r = 3, hp = 10000000, power = 5, defence = 5, exp = 0 }
+	local param = { r = 3, hp = 10, power = 5, defence = 5, exp = 1 }
 	Player.super.new(self, x, y, rot, model, param)
 	self.bulletsField = model.playersBullets
 	self.enemiesField = model.enemies
 	
-	self.v, self.vslow = 4, 2
+	self.v = 0
+	self.vfast, self.vslow = 4, 2
 	
 	self.input = input
 	
 	self.weapon = {}
 	self.weapon.actors = {}
 	self.weapon.length = 0
-	self.weapon.lengthMax = 4
+	self.weapon.lengthMax = 3
 	self.weapon.choice = 1
 	
 	self.capture = {}
@@ -72,7 +80,7 @@ function Player:move()
 		d[2] = d[2] / dist
 	end
 	
-	local speed = not self.input:isPressed("LSHIFT") and self.v or self.vslow
+	local speed = not self.input:isPressed("LSHIFT") and self.vfast or self.vslow
 	self.x = self.x + d[1] * speed
 	self.y = self.y + d[2] * speed
 end
@@ -126,8 +134,9 @@ function Player:updateCapture()
 end
 
 function Player:fire()
-	if self.input:isPressed("Z") then return end
+	local fireFlag = not self.input:isPressed("Z")
 	for i, actor in pairs(self.weapon.actors) do
 		actor:update()
+		if fireFlag then actor:fire() end
 	end
 end

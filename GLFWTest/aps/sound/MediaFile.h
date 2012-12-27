@@ -18,6 +18,7 @@ namespace aps
 			{
 				FileHolderBase() { }
 				virtual ~FileHolderBase() { }
+				virtual void rewind() = 0;
 				virtual std::vector<std::int16_t> read(std::size_t size) = 0;
 				virtual std::vector<std::int16_t> readAll() = 0;
 				virtual long rate() const = 0;
@@ -32,6 +33,7 @@ namespace aps
 			public:
 				FileHolder(T& file) : file_(file) { }
 				virtual ~FileHolder() { }
+				virtual void rewind() { file_.rewind(); }
 				virtual std::vector<std::int16_t> read(std::size_t size) { return file_.read(size); }
 				virtual std::vector<std::int16_t> readAll() { return file_.readAll(); }
 				virtual long rate() const { return file_.rate(); }
@@ -65,6 +67,7 @@ namespace aps
 				pFileHolder_.reset(new FileHolder<T>(file));
 			}
 			
+			void rewind() { pFileHolder_->rewind(); }
 			std::vector<std::int16_t> read(std::size_t size) { return pFileHolder_->read(size); }
 			std::vector<std::int16_t> readAll() { return pFileHolder_->readAll(); }
 			long rate() { return pFileHolder_->rate(); }

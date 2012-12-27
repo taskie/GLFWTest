@@ -33,10 +33,12 @@ end
 function Enemy.createBulletShape(classtable, r)
 	local color = classtable.color
 	local expBulletShape = Rct.Circle(r, "lineLoop", {color[1], color[2], color[3], 0.3})
+	local bulletShapePolygon = Rct.Circle(r, "polygon", {color[1], color[2], color[3], 0.8})
+
 	local bulletShape = Rct.Sprite()
-	bulletShape:pushChild(Rct.Circle(r, "polygon", {color[1], color[2], color[3], 0.8}))
+	bulletShape:pushChild(bulletShapePolygon)
 	bulletShape:pushChild(expBulletShape)
-	
+
 	classtable.bulletShape = bulletShape
 	classtable.expBulletShape = expBulletShape
 end

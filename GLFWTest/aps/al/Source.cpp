@@ -16,11 +16,10 @@ Source::Source()
 
 Source::~Source()
 {
-	stop();
-	popProcessedBuffers();
+	clearBuffers();
 }
 
-ALuint Source::name() const { return *name_; }
+ALuint Source::name() const { return (name_) ? *name_ : 0; }
 
 void Source::setBuffer(Buffer buffer)
 {
@@ -36,9 +35,12 @@ void Source::pushBuffer(aps::al::Buffer buffer)
 
 void Source::popProcessedBuffers()
 {
-	ALint processedNum;
-	alGetSourcei(name(), AL_BUFFERS_PROCESSED, &processedNum);
+	ALint processedNum = processedBuffersLength();
 	if (processedNum == 0) return;
+	
+	if (processedNum >= queuedBuffers_.size()) {
+		processedNum = static_cast<ALint>(queuedBuffers_.size());
+	}
 	
 	std::vector<ALuint> ids(processedNum);
 	for (int i = 0; i < processedNum; ++i) ids[i] = queuedBuffers_[i].name();
@@ -46,15 +48,37 @@ void Source::popProcessedBuffers()
 	queuedBuffers_.erase(queuedBuffers_.begin(), std::next(queuedBuffers_.begin(), processedNum));
 }
 
-int Source::unprocessedBuffersLength()
+void Source::clearBuffers()
+{
+	stop();
+	alSourcei(name(), AL_BUFFER, AL_NONE);
+	queuedBuffers_.clear();
+}
+
+int Source::buffersLength()
+{
+	ALint queuedNum;
+	alGetSourcei(name(), AL_BUFFERS_QUEUED, &queuedNum);
+	return queuedNum;
+}
+
+int Source::processedBuffersLength()
 {
 	ALint processedNum;
 	alGetSourcei(name(), AL_BUFFERS_PROCESSED, &processedNum);
-	
-	ALint queuedNum;
-	alGetSourcei(name(), AL_BUFFERS_QUEUED, &queuedNum);
-	
+	return processedNum;
+}
+
+int Source::unprocessedBuffersLength()
+{
+	ALint processedNum = processedBuffersLength();
+	ALint queuedNum = buffersLength();
 	return queuedNum - processedNum;
+}
+
+void Source::setGain(ALfloat gain)
+{
+	alSourcef(name(), AL_GAIN, gain);
 }
 
 void Source::play() { alSourcePlay(name()); }

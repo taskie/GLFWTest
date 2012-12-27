@@ -36,12 +36,12 @@
 
 class MyGLFW : public GLFW
 {
-	void willOpenWindow();
-	void openWindow();
-	void didOpenWindow();
-	void initialize();
-	void draw();
-	void finalize();
+	virtual void willOpenWindow();
+	virtual void openWindow();
+	virtual void didOpenWindow();
+	virtual void initialize();
+	virtual void draw();
+	virtual void finalize();
 };
 
 void MyGLFW::willOpenWindow()
@@ -62,7 +62,7 @@ void MyGLFW::openWindow()
 
 void MyGLFW::didOpenWindow()
 {
-	glfwSetWindowTitle("MYSTiG Next");
+	glfwSetWindowTitle("MYSTiG inflation");
 }
 
 static std::unique_ptr<aps::lua::LuaManager> lua;
@@ -159,6 +159,17 @@ void MyGLFW::draw()
 		}
 	}
 	
+	auto smoothKey = keyBoardInput->buttonState('L');
+	static bool smoothFlag = true;
+	if (smoothKey.pressed() && smoothKey.just()) {
+		if (smoothFlag) {
+			glDisable(GL_LINE_SMOOTH);
+		} else {
+			glEnable(GL_LINE_SMOOTH);
+		}
+		smoothFlag = !smoothFlag;
+	}
+		
 	{
 		joystickInput->update();
 		bool joyStickon = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_PRESENT);
@@ -186,7 +197,15 @@ void MyGLFW::draw()
 		}
 	}
 		
-	lua->callFunction("update", aps::lua::LuaTuple());
+	auto ret = lua->callFunction("update", aps::lua::LuaTuple());
+	if (!ret.empty())
+	{
+		if (ret[0].which() == 2)
+		{
+			bool flag = boost::get<bool>(ret[0]);
+			if (!flag) quit();
+		}
+	}
 	
 	glClear(GL_COLOR_BUFFER_BIT);
 	lua->callFunction("draw", aps::lua::LuaTuple());
@@ -213,9 +232,9 @@ int main(int argc, const char * argv[])
 /*
 #ifdef _WIN32
     std::ofstream out("cout.txt");
-    std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
+    std::cout.rdbuf(out.rdbuf());
     std::ofstream err("cerr.txt");
-    std::cerr.rdbuf(err.rdbuf()); //redirect std::cout to out.txt!
+    std::cerr.rdbuf(err.rdbuf());
 #endif
 */
 #ifdef __APPLE__

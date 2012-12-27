@@ -7,7 +7,7 @@ subclass ("Zaco", Enemy, Enm)
 	vertices = {{0, 0}, {0, 20}, {13.3, 0}, {20, 10}, {13.3, 20}},
 	cx = 10, cy = 10,
 	color = {0.3, 0.4, 0.9, 1.0},
-	param = {r = 3, hp = 1, power = 1, defence = 1, exp = 1}
+	param = {r = 5, hp = 1, power = 1, defence = 1, exp = 1^3}
 }
 Enemy.setEnemy(Enm.Zaco)
 Enm.Zaco.move = Motion.uniform
@@ -25,7 +25,7 @@ function Enm.Zaco:fire()
 		local nearest = self:nearestEnemy()
 		local angle = self.rot
 		local way = self.level
-		if way > 100 then way = 100 end
+		if way > 50 then way = 50 end
 		for i = 0, way - 1 do
 			if self.level >= 30 then self:shoot(self.x, self.y, angle + 360 * i / way, 3, 3, 1) end
 			self:shoot(self.x, self.y, angle + 360 * i / way, 4, 3, 1)
@@ -40,7 +40,7 @@ subclass ("Winder", Enemy, Enm)
 	vertices = {{0, 0}, {20, 0}, {10, 10}, {20, 20}, {0, 20}},
 	cx = 10, cy = 10,
 	color = {1, 0, 0.3, 1.0},
-	param = {r = 3, hp = 3, power = 1, defence = 2, exp = 2}
+	param = {r = 5, hp = 3, power = 1, defence = 2, exp = 2^3}
 }
 Enemy.setEnemy(Enm.Winder)
 Enm.Winder.move = Motion.uniform
@@ -61,8 +61,8 @@ function Enm.Winder:new(model, x, y, rot)
 end
 
 function Enm.Winder:fire()
-	local interval = 20 - self.level
-	if interval < 5 then interval = 5 end
+	local interval = 20 - math.floor(self.level / 2)
+	if interval < 10 then interval = 10 end
 	local angle = 45 - 2 * self.level
 	if angle < 5 then angle = 5 end
 	
@@ -83,7 +83,7 @@ subclass ("Sniper", Enemy, Enm)
 	vertices = {{0, 10}, {10, 0}, {10, 5}, {20, 10}, {10, 15}, {10, 20}},
 	cx = 10, cy = 10,
 	color = {0.5, 0.3, 0.3, 1.0},
-	param = {r = 3, hp = 5, power = 2, defence = 2, exp = 4}
+	param = {r = 5, hp = 5, power = 1, defence = 3, exp = 3^3}
 }
 Enemy.setEnemy(Enm.Sniper)
 
@@ -126,7 +126,7 @@ subclass ("Scatter", Enemy, Enm)
 	vertices = {{0,0},{5,0},{10,10},{15,0},{20,0},{20,5},{10,10},{20,15},{20,20},{15,20},{10,10},{5,20},{0,20},{0,15},{10,10},{0,5}},
 	cx = 10, cy = 10,
 	color = {0.4, 0.4, 0.7, 1.0},
-	param = {r = 3, hp = 7, power = 3, defence = 4, exp = 8}
+	param = {r = 5, hp = 7, power = 2, defence = 4, exp = 4^3}
 }
 Enemy.setEnemy(Enm.Scatter)
 Enm.Scatter.move = Motion.uniform
@@ -150,7 +150,7 @@ function Enm.Scatter:fire()
 	local interval = self.level >= 30 and 30 or 60
 	if self.frame % interval < 1 then
 		local way = 7 + self.level * 2
-		if way > 100 then way = 100 end
+		if way > 50 then way = 50 end
 		for i = 1, way do
 			self:shoot(self.x, self.y, self.model.random:next(0, 360), self.model.random:next(1.5, 4), 3, 1)
 		end
@@ -164,7 +164,7 @@ subclass ("Spiral", Enemy, Enm)
 	vertices = {{10, 10},{0, 10},{0, 20},{20, 0},{20, 10},{10, 10},{10, 0},{0, 0},{20, 20},{10,20}},
 	cx = 10, cy = 10,
 	color = {0.3, 0.5, 0.9, 1.0},
-	param = {r = 3, hp = 9, power = 3, defence = 3, exp = 16}
+	param = {r = 5, hp = 9, power = 3, defence = 4, exp = 5^3}
 }
 Enemy.setEnemy(Enm.Spiral)
 
@@ -188,17 +188,13 @@ function Enm.Spiral:move()
 end
 
 function Enm.Spiral:fire()
-	if self.frame % 16 == 0 then
-		local way = 3 + self.level
-		if way > 30 then way = 30 end
+	local interval = 16 - math.floor(self.level / 2)
+	if interval < 4 then interval = 4 end
+	if self.frame % interval == 0 then
+		local way = 4
+		if self.level >= 30 then way = 8 end
 		for i = 0, way - 1 do
 			self:shoot(self.x, self.y, self.rot + i / way * 360, 2.5, 1)
-		end
-	elseif self.level >= 30 and self.frame % 16 == 8 then
-		local way = 3 + self.level
-		if way > 30 then way = 30 end
-		for i = 0, way - 1 do
-			self:shoot(self.x, self.y, self.rot + i / way * 360, 3, 1)
 		end
 	end
 end
@@ -210,7 +206,7 @@ subclass ("Bee", Enemy, Enm)
 	vertices = {{0, 0}, {5, 0}, {5, 20}, {0, 20}, {0, 15}, {20, 15}, {20, 20}, {15, 20}, {15, 0}, {20, 0}, {20, 5}, {0, 5}},
 	cx = 10, cy = 10,
 	color = {0.7, 0.7, 0.1, 1.0},
-	param = {r = 3, hp = 11, power = 1, defence = 5, exp = 32}
+	param = {r = 5, hp = 11, power = 1, defence = 5, exp = 6^3}
 }
 Enemy.setEnemy(Enm.Bee)
 Enm.Bee.move = Motion.uniform
@@ -248,7 +244,7 @@ subclass ("Base", Enemy, Enm)
 	vertices = {{0, 20}, {10, 20}, {20, 10}, {10, 0}, {0, 0}},
 	cx = 10, cy = 10,
 	color = {0.2, 0.8, 0.6, 1.0},
-	param = {r = 3, hp = 20, power = 5, defence = 5, exp = 64}
+	param = {r = 5, hp = 20, power = 3, defence = 5, exp = 7^3}
 }
 Enemy.setEnemy(Enm.Base)
 Enm.Base.move = Motion.uniform
@@ -284,7 +280,7 @@ subclass ("Block", Enemy, Enm)
 	vertices = {{0, 0}, {20, 0}, {20, 20}, {0, 20}},
 	cx = 10, cy = 10,
 	color = {0.5, 0.5, 0.5, 1.0},
-	param = {r = 3, hp = 20, power = 1, defence = 255, exp = 128}
+	param = {r = 5, hp = 20, power = 1, defence = 255, exp = 8^3}
 }
 Enemy.setEnemy(Enm.Block)
 Enm.Block.move = Motion.uniform
@@ -310,5 +306,261 @@ function Enm.Block:fire()
 		end
 	elseif self.frame % 30 == 30 - 1 then
 		self.k = self.k + 49.777 * self.sign
+	end
+end
+
+-- Quick
+
+subclass ("Quick", Enemy, Enm)
+{
+	vertices = {{0, 0}, {20, 10}, {0, 20}, {10, 10}},
+	cx = 10, cy = 10,
+	color = {0.7, 0.5, 0.1, 1.0},
+	param = {r = 5, hp = 22, power = 5, defence = 10, exp = 9^3}
+}
+Enemy.setEnemy(Enm.Quick)
+Enm.Quick.move = Motion.uniform
+
+function Enm.Quick:new(model, x, y, rot)
+	local default = not x
+	x = x or model.random:next(Mys.field.x, Mys.field.wx)
+	y = y or -10
+	rot = rot or 90
+	Enemy.new(self, x, y, rot, model, self.param)
+	if default then
+		local nearest = self:nearestEnemy()
+		if nearest then
+			self.rot = Mys.angle(self, nearest)
+		end
+	end	
+	self.v = 5
+end
+
+function Enm.Quick:fire()
+	local interval = 15 - math.floor(self.level / 2)
+	if interval < 7 then interval = 7 end
+	if self.frame % interval == 0 then
+		local way = (self.level >= 30) and 7 or 3
+		for i = 0, way - 1 do
+			self:shoot(self.x, self.y, self.rot + i * 360 / way, 1, 1)
+		end
+	end
+end
+
+-- Bug
+
+subclass ("Bug", Enemy, Enm)
+{
+	vertices = {{0, 0}, {5, 5}, {10, 0}, {15, 5}, {20, 0}, {18, 10}, {20, 20}, {15, 15}, {10, 20}, {5, 15}, {0, 20}, {2, 10}},
+	cx = 10, cy = 10,
+	color = {0.7, 0.1, 0.7, 1.0},
+	param = {r = 5, hp = 45, power = 5, defence = 15, exp = 10^3}
+}
+Enemy.setEnemy(Enm.Bug)
+Enm.Bug.move = Motion.uniform
+
+function Enm.Bug:new(model, x, y, rot)
+	local default = not x
+	x = x or model.random:next(Mys.field.x, Mys.field.wx)
+	y = y or -10
+	rot = rot or 90
+	Enemy.new(self, x, y, rot, model, self.param)
+	if default then
+		local nearest = self:nearestEnemy()
+		if nearest then
+			self.rot = Mys.angle(self, nearest)
+		end
+	end	
+	self.v = 0.5
+end
+
+function Enm.Bug:fire()
+	local interval = 20 - math.floor(self.level)
+	if interval < 4 then interval = 4 end
+	if self.level >= 30 then interval = 2 end
+	if self.frame % interval < 1 then
+		self:shoot(self.x, self.y, self.model.random:next(0, 360), self.model.random:next(0.3, 0.7), 1)
+	end
+end
+
+-- Sharp
+
+subclass ("Sharp", Enemy, Enm)
+{
+	vertices = {{0, 0}, {0, 20}, {5, 15}, {10, 15}, {10, 20}, {20, 10}, {10, 0}, {10, 5}, {5, 5}},
+	cx = 10, cy = 10,
+	color = {0.2, 0.7, 0.4, 1.0},
+	param = {r = 5, hp = 50, power = 7, defence = 17, exp = 11^3}
+}
+Enemy.setEnemy(Enm.Sharp)
+Enm.Sharp.move = Motion.uniform
+
+function Enm.Sharp:new(model, x, y, rot)
+	x = x or model.random:next(Mys.field.x, Mys.field.wx)
+	y = y or -10
+	rot = rot or 90
+	Enemy.new(self, x, y, rot, model, self.param)
+	self.v = 1
+end
+
+function Enm.Sharp:fire()
+	local interval = 30 - math.floor(self.level / 2)
+	if interval < 20 then interval = 20 end
+	
+	local nearest = self:nearestEnemy()
+	local angle = self.rot
+	if nearest then
+		angle = Mys.angle(self, nearest)
+	end
+	
+	if self.frame % interval < 1 then
+		self:shoot(self.x, self.y, angle, 2, 1)
+		if self.level >= 30 then
+			self:shoot(self.x, self.y, angle, 3, 1)
+		end
+		self:shoot(self.x, self.y, angle, 4, 1)
+	end
+end
+
+-- Fatal
+
+subclass ("Fatal", Enemy, Enm)
+{
+	vertices = {{0, 0}, {20, 15}, {20, 5}, {0, 20}},
+	cx = 10, cy = 10,
+	color = {0.8, 0.4, 0.2, 1.0},
+	param = {r = 5, hp = 50, power = 7, defence = 20, exp = 12^3}
+}
+Enemy.setEnemy(Enm.Fatal)
+
+function Enm.Fatal:move()
+	self.rot = self.rot + self.drot
+	return Motion.uniform(self)
+end
+
+function Enm.Fatal:new(model, x, y, rot)
+	local default = not x
+	x = x or model.random:next(Mys.field.x, Mys.field.wx)
+	y = y or -10
+	rot = rot or 90
+	Enemy.new(self, x, y, rot, model, self.param)
+	if default then
+		local nearest = self:nearestEnemy()
+		if nearest then
+			self.rot = Mys.angle(self, nearest)
+		end
+	end	
+	self.v = 1
+	if model.random:next() < 0.5 then
+		self.drot = 0.1
+	else
+		self.drot = -0.1
+	end
+end
+
+function Enm.Fatal:fire()
+	local interval = 40 - math.floor(self.level / 3)
+	if interval < 20 then interval = 20 end
+	if self.frame % interval < 1 then
+		local way = (self.level >= 30) and 7 or 5
+		for i = 0, 1 do
+			for j = 1, way do
+				self:shoot(self.x, self.y, self.rot + (i * 2 - 1) * 90, j, 1)
+			end
+		end
+	end
+end
+
+-- Back
+
+subclass ("Back", Enemy, Enm)
+{
+	vertices = {{0, 0}, {0, 20}, {10, 10}, {10, 20}, {20, 20}, {10, 10}, {20, 0}, {10, 0}, {10, 10}},
+	cx = 10, cy = 10,
+	color = {0.5, 0.5, 0.8, 1.0},
+	param = {r = 5, hp = 50, power = 10, defence = 30, exp = 13^3}
+}
+Enemy.setEnemy(Enm.Back)
+Enm.Back.move = Motion.uniform
+
+function Enm.Back:new(model, x, y, rot)
+	local default = not x
+	x = x or model.random:next(Mys.field.x, Mys.field.wx)
+	y = y or -10
+	rot = rot or 90
+	if default then
+		if model.random:next() < 0.5 then
+			x = Mys.screen.x - 10
+		else
+			x = Mys.screen.wx + 10
+		end
+		y = Mys.screen.hy + 10
+		local tx, ty
+		tx = model.random:next(Mys.field.x, Mys.field.wx)
+		ty = model.random:next(50, 300)
+		rot = math.deg(math.atan2(ty - y, tx - x))
+	end
+	Enemy.new(self, x, y, rot, model, self.param)
+	self.v = 0.8
+	self.k = 0
+end
+
+function Enm.Back:fire()
+	self.k = self.k + 1
+	local interval = 20 - math.floor(self.level / 2)
+	if interval < 10 then interval = 10 end
+	if self.frame % interval < 1 then
+		local way = (self.level >= 30) and 5 or 3
+		for i = 0, way - 1 do
+			self:shoot(self.x, self.y, self.rot + i / way * 360 + self.k, 1, 1)
+		end
+	end
+end
+
+-- Reflect
+
+subclass ("Reflect", Enemy, Enm)
+{
+	vertices = {{10, 0}, {0, 10}, {10, 20}, {20, 10}},
+	cx = 10, cy = 10,
+	color = {0.9, 0.1, 0.3, 1.0},
+	param = {r = 5, hp = 100, power = 20, defence = 20, exp = 14^3}
+}
+Enemy.setEnemy(Enm.Reflect)
+Enm.Reflect.move = Motion.uniform
+
+function Enm.Reflect:move()
+	Motion.uniform(self)
+	if self.frame >= Mys.fps * 20 then
+		return
+	end
+	local dx = self.v * math.cos(math.rad(self.rot))
+	local dy = self.v * math.sin(math.rad(self.rot))
+	if (dx < 0 and self.x < Mys.field.x) or (dx > 0 and self.x > Mys.field.wx) then
+		dx = -dx
+	end
+	if (dy < 0 and self.y < Mys.field.y) or (dy > 0 and self.y > Mys.field.hy) then
+		dy = -dy
+	end
+	self.rot = math.deg(math.atan2(dy, dx))
+end
+
+function Enm.Reflect:new(model, x, y, rot)
+	local default = not x
+	x = x or model.random:next(Mys.field.x, Mys.field.wx)
+	y = y or -10
+	rot = rot or 90 + model.random:next(-30, 30)
+	Enemy.new(self, x, y, rot, model, self.param)
+	self.v = 2
+end
+
+function Enm.Reflect:fire()
+	local interval = 90 - self.level
+	if interval < 60 then interval = 60 end
+	if self.frame % interval < 1 then
+		local way = (self.level >= 30) and 16 or 8
+		for i = 0, way - 1 do
+			self:shoot(self.x, self.y, self.rot + i / way * 360, 3, 1)
+		end
 	end
 end

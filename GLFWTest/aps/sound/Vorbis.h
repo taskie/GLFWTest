@@ -22,6 +22,7 @@ namespace aps
 		{
 		public:
 			VorbisFile(std::string path)
+			: bitstream_(0)
 			{
 				OggVorbis_File* vorbisFile = new OggVorbis_File();
 				int error = ov_fopen(path.c_str(), vorbisFile);
@@ -36,6 +37,12 @@ namespace aps
 				vorbis_info* info = ov_info(file(), -1);
 				rate_ = info->rate;
 				channels_ = info->channels;
+			}
+			
+			void rewind()
+			{
+				ov_raw_seek(file(), 0);
+				bitstream_ = 0;
 			}
 			
 			std::vector<std::int16_t> read(std::size_t size)

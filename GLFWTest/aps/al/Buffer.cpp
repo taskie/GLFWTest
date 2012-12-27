@@ -8,6 +8,8 @@ Buffer::Buffer()
 {
 	ALuint* name = new ALuint();
 	alGenBuffers(1, name);
+	std::cout << *name << "!" << std::endl;
+	
 	name_.reset(name, [](ALuint* p){ alDeleteBuffers(1, p); delete p; });
 }
 

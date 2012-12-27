@@ -20,12 +20,13 @@ public:
 	virtual ~GLFW();
 	void run();
 	
-private:
+protected:
 	virtual void willOpenWindow();
 	virtual void openWindow();
 	virtual void didOpenWindow();
 	virtual void initialize();
 	virtual void draw();
+	virtual void quit();
 	virtual void finalize();
 };
 

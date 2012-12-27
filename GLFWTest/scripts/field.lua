@@ -51,6 +51,12 @@ function Field:pairs()
 	return self.actors:pairs()
 end
 
+--- \brief アクターのpairsを得る。
+--- \return pairs
+function Field:isEmpty()
+	return self.actors:isEmpty()
+end
+
 --- \brief アクターのアップデートを行う。
 --- \return Fieldオブジェクトが有効かどうか（常にtrue）
 function Field:update()

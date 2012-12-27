@@ -12,7 +12,7 @@ namespace aps
 		{
 		public:
 			Context(ALCcontext* context)
-			: context_(context, [](ALCcontext* p){ alcDestroyContext(p); }) { }
+			: context_(context, [](ALCcontext* p){ alcMakeContextCurrent(NULL); alcDestroyContext(p); }) { }
 			
 			void current()
 			{

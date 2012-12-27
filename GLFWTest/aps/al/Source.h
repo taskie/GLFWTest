@@ -20,7 +20,12 @@ namespace aps
 			void setBuffer(Buffer buffer);
 			void pushBuffer(Buffer buffer);
 			void popProcessedBuffers();
+			void clearBuffers();
+			int buffersLength();
+			int processedBuffersLength();
 			int unprocessedBuffersLength();
+			
+			void setGain(ALfloat gain);
 			
 			void play();
 			void pause();

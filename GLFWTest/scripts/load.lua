@@ -15,9 +15,13 @@ Rct.Text.fontex = fontex.Fontex(fontManager)
 -- Mys, Col
 dofile("scripts/const.lua")
 
--- * GameModels *
+-- Mxr
+dofile("scripts/mixer.lua")
+
 -- Input
 dofile("scripts/input.lua")
+
+-- * GameModels *
 
 -- Field
 dofile("scripts/field.lua")
@@ -55,10 +59,10 @@ dofile("scripts/gameview.lua")
 dofile("scripts/abstractenemy.lua")
 dofile("scripts/enemy.lua")
 
--- Mxr
-Mxr = {}
-Mxr.mixer = sound.Mixer()
-Mxr.mixer:loadMusic("febricula", "musics/febricula.ogg")
-Mxr.mixer:play("febricula")
+-- BackGround
+dofile("scripts/background.lua")
 
-dofile("scripts/test.lua")
+-- Scene
+Scn = {}
+dofile("scripts/title.lua")
+dofile("scripts/gamescene.lua")

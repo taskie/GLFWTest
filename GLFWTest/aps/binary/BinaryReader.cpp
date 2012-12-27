@@ -150,6 +150,11 @@ void BinaryReader::skip(std::size_t size)
 	charArray(size);
 }
 
+void BinaryReader::seekBegin()
+{
+	pIn_->seekg(std::ios::beg);
+}
+
 bool BinaryReader::isGood() const
 {
 	if (pIn_ && pIn_->good()) return true;

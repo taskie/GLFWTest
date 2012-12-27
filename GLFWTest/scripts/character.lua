@@ -28,9 +28,13 @@ function Character:takeExp(exp)
 	return self:levelUp()
 end
 
+function Character:calcRequiredExp(level)
+	return math.pow(self.level + 1, 3)
+end
+
 function Character:levelUp()
 	local up = false
-	while self.exp >= math.pow(self.level + 1, 3) do
+	while self.exp >= self:calcRequiredExp() do
 		self.level = self.level + 1
 		self.power = math.ceil(self.power * Mys.levelUpRatio)
 		self.defence = math.ceil(self.defence * Mys.levelUpRatio)
@@ -46,11 +50,11 @@ function Character:death()
 	self.isExisting = false
 	self.update = function () return false end
 	if self.killer then
-		model.experiences:add(Exp.Path(self.killer, self))
+		self.model.experiences:add(Exp.Path(self.killer, self))
 		if self.model.bulletExpMode then
 			for id, bullet in self.bullets:pairs() do
 				bullet.isExisting = false
-				model.experiences:add(Exp.Bullet(self.killer, bullet, self.expBulletShape))
+				self.model.experiences:add(Exp.Bullet(self.killer, bullet, self.expBulletShape))
 			end
 		end
 	end
@@ -80,7 +84,8 @@ end
 
 function Character:damaged(damage)
 	self.hp = math.floor(self.hp - damage)
-	if self.hp <= 0 and self.isExisting then
+	if self.hp < 0 then self.hp = 0 end
+	if self.hp == 0 and self.isExisting then
 		self.hp = 0
 		self:death()
 	end

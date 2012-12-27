@@ -27,10 +27,10 @@ namespace aps
 			
 			virtual bool update() = 0;
 			
-			void play() { source_.play(); }
-			void pause() { source_.pause(); }
-			void stop() { source_.stop(); }
-			void rewind() { source_.rewind(); }
+			virtual void play() { source_.play(); }
+			virtual void pause() { source_.pause(); }
+			virtual void stop() { source_.stop(); }
+			virtual void rewind() { source_.rewind(); }
 			
 			bool isInitial() const { return source_.isInitial(); }
 			bool isPlaying() const { return source_.isPlaying(); }
@@ -93,6 +93,13 @@ namespace aps
 				}
 				
 				return true;
+			}
+			
+			virtual void rewind()
+			{
+				file().rewind();
+				source().clearBuffers();
+				update();
 			}
 		};
 		

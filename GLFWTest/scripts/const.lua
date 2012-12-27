@@ -46,7 +46,7 @@ Mys.field.hy = Mys.field.y + Mys.field.h
 Mys.field.cx = Mys.field.x + Mys.field.w / 2
 Mys.field.cy = Mys.field.y + Mys.field.h / 2
 
-Mys.levelUpRatio = 1.05
+Mys.levelUpRatio = 1.01
 
 function Mys.msToString(x)
 	local strs = {}

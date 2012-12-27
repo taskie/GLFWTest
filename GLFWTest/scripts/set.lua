@@ -56,3 +56,8 @@ function Set:removeIf(func)
 		end
 	end
 end
+
+function Set:isEmpty()
+	local f, t = pairs(self.data)
+	return f(t) == nil
+end

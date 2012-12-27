@@ -53,7 +53,7 @@ Exp = {}
 subclass ("Bullet", Experience, Exp) { }
 
 function Exp.Bullet:new(to, bullet, expshape)
-	Exp.Bullet.super.new(self, bullet.x, bullet.y, bullet.rot, math.ceil(bullet.power / 10), to, bullet.v, bullet.r, expshape)
+	Exp.Bullet.super.new(self, bullet.x, bullet.y, bullet.rot, 1, to, bullet.v, bullet.r, expshape)
 end
 
 subclass ("Path", Experience, Exp) { }

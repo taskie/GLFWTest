@@ -51,6 +51,8 @@ namespace aps
 			std::string securedString(std::size_t size);
 			void skip(std::size_t size);
 			
+			void seekBegin();
+			
 			bool isGood() const;
 			
 		protected:

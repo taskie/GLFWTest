@@ -21,6 +21,10 @@ function Weapon:update()
 	self:move()
 	self.x = self.owner.x
 	self.y = self.owner.y
-	self:fire()
 	return Weapon.super.update(self)
+end
+
+function Weapon:takeExp(exp)
+	self.owner:takeExp(math.ceil(exp / 10))
+	return Weapon.super.takeExp(self, exp)
 end

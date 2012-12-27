@@ -39,6 +39,12 @@ namespace aps
 				}
 			}
 			
+			void rewind()
+			{
+				file_->seekBegin();
+				parseHeader();
+			}
+			
 			std::vector<std::int16_t> read(std::size_t size)
 			{
 				std::vector<std::int16_t> wave;

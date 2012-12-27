@@ -143,6 +143,8 @@ private:
 			}
 			
 			auto texture = aps::gl::Texture2D::fromData(&data[0], bitmap.width(), bitmap.height());
+			texture.parameter(GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+			texture.parameter(GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			auto texShape = aps::gl::ShapeContainer::rectWithTexture(texture, color);
 			Shape shape(static_cast<unsigned int>(charCode), texShape, bitmap);
 			cache_[fontName][size][charCode] = shape;
