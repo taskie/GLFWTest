@@ -25,6 +25,7 @@ namespace aps
 			int processedBuffersLength();
 			int unprocessedBuffersLength();
 			
+			ALfloat gain() const;
 			void setGain(ALfloat gain);
 			
 			void play();

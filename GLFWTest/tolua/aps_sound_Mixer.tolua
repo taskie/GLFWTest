@@ -13,6 +13,8 @@ module sound
 		void pause(std::string key);
 		void stop(std::string key);
 		void rewind(std::string key);
+		float gain(std::string key);
+		void setGain(std::string key, float gain);
 		void update();
 	};
 }

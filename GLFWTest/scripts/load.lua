@@ -7,9 +7,17 @@ dofile("scripts/set.lua")
 -- Rct
 dofile("scripts/recta.lua")
 local fontManager = font.Manager()
+-- [[
 fontManager:loadFont("thin", "fonts/mplus-2p-thin.ttf", 0)
 fontManager:loadFont("regular", "fonts/mplus-2p-regular.ttf", 0)
 fontManager:loadFont("black", "fonts/mplus-2p-black.ttf", 0)
+--]]
+--[[
+local varFont = "/Library/Fonts/Verdana.ttf"
+fontManager:loadFont("thin", varFont, 0)
+fontManager:loadFont("regular", varFont, 0)
+fontManager:loadFont("black", varFont, 0)
+--]]
 Rct.Text.fontex = fontex.Fontex(fontManager)
 
 -- Mys, Col
@@ -21,9 +29,16 @@ local musics = {"conduit", "retrofire", "influx", "febricula_inf", "cascade_inf"
 for i, music in ipairs(musics) do
 	Mxr:loadVorbisMusic(music)
 end
+local sounds = {"enemydamaged", "enemydestroyed", "levelup", "ng", "ok", "playerdamaged", "playershoot", "weaponchoice"}
+for i, sound in ipairs(sounds) do
+	Mxr:loadWaveSound(sound)
+end
 
 -- Input
 dofile("scripts/input.lua")
+
+-- SaveLoad
+dofile("scripts/saveload.lua")
 
 -- * GameModels *
 
@@ -66,7 +81,17 @@ dofile("scripts/enemy.lua")
 -- BackGround
 dofile("scripts/background.lua")
 
+-- DamageScreen
+dofile("scripts/damagescreen.lua")
+
 -- Scene
 Scn = {}
 dofile("scripts/title.lua")
 dofile("scripts/gamescene.lua")
+dofile("scripts/gameover.lua")
+dofile("scripts/gameclear.lua")
+dofile("scripts/customize.lua")
+dofile("scripts/settings.lua")
+dofile("scripts/savereplay.lua")
+dofile("scripts/records.lua")
+dofile("scripts/pause.lua")

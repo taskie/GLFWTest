@@ -1,6 +1,6 @@
 /*
 ** Lua binding: aps_input_JoystickInput
-** Generated automatically by tolua++-1.0.92 on Sat Dec 22 05:38:52 2012.
+** Generated automatically by tolua++-1.0.92 on Fri Dec 28 00:14:46 2012.
 */
 
 #ifndef __cplusplus

@@ -1,12 +1,12 @@
 subclass ("GameView", Actor) { }
 
-function GameView:new(model)
+function GameView:new(model, parameter)
 	self.model = model
 	self.background = Background()
 	self.sideBar = SideBar(model)
 	local textColor = {0.2, 0.2, 0.2, 1}
 	self.stageBegining = Rct.Text("STAGE X", "thin", 32, textColor, "c")
-	self.verboseMode = false
+	self.verboseMode = parameter.verboseMode or false
 end
 
 function GameView:update()
@@ -14,6 +14,8 @@ function GameView:update()
 	self.sideBar:update()
 	if self.model.stage.stageFrame < Mys.fps * 2 then
 		self.stageBegining:renew("STAGE " .. self.model.stage.count)
+	elseif self.model.stage.count == 0 then
+		self.stageBegining:renew("READY...")
 	else
 		self.stageBegining:renew(" ")
 	end
@@ -46,7 +48,7 @@ function GameView:draw()
 	end
 	drawField(self.model.enemiesBullets)
 	drawField(self.model.experiences)
-	drawField(self.model.actors)
 	self.stageBegining:draw(Mys.screen.cx, 100)
 	self.sideBar:draw()
+	drawField(self.model.actors)
 end

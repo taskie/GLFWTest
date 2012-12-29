@@ -20,6 +20,8 @@ Col.orange = Rct.color({1, 0.8, 0, 1})
 
 Mys = {}
 
+Mys.version = "1.00"
+
 Mys.fps = 60
 
 Mys.mt = random.MersenneTwister()
@@ -174,7 +176,10 @@ function Mys.writeHiscore(fileName, hiscoreArray)
 	file:close()
 end
 
-function Mys.insertHiscore(isClear)
+function Mys.insertHiscore(score, model)
+	for k, player in model.players:pairs() do
+	end
+
 	local hiscoreTable = Mys.readHiscore("score.log")
 	
 	local player = Game.player

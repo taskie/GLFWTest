@@ -1,7 +1,10 @@
+io = nil
+local os_date = os.date
+os = {date = os_date}
+
 dofile("scripts/load.lua")
 
-scene = Scn.Game()
--- scene = scene or Scn.Title()
+scene = scene or Scn.Title()
 
 function update()
 	if scene.nextScene then

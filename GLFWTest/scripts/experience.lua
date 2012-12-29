@@ -53,7 +53,7 @@ Exp = {}
 subclass ("Bullet", Experience, Exp) { }
 
 function Exp.Bullet:new(to, bullet, expshape)
-	Exp.Bullet.super.new(self, bullet.x, bullet.y, bullet.rot, 1, to, bullet.v, bullet.r, expshape)
+	Exp.Bullet.super.new(self, bullet.x, bullet.y, bullet.rot, 1, to, bullet.v, bullet.r + 3, expshape)
 end
 
 subclass ("Path", Experience, Exp) { }
@@ -61,7 +61,7 @@ subclass ("Path", Experience, Exp) { }
 local mt = random.MersenneTwister()
 
 function Exp.Path:new(to, actor)
-	Exp.Path.super.new(self, actor.x, actor.y, actor.rot, actor.exp, to, actor.v, actor.r, false)
+	Exp.Path.super.new(self, actor.x, actor.y, actor.rot, actor.exp, to, actor.v, actor.r + 3, false)
 	
 	self.lines = actor.particles
 	self.particles = {}

@@ -280,7 +280,7 @@ subclass ("Block", Enemy, Enm)
 	vertices = {{0, 0}, {20, 0}, {20, 20}, {0, 20}},
 	cx = 10, cy = 10,
 	color = {0.5, 0.5, 0.5, 1.0},
-	param = {r = 5, hp = 20, power = 1, defence = 255, exp = 8^3}
+	param = {r = 5, hp = 20, power = 1, defence = 10, exp = 8^3}
 }
 Enemy.setEnemy(Enm.Block)
 Enm.Block.move = Motion.uniform
@@ -292,8 +292,6 @@ function Enm.Block:new(model, x, y, rot)
 	
 	Enemy.new(self, x, y, rot, model, self.param)
 	self.v = 0.5
-	self.sign = model.random:next() < 0.5 and 1 or -1
-	self.k = model.random:next(0, 360)
 end
 
 function Enm.Block:fire()
@@ -302,10 +300,13 @@ function Enm.Block:fire()
 	if self.frame % 2 == 0 and self.frame % 30 < n then
 		local way = self.level >= 30 and 8 or 4
 		for i = 0, way - 1 do
-			self:shoot(self.x, self.y, self.rot + i * 360 / way + self.k, 3, 1)
+			local angle = 90
+			local nearest = self:nearestEnemy()
+			if nearest then
+				angle = Mys.angle(self, nearest)
+			end
+			self:shoot(self.x, self.y, i * 360 / way + angle, 3, 1)
 		end
-	elseif self.frame % 30 == 30 - 1 then
-		self.k = self.k + 49.777 * self.sign
 	end
 end
 
@@ -340,7 +341,7 @@ function Enm.Quick:fire()
 	local interval = 15 - math.floor(self.level / 2)
 	if interval < 7 then interval = 7 end
 	if self.frame % interval == 0 then
-		local way = (self.level >= 30) and 7 or 3
+		local way = (self.level >= 30) and 9 or 5
 		for i = 0, way - 1 do
 			self:shoot(self.x, self.y, self.rot + i * 360 / way, 1, 1)
 		end

@@ -69,7 +69,7 @@ function Character:shoot(x, y, rot, speed, r, rate)
 end
 
 function Character:calcDamageByBullet(bullet)
-	return math.ceil(math.pow(bullet.power, 1.5) / math.sqrt(self.defence) / 3)
+	return math.ceil(bullet.power / self.defence)
 end
 
 function Character:damagedByBullet(bullet)

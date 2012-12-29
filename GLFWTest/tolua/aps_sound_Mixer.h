@@ -1,6 +1,6 @@
 /*
 ** Lua binding: aps_sound_Mixer
-** Generated automatically by tolua++-1.0.92 on Fri Dec 21 19:32:41 2012.
+** Generated automatically by tolua++-1.0.92 on Fri Dec 28 22:36:12 2012.
 */
 
 /* Exported function */

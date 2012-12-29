@@ -27,6 +27,8 @@ namespace aps
 			
 			virtual bool update() = 0;
 			
+			virtual float gain() { return source_.gain(); }
+			virtual void setGain(float gain) { source_.setGain(gain); }
 			virtual void play() { source_.play(); }
 			virtual void pause() { source_.pause(); }
 			virtual void stop() { source_.stop(); }
@@ -99,6 +101,7 @@ namespace aps
 			{
 				file().rewind();
 				source().clearBuffers();
+				source().rewind();
 				update();
 			}
 		};
@@ -136,8 +139,26 @@ namespace aps
 				if (it != soundDictionary_.end()) it->second->rewind();
 			}
 			
+			float gain(std::string key) {
+				auto it = soundDictionary_.find(key);
+				if (it != soundDictionary_.end()) return it->second->gain();
+				return 0.0;
+			}
+			
+			void setGain(std::string key, float gain) {
+				auto it = soundDictionary_.find(key);
+				if (it != soundDictionary_.end()) it->second->setGain(gain);
+			}
+			
 			void update() {
-				for (auto& pair : soundDictionary_) pair.second->update();
+				for (auto& pair : soundDictionary_) {
+					auto& sound = *pair.second;
+					sound.update();
+					/*
+					if (pair.first == "conduit")
+						std::cout << pair.first << " : " << sound.isInitial() << std::endl;
+					 */
+				}
 			}
 			
 		private:

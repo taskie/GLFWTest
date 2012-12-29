@@ -14,6 +14,7 @@ function Scn.Title:new()
 	
 	self.items = {}
 	self.items.texts = {"Start", "Customize", "Records", "Settings", "Quit"}
+	if not profile.records.cleared then self.items.texts[2] = " " end
 	self.items.choice = 1
 	self.items.choiceMax = #self.items.texts
 	self.items.choiceTriangle = Rct.Regular(3, 5, "lineLoop", textColor)
@@ -30,14 +31,22 @@ end
 
 function Scn.Title:update()
 	if self.input:isJustPressed("DOWN") then
+		Mxr:play("weaponchoice")
 		self.items.choice = self.items.choice + 1
+		while self.items.texts[self.items.choice] == " " do
+			self.items.choice = self.items.choice + 1
+		end
 		if self.items.choice > self.items.choiceMax then
 			self.items.choice = 1
 		end
 	end
 	
 	if self.input:isJustPressed("UP") then
+		Mxr:play("weaponchoice")
 		self.items.choice = self.items.choice - 1
+		while self.items.texts[self.items.choice] == " " do
+			self.items.choice = self.items.choice - 1
+		end
 		if self.items.choice < 1 then
 			self.items.choice = self.items.choiceMax
 		end
@@ -45,10 +54,20 @@ function Scn.Title:update()
 	
 	if self.input:isJustPressed("Z") then
 		self.nextScene = false
-		if self.items.texts[self.items.choice] == "Quit" then
+		if self.items.texts[self.items.choice] == "Start" then
+			Mxr:play("ok")
+			self.nextScene = Scn.Game(LoggingInput(), nil, profile.game)
+		elseif self.items.texts[self.items.choice] == "Customize" then
+			Mxr:play("ok")
+			self.nextScene = Scn.Customize()
+		elseif self.items.texts[self.items.choice] == "Settings" then
+			Mxr:play("ok")
+			self.nextScene = Scn.Settings()
+		elseif self.items.texts[self.items.choice] == "Records" then
+			Mxr:play("ok")
+			self.nextScene = Scn.Records()
+		elseif self.items.texts[self.items.choice] == "Quit" then
 			return false
-		elseif self.items.texts[self.items.choice] == "Start" then
-			self.nextScene = Scn.Game()
 		end
 	end
 	

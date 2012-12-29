@@ -11,6 +11,8 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <algorithm>
+#include <boost/format.hpp>
 
 #include <GL/glfw.h>
 
@@ -34,6 +36,81 @@
 #include <boost/algorithm/string.hpp>
 #endif
 
+static std::vector<char> loadProfileData()
+{
+	std::ifstream ifs("profile.dat", std::ios::binary);
+	if (!ifs.good()) return std::vector<char>();
+	
+	std::size_t begPos = ifs.tellg();
+	ifs.seekg(0, std::ios::end);
+	std::size_t endPos = ifs.tellg();
+	ifs.seekg(0, std::ios::beg);
+	
+	std::ptrdiff_t size = endPos - begPos;
+	
+	std::vector<char> vec(size);
+	ifs.read(vec.data(), size);
+	
+	return vec;
+}
+
+static void saveProfileData(std::vector<char> vec)
+{
+	std::ofstream ofs("profile.dat", std::ios::binary);
+	
+	ofs.write(vec.data(), vec.size());
+}
+
+static std::vector<char> loadReplayData(int n)
+{
+	std::string path = (boost::format("replays/replay%d.dat") % n).str();
+	std::ifstream ifs(path, std::ios::binary);
+	if (!ifs.good()) return std::vector<char>();
+	
+	std::size_t begPos = ifs.tellg();
+	ifs.seekg(0, std::ios::end);
+	std::size_t endPos = ifs.tellg();
+	ifs.seekg(0, std::ios::beg);
+	
+	std::ptrdiff_t size = endPos - begPos;
+	
+	std::vector<char> vec(size);
+	ifs.read(vec.data(), size);
+	
+	return vec;
+}
+
+static int loadReplayDataLuaCF(lua_State *L)
+{
+	int n = static_cast<int>(lua_tointeger(L, -1));
+	auto data = loadReplayData(n);
+	if (data.empty())
+	{
+		lua_pushboolean(L, false);
+	} else {
+		lua_pushlstring(L, data.data(), data.size());
+	}
+	return 1;
+}
+
+static void saveReplayData(int n, std::vector<char> vec)
+{
+	std::string path = (boost::format("replays/replay%d.dat") % n).str();
+	std::ofstream ofs(path, std::ios::binary);
+	
+	ofs.write(vec.data(), vec.size());
+}
+
+static int saveReplayDataLuaCF(lua_State *L)
+{
+	int n = static_cast<int>(lua_tointeger(L, 1));
+	std::size_t size;
+	const char* c = lua_tolstring(L, 2, &size);
+	std::vector<char> data(c, c + size);
+	saveReplayData(n, data);
+	return 0;
+}
+
 class MyGLFW : public GLFW
 {
 	virtual void willOpenWindow();
@@ -56,8 +133,11 @@ void MyGLFW::willOpenWindow()
 
 void MyGLFW::openWindow()
 {
+#if defined(NDEBUG) and 0
+	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN);
+#else
 	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_WINDOW);
-	//	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN);
+#endif
 }
 
 void MyGLFW::didOpenWindow()
@@ -131,9 +211,18 @@ void MyGLFW::initialize()
 	tolua_pushusertype(lua->vm(), joystickInput.get(), "JoystickInput");
 	lua_setglobal(lua->vm(), "joystickInput");
 	
+	lua_register(lua->vm(), "loadReplayData", loadReplayDataLuaCF);
+	lua_register(lua->vm(), "saveReplayData", saveReplayDataLuaCF);
+	
 	device.reset(new aps::al::Device());
 	context.reset(new aps::al::Context(device->context()));
 	context->current();
+	
+	std::vector<char> profile = loadProfileData();
+	if (!profile.empty()) {
+		lua_pushlstring(lua->vm(), profile.data(), profile.size());
+		lua_setglobal(lua->vm(), "profileBinary");
+	}
 	
 	for (; ; )
 	{
@@ -172,26 +261,32 @@ void MyGLFW::draw()
 		
 	{
 		joystickInput->update();
-		bool joyStickon = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_PRESENT);
 		
-		if (joyStickon)
+		int joystickNo;
+		for (joystickNo = GLFW_JOYSTICK_1; joystickNo < GLFW_JOYSTICK_LAST; ++joystickNo)
 		{
-			int joyStickAxes = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_AXES);
-			int joyStickButtons = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_BUTTONS);
+			bool joyStickOn = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_PRESENT);
+			if (joyStickOn) break;
+		}
+		
+		if (joystickNo != GLFW_JOYSTICK_LAST)
+		{
+			int joyStickAxes = glfwGetJoystickParam(joystickNo, GLFW_AXES);
+			int joyStickButtons = glfwGetJoystickParam(joystickNo, GLFW_BUTTONS);
 			
 			std::vector<float> positions(joyStickAxes);
-			glfwGetJoystickPos(GLFW_JOYSTICK_1, &positions[0], joyStickAxes);
+			glfwGetJoystickPos(joystickNo, &positions[0], joyStickAxes);
 			for (std::size_t i = 0; i < positions.size(); i += 2) {
 				joystickInput->setXY(i / 2, positions[i], positions[i + 1]);
 			}
 			
 			std::vector<unsigned char> buttons(joyStickButtons);
-			glfwGetJoystickButtons(GLFW_JOYSTICK_1, &buttons[0], joyStickButtons);
+			glfwGetJoystickButtons(joystickNo, &buttons[0], joyStickButtons);
 			for (std::size_t i = 0; i < buttons.size(); ++i) {
 				if (buttons[i]) {
-					joystickInput->down(i);
+					joystickInput->down(static_cast<int>(i));
 				} else {
-					joystickInput->up(i);
+					joystickInput->up(static_cast<int>(i));
 				}
 			}
 		}
@@ -224,22 +319,33 @@ void MyGLFW::draw()
 
 void MyGLFW::finalize()
 {
+	lua->callFunction("serializeProfile", aps::lua::LuaTuple());
 	
+	lua_getglobal(lua->vm(), "profileBinary");
+	std::size_t size;
+	const char* data = lua_tolstring(lua->vm(), -1, &size);
+	
+	std::vector<char> profile(size);
+	std::copy_n(data, size, profile.begin());
+	saveProfileData(profile);
 }
 
 int main(int argc, const char * argv[])
 {
+#ifndef NDEBUG
 #ifdef _WIN32
     std::ofstream out("cout.txt");
     std::cout.rdbuf(out.rdbuf());
     std::ofstream err("cerr.txt");
     std::cerr.rdbuf(err.rdbuf());
 #endif
+#endif
+	
 #ifdef __APPLE__
 	std::vector<std::string> v;
 	boost::split(v, argv[0], boost::is_any_of("/"));
 	v.pop_back();
-#ifdef NDEBUG
+#if 1
 	chdir((boost::join(v, "/") + "/..").c_str());
 #else
 	chdir((boost::join(v, "/") + "/").c_str());

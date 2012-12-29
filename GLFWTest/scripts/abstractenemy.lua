@@ -26,6 +26,18 @@ function Enemy:update()
 	return Enemy.super.update(self)
 end
 
+function Enemy:damaged(...)
+	Mxr:rewindAndPlay("enemydamaged")
+	return Enemy.super.damaged(self, ...)
+end
+
+function Enemy:death(...)
+	if self.killer then
+		Mxr:rewindAndPlay("enemydestroyed")
+	end
+	return Enemy.super.death(self, ...)
+end
+
 function Enemy.createShape(classtable)
 	classtable.shape = Rct.Path(classtable.vertices, "lineLoop", classtable.color, classtable.cx, classtable.cy)
 end

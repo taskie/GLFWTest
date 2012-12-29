@@ -1,12 +1,13 @@
 class ("GameModel") { }
 
-function GameModel:new(stage, seed)
+function GameModel:new(stage, input, seed, parameter)
 	self.stage = stage
 	if seed then
 		self.random = random.MersenneTwister(seed)
 	else
 		self.random = random.MersenneTwister()
 	end
+	self.seed = self.random:seed()
 	
 	self.players = Field()
 	self.enemies = Field()
@@ -19,13 +20,17 @@ function GameModel:new(stage, seed)
 	
 	self.frame = 0
 
-	self.bulletExpMode = true
-	self.enemyWithEnemyMode = true
-	self.players:add(stage:createPlayer(self))
+	self.input = input
+	self.bulletExpMode = parameter.bulletExpMode or false
+	self.enemyWithEnemyMode = parameter.enemyWithEnemyMode or false
+	self.isCleared = false
+	self.players:add(Player(Mys.field.cx, Mys.field.cy + 100, -90, self, input))
 end
 
 function GameModel:update()
+	if (self.input.update) then self.input:update() end
 	self.stage:update(self)
+	self.isCleared = self.stage.isCleared
 	
 	self.players:update()
 	self.enemies:update()

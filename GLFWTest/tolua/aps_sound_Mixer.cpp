@@ -1,6 +1,6 @@
 /*
 ** Lua binding: aps_sound_Mixer
-** Generated automatically by tolua++-1.0.92 on Fri Dec 21 19:32:41 2012.
+** Generated automatically by tolua++-1.0.92 on Fri Dec 28 22:36:12 2012.
 */
 
 #ifndef __cplusplus
@@ -293,6 +293,75 @@ static int tolua_aps_sound_Mixer_sound_Mixer_rewind00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: gain of class  Mixer */
+#ifndef TOLUA_DISABLE_tolua_aps_sound_Mixer_sound_Mixer_gain00
+static int tolua_aps_sound_Mixer_sound_Mixer_gain00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Mixer",0,&tolua_err) ||
+     !tolua_iscppstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Mixer* self = (Mixer*)  tolua_tousertype(tolua_S,1,0);
+  std::string key = ((std::string)  tolua_tocppstring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'gain'", NULL);
+#endif
+  {
+   float tolua_ret = (float)  self->gain(key);
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'gain'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setGain of class  Mixer */
+#ifndef TOLUA_DISABLE_tolua_aps_sound_Mixer_sound_Mixer_setGain00
+static int tolua_aps_sound_Mixer_sound_Mixer_setGain00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Mixer",0,&tolua_err) ||
+     !tolua_iscppstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Mixer* self = (Mixer*)  tolua_tousertype(tolua_S,1,0);
+  std::string key = ((std::string)  tolua_tocppstring(tolua_S,2,0));
+  float gain = ((float)  tolua_tonumber(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setGain'", NULL);
+#endif
+  {
+   self->setGain(key,gain);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setGain'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: update of class  Mixer */
 #ifndef TOLUA_DISABLE_tolua_aps_sound_Mixer_sound_Mixer_update00
 static int tolua_aps_sound_Mixer_sound_Mixer_update00(lua_State* tolua_S)
@@ -348,6 +417,8 @@ TOLUA_API int tolua_aps_sound_Mixer_open (lua_State* tolua_S)
     tolua_function(tolua_S,"pause",tolua_aps_sound_Mixer_sound_Mixer_pause00);
     tolua_function(tolua_S,"stop",tolua_aps_sound_Mixer_sound_Mixer_stop00);
     tolua_function(tolua_S,"rewind",tolua_aps_sound_Mixer_sound_Mixer_rewind00);
+    tolua_function(tolua_S,"gain",tolua_aps_sound_Mixer_sound_Mixer_gain00);
+    tolua_function(tolua_S,"setGain",tolua_aps_sound_Mixer_sound_Mixer_setGain00);
     tolua_function(tolua_S,"update",tolua_aps_sound_Mixer_sound_Mixer_update00);
    tolua_endmodule(tolua_S);
   tolua_endmodule(tolua_S);

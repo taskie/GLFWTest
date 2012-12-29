@@ -1,12 +1,12 @@
 class ("Stage") { }
 
-function Stage:new(isHell)
+function Stage:new(parameter)
 	self.count = 0
-	self.countMax = 30
-	self.stageFrameMax = Mys.fps * 10
+	self.countMax = parameter.stages or 10
+	self.stageFrameMax = Mys.fps * 60
 	self.stageFrame = self.stageFrameMax - Mys.fps * 3
 	
-	self.enemyProbability = (isHell and 0.03) or 0.01
+	self.enemyProbability = parameter.enemyProbability or 0.01
 	self.enemyTable = {}
 	self.enemyTable[1] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Sniper, 1}}
 	self.enemyTable[2] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Sniper, 1}, {Enm.Scatter, 1}}
@@ -17,7 +17,7 @@ function Stage:new(isHell)
 	self.enemyTable[7] = {{Enm.Bee, 1}, {Enm.Base, 1}, {Enm.Block, 1}, {Enm.Quick, 1}, {Enm.Bug, 1}}
 	self.enemyTable[8] = {{Enm.Base, 1}, {Enm.Block, 1}, {Enm.Quick, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}}
 	self.enemyTable[9] = {{Enm.Block, 1}, {Enm.Quick, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}, {Enm.Back, 1}}
-	self.enemyTable[10] = {{Enm.Quick, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}, {Enm.Back, 1}, {Enm.Refrect, 1}}
+	self.enemyTable[10] = {{Enm.Quick, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}, {Enm.Back, 1}, {Enm.Reflect, 1}}
 	
 	self.enemyWeight = {}
 	for stage, stageTable in ipairs(self.enemyTable) do
@@ -32,6 +32,7 @@ function Stage:new(isHell)
 	self.bgms[11] = "febricula_inf"
 	self.bgms[14] = "cascade_inf"
 	self.bgms[17] = "stig_inf"
+	self.bgmCycle = 20
 	self.nowPlaying = false
 	
 	self.frame = 0
@@ -54,8 +55,11 @@ function Stage:update(model)
 	end
 	
 	if self.stageFrame == self.stageFrameMax - 5 * Mys.fps then
-		if self.bgms[self.count + 1] ~= nil then
-			-- MXR:fadeOutBGM(5000)
+		if self.count ~= self.countMax then
+			local bgm = self.bgms[(self.count + 1) % self.bgmCycle]
+			if bgm ~= nil then
+				Mxr:fadeOut(self.nowPlaying, math.floor(Mys.fps * 4.75))
+			end
 		end
 	end
 	
@@ -64,7 +68,7 @@ function Stage:update(model)
 	if self.stageFrame >= self.stageFrameMax then
 		self:next(model)
 	end
-	
+		
 	self.frame = self.frame + 1
 end
 
@@ -77,7 +81,7 @@ function Stage:next(model)
 	self.stageFrame = 0
 	self.count = self.count + 1
 	
-	local bgm = self.bgms[self.count % 20]
+	local bgm = self.bgms[self.count % self.bgmCycle]
 	if bgm ~= nil then
 		if self.nowPlaying then
 			Mxr:stop(self.nowPlaying)
@@ -88,7 +92,6 @@ function Stage:next(model)
 end
 
 function Stage:clear(model)
-	-- MXR:fadeOutBGM(5000)
 	self.isCleared = true
 
 	local player = false
@@ -108,8 +111,3 @@ function Stage:clear(model)
 
 	-- Main.scene = GameClear(Main.scene)
 end
-
-function Stage:createPlayer(model)
-	return Player(Mys.field.cx, Mys.field.cy + 100, -90, model, Input())
-end
-

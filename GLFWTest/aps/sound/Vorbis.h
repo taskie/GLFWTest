@@ -41,8 +41,8 @@ namespace aps
 			
 			void rewind()
 			{
-				ov_raw_seek(file(), 0);
-				bitstream_ = 0;
+				if (bad()) return;
+				ov_pcm_seek_page(file(), 0);
 			}
 			
 			std::vector<std::int16_t> read(std::size_t size)

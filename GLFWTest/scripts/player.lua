@@ -87,6 +87,7 @@ end
 
 function Player:chooseWeapon()
 	if self.input:isJustPressed("X") then
+		Mxr:rewindAndPlay("weaponchoice")
 		self.weapon.choice = self.weapon.choice % self.weapon.lengthMax + 1
 	end
 end
@@ -116,10 +117,13 @@ function Player:updateCapture()
 		end
 			
 		self.capture.r = 0
-		
+		Mxr:rewindAndPlay("ok")
+	
 		if upgradeFlag then
-			self.weapon.actors[choice]:takeExp(nearest.exp)
+			self.weapon.actors[choice].exp = self.weapon.actors[choice].exp + nearest.exp
+			self.weapon.actors[choice]:levelUp()
 		else
+			profile.records.captured[nearest.classname] = true
 			if not self.weapon.actors[choice] then
 				self.weapon.length = self.weapon.length + 1
 			end
@@ -137,6 +141,26 @@ function Player:fire()
 	local fireFlag = not self.input:isPressed("Z")
 	for i, actor in pairs(self.weapon.actors) do
 		actor:update()
-		if fireFlag then actor:fire() end
+		if fireFlag then
+			actor:fire()
+		end
 	end
+end
+
+function Player:shoot(...)
+	return Player.super.shoot(self, ...)
+end
+
+function Player:levelUp(...)
+	local ret = Player.super.levelUp(self, ...)
+	if ret then
+		Mxr:rewindAndPlay("levelup")
+	end
+	return ret
+end
+
+function Player:damaged(...)
+	Mxr:rewindAndPlay("playerdamaged")
+	self.model.actors:push(DamageScreen())
+	Player.super.damaged(self, ...)
 end

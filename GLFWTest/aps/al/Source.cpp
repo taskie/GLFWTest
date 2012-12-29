@@ -44,7 +44,7 @@ void Source::popProcessedBuffers()
 	
 	std::vector<ALuint> ids(processedNum);
 	for (std::size_t i = 0; i < processedNum; ++i) ids[i] = queuedBuffers_[i].name();
-	alSourceUnqueueBuffers(name(), processedNum, &ids[0]);
+	alSourceUnqueueBuffers(name(), static_cast<ALint>(processedNum), &ids[0]);
 	queuedBuffers_.erase(queuedBuffers_.begin(), std::next(queuedBuffers_.begin(), processedNum));
 }
 
@@ -74,6 +74,13 @@ int Source::unprocessedBuffersLength()
 	ALint processedNum = processedBuffersLength();
 	ALint queuedNum = buffersLength();
 	return queuedNum - processedNum;
+}
+
+ALfloat Source::gain() const
+{
+	ALfloat value;
+	alGetSourcef(name(), AL_GAIN, &value);
+	return value;
 }
 
 void Source::setGain(ALfloat gain)
