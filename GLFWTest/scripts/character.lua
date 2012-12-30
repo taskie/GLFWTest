@@ -1,4 +1,4 @@
-subclass ("Character", Actor) {}
+subclass ("Character", Actor) { }
 
 function Character:new(x, y, rot, model, param)
 	Character.super.new(self, x, y, rot)
@@ -12,6 +12,7 @@ function Character:new(x, y, rot, model, param)
 	
 	self.hpmax = self.hp
 	self.level = 1
+	self.levelMax = 50
 	self:levelUp()
 	
 	self.bullets = Set()
@@ -34,6 +35,7 @@ end
 
 function Character:levelUp()
 	local up = false
+	if self.level == self.levelMax then return up end
 	while self.exp >= self:calcRequiredExp() do
 		self.level = self.level + 1
 		self.power = math.ceil(self.power * Mys.levelUpRatio)
@@ -69,7 +71,7 @@ function Character:shoot(x, y, rot, speed, r, rate)
 end
 
 function Character:calcDamageByBullet(bullet)
-	return math.ceil(bullet.power / self.defence)
+	return math.ceil(bullet.power ^ 0.5 * (0.99 ^ self.defence))
 end
 
 function Character:damagedByBullet(bullet)

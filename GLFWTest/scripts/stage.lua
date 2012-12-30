@@ -48,7 +48,7 @@ function Stage:update(model)
 			local en = Mys.choiceWithWeight(self.enemyWeight[tableNum], model.random)
 			local enemy = self.enemyTable[tableNum][en][1](model)
 			if self.count > 10 then
-				enemy:takeExp(math.floor((self.count - 1) / 10) * 10000)
+				enemy:takeExp(math.floor((self.count - 1) / 10) * 8192)
 			end
 			model.enemies:add(enemy)
 		end

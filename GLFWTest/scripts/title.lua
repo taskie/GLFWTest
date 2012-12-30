@@ -11,6 +11,7 @@ function Scn.Title:new()
 	self.barRect = Rct.Rect(Mys.field.x, Mys.screen.h, "polygon", {0.8, 0.8, 0.8, 0.5}, 0, 0)
 	self.mystig = Rct.Text("MYSTiG", "thin", 96, textColor, "r")
 	self.infration = Rct.Text("inflation", "thin", 64, textColor, "r")
+	self.version = Rct.Text("Ver. " .. Mys.version, "regular", 16, textColor, "r")
 	
 	self.items = {}
 	self.items.texts = {"Start", "Customize", "Records", "Settings", "Quit"}
@@ -94,6 +95,7 @@ function Scn.Title:draw()
 	self.barRect:draw(Mys.field.wx)
 	self.mystig:draw(Mys.screen.wx - 40, 120)
 	self.infration:draw(Mys.screen.wx - 45, 200)
+	self.version:draw(Mys.screen.wx - 50, 240)
 	self.items.choiceTriangle:draw(Mys.field.x + 20, 280 - 12 + (self.items.choice - 1) * 40)
 	for i, shape in ipairs(self.items.textShapes) do
 		shape:draw(Mys.field.x + 30 + self.items.xShifts[i], 280 + (i - 1) * 40)

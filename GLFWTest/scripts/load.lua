@@ -25,10 +25,11 @@ dofile("scripts/const.lua")
 
 -- Mxr
 dofile("scripts/mixer.lua")
-local musics = {"conduit", "retrofire", "influx", "febricula_inf", "cascade_inf", "stig_inf"}
+local musics = {"maikon", "conduit", "retrofire", "influx", "febricula_inf", "cascade_inf", "stig_inf"}
 for i, music in ipairs(musics) do
 	Mxr:loadVorbisMusic(music)
 end
+
 local sounds = {"enemydamaged", "enemydestroyed", "levelup", "ng", "ok", "playerdamaged", "playershoot", "weaponchoice"}
 for i, sound in ipairs(sounds) do
 	Mxr:loadWaveSound(sound)

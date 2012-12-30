@@ -36,6 +36,11 @@ function Scn.Game:update()
 	end
 	
 	self.model:update()
+	if self.model.input.classname == "ReplayInput" and self.escInput:isPressed("LSHIFT") then
+		self.model:update()
+		self.model:update()
+	end
+	
 	self.view:update()
 	
 	local playerAlive = false

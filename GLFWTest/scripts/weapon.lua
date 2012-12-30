@@ -25,6 +25,6 @@ function Weapon:update()
 end
 
 function Weapon:takeExp(exp)
-	self.owner:takeExp(math.ceil(exp / 10))
+	self.owner:takeExp(exp)
 	return Weapon.super.takeExp(self, exp)
 end

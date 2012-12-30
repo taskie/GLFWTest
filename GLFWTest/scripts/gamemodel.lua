@@ -28,7 +28,8 @@ function GameModel:new(stage, input, seed, parameter)
 end
 
 function GameModel:update()
-	if (self.input.update) then self.input:update() end
+	if self.input.update then self.input:update() end
+
 	self.stage:update(self)
 	self.isCleared = self.stage.isCleared
 	

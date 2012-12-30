@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <cstdio>
 #include <fstream>
 #include <vector>
 #include <string>
@@ -224,12 +225,16 @@ void MyGLFW::initialize()
 		lua_setglobal(lua->vm(), "profileBinary");
 	}
 	
+#ifdef NDEBUG
+	lua->doFile("scripts/main.lua");
+#else
 	for (; ; )
 	{
 		if (lua->doFile("scripts/main.lua")) break;
 		std::string x;
 		std::cin >> x;
 	}
+#endif
 	
 	glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
 	oldTime = glfwGetTime();
@@ -238,7 +243,8 @@ void MyGLFW::initialize()
 void MyGLFW::draw()
 {
 	keyBoardInput->update();
-	
+
+#ifndef NDEBUG
 	auto reloadKey = keyBoardInput->buttonState('R');
 	if (reloadKey.pressed() && reloadKey.just()) {
 		for (; ; ) {
@@ -247,6 +253,7 @@ void MyGLFW::draw()
 			std::cin >> x;
 		}
 	}
+#endif
 	
 	auto smoothKey = keyBoardInput->buttonState('L');
 	static bool smoothFlag = true;
@@ -332,12 +339,12 @@ void MyGLFW::finalize()
 
 int main(int argc, const char * argv[])
 {
-#ifndef NDEBUG
+#if !defined(NDEBUG)
 #ifdef _WIN32
-    std::ofstream out("cout.txt");
-    std::cout.rdbuf(out.rdbuf());
-    std::ofstream err("cerr.txt");
-    std::cerr.rdbuf(err.rdbuf());
+	std::ofstream out("cout.txt");
+	auto oldcoutbuf = std::cout.rdbuf(out.rdbuf());
+	std::ofstream err("cerr.txt");
+	auto oldcerrbuf = std::cerr.rdbuf(err.rdbuf());
 #endif
 #endif
 	
@@ -345,7 +352,7 @@ int main(int argc, const char * argv[])
 	std::vector<std::string> v;
 	boost::split(v, argv[0], boost::is_any_of("/"));
 	v.pop_back();
-#if 1
+#ifdef NDEBUG
 	chdir((boost::join(v, "/") + "/..").c_str());
 #else
 	chdir((boost::join(v, "/") + "/").c_str());
@@ -354,5 +361,13 @@ int main(int argc, const char * argv[])
 	
 	MyGLFW glfw;
 	glfw.run();
+	
+#if !defined(NDEBUG)
+#ifdef _WIN32
+	std::cout.rdbuf(oldcoutbuf);
+	std::cerr.rdbuf(oldcerrbuf);
+#endif
+#endif
+	
 	return 0;
 }

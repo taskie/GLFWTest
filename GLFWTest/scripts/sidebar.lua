@@ -54,6 +54,7 @@ function SideBar:update()
 		local expBarBias = player.level ^ 3
 		local expBarMax =player:calcRequiredExp() - expBarBias
 		local expBarRatio = (player.exp - expBarBias) / expBarMax
+		if player.level == player.levelMax then expBarRatio = 0 end
 		self.playersInfo.expBar.shape:setScale(expBarRatio, 1)
 		
 		self.weaponInfo.choice = player.weapon.choice
@@ -66,6 +67,7 @@ function SideBar:update()
 				local expBarBias = actor.level ^ 3
 				local expBarMax = actor:calcRequiredExp() - expBarBias
 				local expBarRatio = (actor.exp - expBarBias) / expBarMax
+				if actor.level == actor.levelMax then expBarRatio = 0 end
 				self.weaponInfo.actors[i].expBar.shape:setScale(expBarRatio, 1)
 			else
 				self.weaponInfo.actors[i].shape = Mys.nilShape

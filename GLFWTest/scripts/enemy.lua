@@ -21,14 +21,16 @@ function Enm.Zaco:new(model, x, y, rot)
 end
 
 function Enm.Zaco:fire()
-	if self.frame % 30 == 0 then
-		local nearest = self:nearestEnemy()
+	local interval = 30 - self.level
+	if interval < 5 then interval = 5 end
+	
+	if self.frame % interval == 0 then
 		local angle = self.rot
-		local way = self.level
-		if way > 50 then way = 50 end
+		local way = (self.level >= 30) and 2 or 1
+		local v = self.level / 3 + 4
+		if v > 7 then v = 7 end
 		for i = 0, way - 1 do
-			if self.level >= 30 then self:shoot(self.x, self.y, angle + 360 * i / way, 3, 3, 1) end
-			self:shoot(self.x, self.y, angle + 360 * i / way, 4, 3, 1)
+			self:shoot(self.x, self.y, angle + 360 * i / way, v, 3, 1)
 		end
 	end
 end
@@ -70,8 +72,8 @@ function Enm.Winder:fire()
 		self:shoot(self.x, self.y, self.rot + angle, 4, 3, 1)
 		self:shoot(self.x, self.y, self.rot - angle, 4, 3, 1)
 		if self.level >= 30 then
-			self:shoot(self.x, self.y, self.rot + angle * 2, 4, 3, 1)
-			self:shoot(self.x, self.y, self.rot - angle * 2, 4, 3, 1)
+			self:shoot(self.x, self.y, self.rot + angle * 4, 4, 3, 1)
+			self:shoot(self.x, self.y, self.rot - angle * 4, 4, 3, 1)
 		end
 	end
 end
@@ -111,7 +113,7 @@ function Enm.Sniper:fire()
  	local interval = 60 + math.floor(30 / self.level)
  	if self.level >= 30 then interval = 30 end
 	if self.frame % interval == 0 then
-		local num = 2 + math.ceil(self.level / 2)
+		local num = 2 + math.ceil(self.level / 3)
 		if num > 10 then num = 10 end
 		for i = 0, num - 1 do
 			self:shoot(self.x, self.y, self.rot, 1.5 + 0.5 * i, 3, 1)
