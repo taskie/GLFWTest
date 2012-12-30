@@ -246,7 +246,7 @@ subclass ("Base", Enemy, Enm)
 	vertices = {{0, 20}, {10, 20}, {20, 10}, {10, 0}, {0, 0}},
 	cx = 10, cy = 10,
 	color = {0.2, 0.8, 0.6, 1.0},
-	param = {r = 5, hp = 20, power = 3, defence = 5, exp = 7^3}
+	param = {r = 5, hp = 15, power = 3, defence = 5, exp = 7^3}
 }
 Enemy.setEnemy(Enm.Base)
 Enm.Base.move = Motion.uniform
@@ -297,8 +297,8 @@ function Enm.Block:new(model, x, y, rot)
 end
 
 function Enm.Block:fire()
-	local n = math.floor(self.level / 2)
-	if n > 20 then n = 20 end
+	local n = math.floor(self.level / 3)
+	if n > 10 then n = 10 end
 	if self.frame % 2 == 0 and self.frame % 30 < n then
 		local way = self.level >= 30 and 8 or 4
 		for i = 0, way - 1 do
@@ -527,7 +527,7 @@ subclass ("Reflect", Enemy, Enm)
 	vertices = {{10, 0}, {0, 10}, {10, 20}, {20, 10}},
 	cx = 10, cy = 10,
 	color = {0.9, 0.1, 0.3, 1.0},
-	param = {r = 5, hp = 100, power = 20, defence = 20, exp = 14^3}
+	param = {r = 5, hp = 100, power = 20, defence = 30, exp = 14^3}
 }
 Enemy.setEnemy(Enm.Reflect)
 Enm.Reflect.move = Motion.uniform

@@ -107,7 +107,6 @@
 		D6590D30166CB7AD004A504A /* GLHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLHeader.h; sourceTree = "<group>"; };
 		D6760C091675E3D6005B9821 /* ShapeEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeEngine.cpp; sourceTree = "<group>"; };
 		D6760C0A1675E3D6005B9821 /* ShapeEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeEngine.h; sourceTree = "<group>"; };
-		D6760C1E16778ACE005B9821 /* libluajit-5.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluajit-5.1.a"; path = "/usr/local/Cellar/luajit/2.0.0/lib/libluajit-5.1.a"; sourceTree = "<absolute>"; };
 		D691344C1680872700BDBFB3 /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
 		D691344D1680872700BDBFB3 /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer.h; sourceTree = "<group>"; };
 		D691344E1680872700BDBFB3 /* Source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Source.cpp; sourceTree = "<group>"; };
@@ -223,7 +222,6 @@
 				D60A7A191665228300AE87C5 /* OpenGL.framework */,
 				D60C6657166DF004005C7CC8 /* OpenAL.framework */,
 				D60A7A17166521EC00AE87C5 /* libglfw.a */,
-				D6760C1E16778ACE005B9821 /* libluajit-5.1.a */,
 				D6FD449D166E4365009F9455 /* libtolua++.a */,
 				D6965BB4166B921E00C6E53C /* libfreetype.a */,
 				D691345C1680CC3400BDBFB3 /* libvorbis.a */,
@@ -591,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = " ";
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					/usr/local/include/freetype2,

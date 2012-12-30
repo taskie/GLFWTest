@@ -20,7 +20,7 @@ function Scn.Customize:new(old)
 	self.barRect = Rct.Rect(Mys.field.x, Mys.screen.h, "polygon", {0.8, 0.8, 0.8, 0.5}, 0, 0)
 	
 	self.items = {}
-	self.items.texts = {"Stages", "Encounter Rate", "Internecine Strife", "Exp. in Bullet", "Show Details", "Exit"}
+	self.items.texts = {"Stages", "Encounter Rate", "Internecine Strife", "Exp. in Bullets", "Show Details", "Exit"}
 	self.items.parameterNames = {"stages", "enemyProbability", "bulletExpMode", "enemyWithEnemyMode", "verboseMode"}
 	self.items.values = {{10, 20}, {0.01, 0.02, 0.03}, {false, true}, {false, true}, {false, true}}
 	self.items.valueTexts = {{"10", "20"}, {"Lv. 1", "Lv. 2", "Lv. 3"}, {"Off", "On"}, {"Off", "On"}, {"Off", "On"}}

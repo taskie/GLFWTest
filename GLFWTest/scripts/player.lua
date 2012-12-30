@@ -17,7 +17,7 @@ subclass ("Player", Character)
 }
 
 function Player:new(x, y, rot, model, input)
-	local param = { r = 3, hp = 10, power = 5, defence = 5, exp = 1 }
+	local param = { r = 3, hp = 1000, power = 5, defence = 5, exp = 1 }
 	Player.super.new(self, x, y, rot, model, param)
 	self.bulletsField = model.playersBullets
 	self.enemiesField = model.enemies

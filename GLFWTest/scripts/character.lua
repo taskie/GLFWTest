@@ -94,7 +94,7 @@ function Character:damaged(damage)
 end
 
 function Character:nearestEnemy()
-	assert(self.enemiesField)
+	if not self.enemiesField then return nil end
 	local distanceMin = math.huge
 	local enemyMin = false
 	for id, enemy in self.enemiesField:pairs() do

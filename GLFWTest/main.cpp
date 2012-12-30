@@ -143,7 +143,11 @@ void MyGLFW::openWindow()
 
 void MyGLFW::didOpenWindow()
 {
+#if defined(NDEBUG)
 	glfwSetWindowTitle("MYSTiG inflation");
+#else
+	glfwSetWindowTitle("MYSTiG inflation - Debug");
+#endif
 }
 
 static std::unique_ptr<aps::lua::LuaManager> lua;

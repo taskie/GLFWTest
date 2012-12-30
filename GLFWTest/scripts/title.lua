@@ -27,10 +27,28 @@ function Scn.Title:new()
 		self.items.textShapes[i] = Rct.Text(text, "thin", 32, textColor, "l")
 	end
 	self.items.xShifts[1] = self.items.xShiftMax
+	
+	self.random = Mys.mt
+	self.enemies = Field()
+	self.enemiesBullets = Field()
+	self.capturedArray = {}
+	for k, v in pairs(profile.records.captured) do
+		table.insert(self.capturedArray, k)
+	end
+	
 	self.nextScene = false
 end
 
 function Scn.Title:update()
+	if #self.capturedArray ~= 0 and self.random:next() < 0.01 then
+		local name = self.capturedArray[self.random:nextInt(1, #self.capturedArray)]
+		print(#self.capturedArray, name)
+		self.enemies:add(Enm[name](self))
+	end
+	
+	self.enemies:update()
+	self.enemiesBullets:update()
+	
 	if self.input:isJustPressed("DOWN") then
 		Mxr:play("weaponchoice")
 		self.items.choice = self.items.choice + 1
@@ -89,8 +107,16 @@ function Scn.Title:update()
 	return Scn.Title.super.update(self)
 end
 
+local function drawField(field)
+	for id, actor in field:pairs() do
+		actor:draw()
+	end
+end
+
 function Scn.Title:draw()
 	self.background:draw()
+	drawField(self.enemies)
+	drawField(self.enemiesBullets)
 	self.barRect:draw()
 	self.barRect:draw(Mys.field.wx)
 	self.mystig:draw(Mys.screen.wx - 40, 120)
