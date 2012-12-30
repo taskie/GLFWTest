@@ -9,7 +9,7 @@ Sources = FileList['**/*.cpp']
 Objects = Sources.ext('o')
 
 HeaderFlags = '-I/usr/local/include'
-LibraryFlags = '-lstdc++ -lmingw32 -m32 -mwindows -lm -lglfw -lopengl32 -lglu32 -llua -ltolua++ -lfreetype -lOpenAL32 -logg -lvorbis -lvorbisfile'
+LibraryFlags = '-static -lstdc++ -lmingw32 -m32 -mwindows -lm -lglfw -lopengl32 -lglu32 -llua -ltolua++ -lfreetype -lOpenAL32.dll -logg.dll -lvorbis.dll -lvorbisfile.dll'
 
 CLEAN.include(Objects)
 
