@@ -199,7 +199,8 @@ void MyGLFW::initialize()
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glOrtho(0, 640, 480, 0, 1, -1);
+	glOrtho(0, 640, 480, 0, 100, -100);
+	glFrustum(-2, 2, -2, 2, -100, 100);
 	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -288,7 +289,7 @@ void MyGLFW::draw()
 			std::vector<float> positions(joyStickAxes);
 			glfwGetJoystickPos(joystickNo, &positions[0], joyStickAxes);
 			for (std::size_t i = 0; i < positions.size(); i += 2) {
-				joystickInput->setXY(i / 2, positions[i], positions[i + 1]);
+				joystickInput->setXY(static_cast<int>(i / 2), positions[i], positions[i + 1]);
 			}
 			
 			std::vector<unsigned char> buttons(joyStickButtons);

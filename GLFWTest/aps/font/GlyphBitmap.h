@@ -12,6 +12,7 @@ namespace aps
 			GlyphBitmap(unsigned char* bitmap, int width, int height, int left, int top, int pitch, double advance);
 			unsigned char pixel(int x, int y);
 			const unsigned char* data();
+			int size();
 			int width();
 			int height();
 			int left();

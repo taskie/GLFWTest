@@ -35,7 +35,7 @@ end
 
 function Character:levelUp()
 	local up = false
-	if self.level == self.levelMax then return up end
+	if self.level >= self.levelMax then return up end
 	while self.exp >= self:calcRequiredExp() do
 		self.level = self.level + 1
 		self.power = math.ceil(self.power * Mys.levelUpRatio)

@@ -33,11 +33,12 @@ public:
 	const unsigned char* data()
 	{
 		if (bitmap_.empty()) return nullptr;
-		return &bitmap_[0];
+		return bitmap_.data();
 	}
 	
 	int width() { return width_; }
 	int height() { return height_; }
+	int size() { return width() * height(); }
 	int left() { return left_; }
 	int top() { return top_; }
 	int pitch() { return pitch_; }
@@ -59,6 +60,7 @@ GlyphBitmap::GlyphBitmap(unsigned char* bitmap, int width, int height, int left,
 
 unsigned char GlyphBitmap::pixel(int x, int y) { return pImpl->pixel(x, y); }
 const unsigned char* GlyphBitmap::data() { return pImpl->data(); }
+int GlyphBitmap::size() { return pImpl->size(); }
 int GlyphBitmap::width() { return pImpl->width(); }
 int GlyphBitmap::height() { return pImpl->height(); }
 int GlyphBitmap::left() { return pImpl->left(); }

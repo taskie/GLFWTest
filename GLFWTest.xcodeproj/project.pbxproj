@@ -25,7 +25,6 @@
 		D634CDD2166C9DF300BA5F0B /* ShapeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB8166B95E800C6E53C /* ShapeElement.cpp */; };
 		D634CDD3166C9DFC00BA5F0B /* GLFW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A1B1665282300AE87C5 /* GLFW.cpp */; };
 		D6760C0B1675E3D6005B9821 /* ShapeEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6760C091675E3D6005B9821 /* ShapeEngine.cpp */; };
-		D6760C2016778BAA005B9821 /* liblua.5.1.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */; };
 		D69134501680872700BDBFB3 /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691344C1680872700BDBFB3 /* Buffer.cpp */; };
 		D69134511680872700BDBFB3 /* Source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691344E1680872700BDBFB3 /* Source.cpp */; };
 		D69134561680893E00BDBFB3 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69134541680893E00BDBFB3 /* Device.cpp */; };
@@ -43,6 +42,7 @@
 		D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965BB4166B921E00C6E53C /* libfreetype.a */; };
 		D6965BBA166B95E900C6E53C /* ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */; };
 		D6965BC3166BA42500C6E53C /* Fontex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BC1166BA42500C6E53C /* Fontex.cpp */; };
+		D69F6BCC16D4AA1100663FD9 /* liblua.5.1.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F6BCB16D4AA1100663FD9 /* liblua.5.1.5.dylib */; };
 		D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD449D166E4365009F9455 /* libtolua++.a */; };
 		D6FD44A3166E4399009F9455 /* aps_font_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */; };
 		D6FD44AA166E45DD009F9455 /* aps_gl_ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A4166E45DD009F9455 /* aps_gl_ShapeContainer.cpp */; };
@@ -92,7 +92,6 @@
 		D60A7A191665228300AE87C5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D60A7A1B1665282300AE87C5 /* GLFW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFW.cpp; sourceTree = "<group>"; };
 		D60A7A1C1665282300AE87C5 /* GLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFW.h; sourceTree = "<group>"; };
-		D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.4.dylib; path = /usr/local/Cellar/lua/5.1.4/lib/liblua.5.1.4.dylib; sourceTree = "<absolute>"; };
 		D60C6657166DF004005C7CC8 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D60C665A166DF203005C7CC8 /* LuaManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaManager.cpp; sourceTree = "<group>"; };
 		D60C665B166DF203005C7CC8 /* LuaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaManager.h; sourceTree = "<group>"; };
@@ -142,6 +141,7 @@
 		D6965BB9166B95E800C6E53C /* ShapeElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeElement.h; sourceTree = "<group>"; };
 		D6965BC1166BA42500C6E53C /* Fontex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fontex.cpp; sourceTree = "<group>"; };
 		D6965BC2166BA42500C6E53C /* Fontex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fontex.h; sourceTree = "<group>"; };
+		D69F6BCB16D4AA1100663FD9 /* liblua.5.1.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.5.dylib; path = /usr/local/Cellar/lua/5.1.5/lib/liblua.5.1.5.dylib; sourceTree = "<absolute>"; };
 		D6FD449D166E4365009F9455 /* libtolua++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtolua++.a"; path = "/usr/local/Cellar/tolua++/1.0.93/lib/libtolua++.a"; sourceTree = "<absolute>"; };
 		D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_font_Manager.cpp; path = tolua/aps_font_Manager.cpp; sourceTree = "<group>"; };
 		D6FD44A2166E4399009F9455 /* aps_font_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_font_Manager.h; path = tolua/aps_font_Manager.h; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		D6FD44B4166E47E9009F9455 /* aps_gl_ShapeContainer.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_gl_ShapeContainer.tolua; path = tolua/aps_gl_ShapeContainer.tolua; sourceTree = "<group>"; };
 		D6FD44B5166E47E9009F9455 /* aps_gl_ShapeElement.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_gl_ShapeElement.tolua; path = tolua/aps_gl_ShapeElement.tolua; sourceTree = "<group>"; };
 		D6FD44B6166E47E9009F9455 /* aps_gl_Texture2D.tolua */ = {isa = PBXFileReference; lastKnownFileType = text; name = aps_gl_Texture2D.tolua; path = tolua/aps_gl_Texture2D.tolua; sourceTree = "<group>"; };
-		D6FD44B8166E496A009F9455 /* BindToLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindToLua.h; path = tolua/BindToLua.h; sourceTree = "<group>"; };
+		D6FD44B8166E496A009F9455 /* BindToLua.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = BindToLua.h; path = tolua/BindToLua.h; sourceTree = "<group>"; };
 		D6FD44BE166E6E3C009F9455 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		D6FD44BF166E6E3C009F9455 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		D6FD44C2166E74EF009F9455 /* aps_gl_Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_gl_Color.h; path = tolua/aps_gl_Color.h; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				D691345B1680CBDA00BDBFB3 /* libogg.a in Frameworks */,
 				D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */,
 				D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */,
-				D6760C2016778BAA005B9821 /* liblua.5.1.4.dylib in Frameworks */,
+				D69F6BCC16D4AA1100663FD9 /* liblua.5.1.5.dylib in Frameworks */,
 				D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */,
 				D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */,
 				D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */,
@@ -227,7 +227,7 @@
 				D691345C1680CC3400BDBFB3 /* libvorbis.a */,
 				D691345D1680CC3400BDBFB3 /* libvorbisfile.a */,
 				D691345A1680CBD900BDBFB3 /* libogg.a */,
-				D60C6655166DEAC6005C7CC8 /* liblua.5.1.4.dylib */,
+				D69F6BCB16D4AA1100663FD9 /* liblua.5.1.5.dylib */,
 				D60A7A1B1665282300AE87C5 /* GLFW.cpp */,
 				D60A7A1C1665282300AE87C5 /* GLFW.h */,
 				D60A7A0E166520C900AE87C5 /* main.cpp */,
@@ -513,13 +513,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -543,14 +543,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -580,6 +580,8 @@
 					/usr/local/Cellar/libogg/1.3.0/lib,
 					/usr/local/Cellar/libvorbis/1.3.3/lib,
 					/usr/local/Cellar/msgpack/0.5.7/lib,
+					"\"$(SRCROOT)/GLFWTest\"",
+					/usr/local/Cellar/lua/5.1.5/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -605,6 +607,8 @@
 					/usr/local/Cellar/libogg/1.3.0/lib,
 					/usr/local/Cellar/libvorbis/1.3.3/lib,
 					/usr/local/Cellar/msgpack/0.5.7/lib,
+					"\"$(SRCROOT)/GLFWTest\"",
+					/usr/local/Cellar/lua/5.1.5/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

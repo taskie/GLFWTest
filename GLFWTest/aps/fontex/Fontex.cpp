@@ -129,7 +129,7 @@ private:
 		{
 			aps::font::GlyphBitmap bitmap = fontManager_.getGlyphBitmap(fontName, charCode, size);
 			
-			std::vector<GLubyte> data(bitmap.width() * bitmap.height() * 4);
+			std::vector<GLubyte> data(bitmap.size() * 4);
 			for (int y = 0; y < bitmap.height(); ++y)
 			{
 				for (int x = 0; x < bitmap.width(); ++x)
@@ -142,7 +142,7 @@ private:
 				}
 			}
 			
-			auto texture = aps::gl::Texture2D::fromData(&data[0], bitmap.width(), bitmap.height());
+			auto texture = aps::gl::Texture2D::fromData(data.data(), bitmap.width(), bitmap.height());
 			texture.parameter(GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			texture.parameter(GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			auto texShape = aps::gl::ShapeContainer::rectWithTexture(texture, color);

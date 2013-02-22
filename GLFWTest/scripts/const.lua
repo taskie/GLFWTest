@@ -21,7 +21,7 @@ Col.orange = Rct.color({1, 0.8, 0, 1})
 Mys = {}
 
 -- ƒŠƒvƒŒƒCŒİŠ·«
-Mys.version = "1.0.0 (C83 Edition)"
+Mys.version = "1.1.0"
 
 Mys.fps = 60
 
