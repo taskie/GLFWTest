@@ -223,10 +223,10 @@ end
 
 function Enm.Spiral:fire()
 	local interval = 16 - math.floor(self.level / 2)
-	if interval < 4 then interval = 4 end
+	if interval < 7 then interval = 7 end
 	if self.frame % interval == 0 then
 		local way = 4
-		if self.level >= 30 then way = 8 end
+		if self.level >= 30 then way = 6 end
 		for i = 0, way - 1 do
 			self:shoot(self.x, self.y, self.rot + i / way * 360, 2.5, 1)
 		end
@@ -295,8 +295,8 @@ function Enm.Base:new(model, x, y, rot)
 end
 
 function Enm.Base:fire()
-	local interval = 9 - math.floor(self.level / 3)
-	if interval < 2 then interval = 2 end
+	local interval = 12 - math.floor(self.level / 3)
+	if interval < 4 then interval = 4 end
 	if self.frame % interval == 0 then
 		self:shoot(self.x, self.y, self.k, 3, 1)
 		self:shoot(self.x, self.y, self.k, 4, 1)
@@ -379,10 +379,12 @@ end
 
 function Enm.Bug:fire()
 	local interval = 20 - math.floor(self.level)
-	if interval < 4 then interval = 2 end
-	if self.level >= 30 then interval = 1 end
+	if interval < 4 then interval = 4 end
 	if self.frame % interval < 1 then
 		self:shoot(self.x, self.y, self.model.random:next(0, 360), self.model.random:next(0.3, 0.7), 1)
+		if self.level >= 30 then
+			self:shoot(self.x, self.y, self.model.random:next(0, 360), self.model.random:next(0.7, 1.0), 1)
+		end
 	end
 end
 
@@ -393,7 +395,7 @@ subclass ("Sharp", Enemy, Enm)
 	vertices = {{0, 0}, {0, 20}, {5, 15}, {10, 15}, {10, 20}, {20, 10}, {10, 0}, {10, 5}, {5, 5}},
 	cx = 10, cy = 10,
 	color = {0.2, 0.7, 0.4, 1.0},
-	param = {r = 10, hp = 50, power = 15, defence = 50, exp = 11^3}
+	param = {r = 10, hp = 40, power = 15, defence = 50, exp = 11^3}
 }
 Enemy.setEnemy(Enm.Sharp)
 Enm.Sharp.move = Motion.uniform
@@ -432,7 +434,7 @@ subclass ("Fatal", Enemy, Enm)
 	vertices = {{0, 0}, {20, 15}, {20, 5}, {0, 20}},
 	cx = 10, cy = 10,
 	color = {0.8, 0.4, 0.2, 1.0},
-	param = {r = 10, hp = 50, power = 20, defence = 60, exp = 12^3}
+	param = {r = 10, hp = 40, power = 20, defence = 60, exp = 12^3}
 }
 Enemy.setEnemy(Enm.Fatal)
 
