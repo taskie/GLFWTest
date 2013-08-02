@@ -3,10 +3,10 @@ subclass ("SideBar", Actor) {}
 function SideBar:new(model)
 	self.super:new()
 	self.model = model
-	self.barRect = Rct.Rect(Mys.field.x, Mys.screen.h, "polygon", {0.8, 0.8, 0.8, 0.5}, 0, 0)
+	self.barRect = Rct.Rect(Mys.field.x, Mys.screen.h, "polygon", Col.bar, 0, 0)
 	
 	self.margin = 20
-	local textColor = {0.2, 0.2, 0.2, 1}
+	local textColor = Col.text
 	self.playersInfo = {}
 	self.playersInfo.hp = Rct.Text("HP", "black", 12, textColor, "l")
 	self.playersInfo.hpValue = Rct.Text("4 / 33", "thin", 28, textColor, "l")
@@ -18,7 +18,9 @@ function SideBar:new(model)
 	self.playersInfo.expValue = Rct.Text("0", "thin", 28, textColor, "r")
 	local barLength = Mys.field.x - 2 * self.margin
 	self.playersInfo.expBar = Rct.Rect(barLength, 3, "polygon", textColor, barLength, 0)
-	
+	self.playersInfo.combo = Rct.Text("COMBO", "regular", 12, textColor, "l")
+	self.playersInfo.comboValue = Rct.Text("0", "thin", 28, textColor, "l")
+
 	self.weaponInfo = {}
 	self.weaponInfo.weapons = Rct.Text("WEAPONS", "black", 12, textColor, "r")
 	self.weaponInfo.choice = 1
@@ -57,6 +59,8 @@ function SideBar:update()
 		if player.level == player.levelMax then expBarRatio = 0 end
 		self.playersInfo.expBar.shape:setScale(expBarRatio, 1)
 		
+		self.playersInfo.comboValue:renew(player.combo)
+
 		self.weaponInfo.choice = player.weapon.choice
 		self.weaponInfo.choiceMax = player.weapon.lengthMax
 		for i = 1, player.weapon.lengthMax do
@@ -90,6 +94,8 @@ function SideBar:draw()
 	local margin = self.margin
 	self.playersInfo.hp:draw(Mys.field.wx + margin, Mys.screen.h - margin - 10 - 33)
 	self.playersInfo.hpValue:draw(Mys.field.wx + margin, Mys.screen.h - margin - 10)
+	self.playersInfo.combo:draw(Mys.field.wx + margin, Mys.screen.h - margin - 10 - 33 - 80)
+	self.playersInfo.comboValue:draw(Mys.field.wx + margin, Mys.screen.h - margin - 10 - 80)
 	self.playersInfo.hpBar:draw(Mys.field.wx + margin, Mys.screen.h - margin)
 	self.playersInfo.exp:draw(Mys.field.x - margin + 1, Mys.screen.h - margin - 120 - 10 - 33)
 	self.playersInfo.expValue:draw(Mys.field.x - margin + 2, Mys.screen.h - margin - 120 - 10)

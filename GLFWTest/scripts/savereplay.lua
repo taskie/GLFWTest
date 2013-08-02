@@ -28,7 +28,7 @@ function Scn.SaveReplay:new(oldScene, replayData)
 	end
 	--]]
 	
-	local textColor = {0.2, 0.2, 0.2, 1}
+	local textColor = Col.text
 	self.input = Input()
 	self.saveReplay = Rct.Text("SAVE REPLAY", "thin", 48, textColor, "c")
 	

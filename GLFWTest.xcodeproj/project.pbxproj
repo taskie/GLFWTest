@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D60265E417802908004FBC0D /* libluajit-5.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D60265E317802908004FBC0D /* libluajit-5.1.a */; };
 		D60934A61684DE2800F85074 /* JoystickInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934A41684DE2800F85074 /* JoystickInput.cpp */; };
 		D60934B21684EC0400F85074 /* XYInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934B01684EC0300F85074 /* XYInput.cpp */; };
 		D60934B91684EC6300F85074 /* XYState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934B71684EC6300F85074 /* XYState.cpp */; };
@@ -42,7 +43,6 @@
 		D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965BB4166B921E00C6E53C /* libfreetype.a */; };
 		D6965BBA166B95E900C6E53C /* ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */; };
 		D6965BC3166BA42500C6E53C /* Fontex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BC1166BA42500C6E53C /* Fontex.cpp */; };
-		D69F6BCC16D4AA1100663FD9 /* liblua.5.1.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F6BCB16D4AA1100663FD9 /* liblua.5.1.5.dylib */; };
 		D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD449D166E4365009F9455 /* libtolua++.a */; };
 		D6FD44A3166E4399009F9455 /* aps_font_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */; };
 		D6FD44AA166E45DD009F9455 /* aps_gl_ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD44A4166E45DD009F9455 /* aps_gl_ShapeContainer.cpp */; };
@@ -73,6 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D60265E317802908004FBC0D /* libluajit-5.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluajit-5.1.a"; path = "/usr/local/Cellar/luajit/2.0.2/lib/libluajit-5.1.a"; sourceTree = "<absolute>"; };
 		D60934A41684DE2800F85074 /* JoystickInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoystickInput.cpp; sourceTree = "<group>"; };
 		D60934A51684DE2800F85074 /* JoystickInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickInput.h; sourceTree = "<group>"; };
 		D60934B01684EC0300F85074 /* XYInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XYInput.cpp; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 		D6965BB9166B95E800C6E53C /* ShapeElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeElement.h; sourceTree = "<group>"; };
 		D6965BC1166BA42500C6E53C /* Fontex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fontex.cpp; sourceTree = "<group>"; };
 		D6965BC2166BA42500C6E53C /* Fontex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fontex.h; sourceTree = "<group>"; };
-		D69F6BCB16D4AA1100663FD9 /* liblua.5.1.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.5.dylib; path = /usr/local/Cellar/lua/5.1.5/lib/liblua.5.1.5.dylib; sourceTree = "<absolute>"; };
 		D6FD449D166E4365009F9455 /* libtolua++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtolua++.a"; path = "/usr/local/Cellar/tolua++/1.0.93/lib/libtolua++.a"; sourceTree = "<absolute>"; };
 		D6FD44A1166E4399009F9455 /* aps_font_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aps_font_Manager.cpp; path = tolua/aps_font_Manager.cpp; sourceTree = "<group>"; };
 		D6FD44A2166E4399009F9455 /* aps_font_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aps_font_Manager.h; path = tolua/aps_font_Manager.h; sourceTree = "<group>"; };
@@ -188,10 +188,10 @@
 				D691345B1680CBDA00BDBFB3 /* libogg.a in Frameworks */,
 				D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */,
 				D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */,
-				D69F6BCC16D4AA1100663FD9 /* liblua.5.1.5.dylib in Frameworks */,
 				D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */,
 				D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */,
 				D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */,
+				D60265E417802908004FBC0D /* libluajit-5.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +227,7 @@
 				D691345C1680CC3400BDBFB3 /* libvorbis.a */,
 				D691345D1680CC3400BDBFB3 /* libvorbisfile.a */,
 				D691345A1680CBD900BDBFB3 /* libogg.a */,
-				D69F6BCB16D4AA1100663FD9 /* liblua.5.1.5.dylib */,
+				D60265E317802908004FBC0D /* libluajit-5.1.a */,
 				D60A7A1B1665282300AE87C5 /* GLFW.cpp */,
 				D60A7A1C1665282300AE87C5 /* GLFW.h */,
 				D60A7A0E166520C900AE87C5 /* main.cpp */,
@@ -582,6 +582,13 @@
 					/usr/local/Cellar/msgpack/0.5.7/lib,
 					"\"$(SRCROOT)/GLFWTest\"",
 					/usr/local/Cellar/lua/5.1.5/lib,
+					/usr/local/Cellar/luajit/2.0.2/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-pagezero_size",
+					10000,
+					"-image_base",
+					"100000000\n$",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -609,6 +616,13 @@
 					/usr/local/Cellar/msgpack/0.5.7/lib,
 					"\"$(SRCROOT)/GLFWTest\"",
 					/usr/local/Cellar/lua/5.1.5/lib,
+					/usr/local/Cellar/luajit/2.0.2/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-pagezero_size",
+					10000,
+					"-image_base",
+					"100000000\n$",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

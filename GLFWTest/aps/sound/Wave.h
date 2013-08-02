@@ -106,7 +106,7 @@ namespace aps
 				dataSize_ = file_->word32LE();	// fmtVelocity
 				
 				if (!file_->isGood()) { bad_ = true; return; }
-				bitStream_ = 0;	
+				bitStream_ = 0;
 			}
 			
 			std::shared_ptr<binary::BinaryFileReader> file_;

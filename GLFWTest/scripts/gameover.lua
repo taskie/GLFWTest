@@ -11,7 +11,7 @@ function Scn.GameOver:new(oldScene)
 	
 	Mxr:rewindAndPlay("ng")
 	
-	local textColor = {0.2, 0.2, 0.2, 1}
+	local textColor = Col.text
 	self.input = Input()
 	self.gameOver = Rct.Text("GAME OVER", "thin", 48, textColor, "c")
 	self.scoreText = Rct.Text("Score : 0", "regular", 16, textColor, "c")

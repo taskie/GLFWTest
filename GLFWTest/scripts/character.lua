@@ -12,7 +12,7 @@ function Character:new(x, y, rot, model, param)
 	
 	self.hpmax = self.hp
 	self.level = 1
-	self.levelMax = 50
+	self.levelMax = 100
 	self:levelUp()
 	
 	self.bullets = Set()

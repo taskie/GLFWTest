@@ -134,7 +134,9 @@ void MyGLFW::willOpenWindow()
 
 void MyGLFW::openWindow()
 {
-#if defined(NDEBUG) and 0
+#if 0
+//#if 1
+//#if defined(NDEBUG)
 	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_FULLSCREEN);
 #else
 	glfwOpenWindow(640, 480, 0, 0, 0, 0, 0, 0, GLFW_WINDOW);
@@ -144,9 +146,9 @@ void MyGLFW::openWindow()
 void MyGLFW::didOpenWindow()
 {
 #if defined(NDEBUG)
-	glfwSetWindowTitle("MYSTiG inflation");
+	glfwSetWindowTitle("MYSTiG hyper inflation");
 #else
-	glfwSetWindowTitle("MYSTiG inflation - Debug");
+	glfwSetWindowTitle("MYSTiG hyper inflation - Debug");
 #endif
 }
 

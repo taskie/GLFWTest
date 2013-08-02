@@ -18,10 +18,15 @@ Col.aqua = Rct.color({0.8, 0.8, 1, 1})
 Col.lemon = Rct.color({1, 1, 0.8, 1})
 Col.orange = Rct.color({1, 0.8, 0, 1})
 
+Col.background = Rct.color({0.85, 1.00, 0.90, 1})
+Col.text = Rct.color({0.8, 0.1, 0.6, 1})
+Col.lightText = Rct.color({0.8, 0.1, 0.6, 0.3})
+Col.bar = Rct.color({1.0, 0.9, 0.2, 0.5})
+
 Mys = {}
 
 -- ÉäÉvÉåÉCå›ä∑ê´
-Mys.version = "1.1.0"
+Mys.version = "0.1.0"
 
 Mys.fps = 60
 

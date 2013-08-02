@@ -78,14 +78,18 @@ public:
 		
 		std::vector<Shape> shapes;
 		boost::transform(ucs2, std::back_inserter(shapes),
-						 [this, fontName, size, color](std::size_t c){ return getShape(fontName, c, size, color); });
+						 [this, fontName, size, color](std::size_t c){
+							 return getShape(fontName, c, size, color);
+						 });
 #else
 		std::vector<Shape> shapes;
 		boost::transform(text, std::back_inserter(shapes),
-						 [this, fontName, size, color](std::size_t c){ return getShape(fontName, c, size, color); });
+						 [this, fontName, size, color](std::size_t c){
+							 return getShape(fontName, c, size, color);
+						 });
 #endif
 		unsigned int old = 0;
-		int pen = 0;
+		double pen = 0;
 		gl::ShapeContainer stringShape;
 		for (auto shape : shapes) {
 			if (old != 0) pen += fontManager_.kerning(fontName, old, shape.character(), size);
@@ -147,7 +151,7 @@ private:
 			texture.parameter(GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			auto texShape = aps::gl::ShapeContainer::rectWithTexture(texture, color);
 			Shape shape(static_cast<unsigned int>(charCode), texShape, bitmap);
-			cache_[fontName][size][charCode] = shape;
+			fontSizeDictIter->second[charCode] = shape;
 			return shape;
 		}
 	}
