@@ -38,12 +38,12 @@ function Stage:new(parameter)
    self.isCleared = false
    
    self.bgms = {}
-   self.bgms[1] = "conduit"
-   self.bgms[4] = "retrofire"
-   self.bgms[7] = "influx"
-   self.bgms[11] = "febricula_inf"
-   self.bgms[14] = "cascade_inf"
-   self.bgms[17] = "stig_inf"
+   self.bgms[1] = "febricula"
+   self.bgms[4] = "cascade"
+   self.bgms[7] = "stig"
+   self.bgms[11] = "conduit"
+   self.bgms[14] = "retrofire"
+   self.bgms[17] = "influx"
    self.bgmCycle = 20
    self.nowPlaying = false
    
