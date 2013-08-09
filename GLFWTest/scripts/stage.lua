@@ -8,17 +8,29 @@ function Stage:new(parameter)
    
    self.enemyProbability = parameter.enemyProbability or 0.01
    self.enemyTable = {}
-   self.enemyTable[1] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Quick, 1}}
-   self.enemyTable[2] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Quick, 1}, {Enm.Block, 1}}
-   self.enemyTable[3] = {{Enm.Winder, 1}, {Enm.Quick, 1}, {Enm.Block, 1}, {Enm.Scatter, 1}}
-   self.enemyTable[4] = {{Enm.Quick, 1}, {Enm.Block, 1}, {Enm.Scatter, 1}, {Enm.Spiral, 1}, {Enm.Bee, 1}}
-   self.enemyTable[5] = {{Enm.Block, 1}, {Enm.Scatter, 1}, {Enm.Spiral, 1}, {Enm.Bee, 1}, {Enm.Base, 1}}
-   self.enemyTable[6] = {{Enm.Scatter, 1}, {Enm.Spiral, 1}, {Enm.Bee, 1}, {Enm.Base, 1}, {Enm.Sniper, 1}}
-   self.enemyTable[7] = {{Enm.Spiral, 1}, {Enm.Bee, 1}, {Enm.Base, 1}, {Enm.Sniper, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}}
-   self.enemyTable[8] = {{Enm.Bee, 1}, {Enm.Base, 1}, {Enm.Sniper, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}}
-   self.enemyTable[9] = {{Enm.Base, 1}, {Enm.Sniper, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}, {Enm.Back, 1}}
-   self.enemyTable[10] = {{Enm.Sniper, 1}, {Enm.Bug, 1}, {Enm.Sharp, 1}, {Enm.Fatal, 1}, {Enm.Back, 1}, {Enm.Reflect, 1}}
-   
+   self.enemyTable[1] = {{Enm.Zaco, 2}, {Enm.Winder, 2}, {Enm.Sniper, 1}, {Enm.Quick, 1}}
+   self.enemyTable[2] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Sniper, 2}, {Enm.Quick, 2}, {Enm.Scatter, 1}}
+   self.enemyTable[3] = {{Enm.Winder, 2}, {Enm.Sniper, 1}, {Enm.Block, 2}, {Enm.Quick, 1}, {Enm.Scatter, 2}}
+   self.enemyTable[4] = {{Enm.Spiral, 2}, {Enm.Block, 2}, {Enm.Scatter, 2}, {Enm.Breakaway, 1}}
+   self.enemyTable[5] = {{Enm.Bee, 2}, {Enm.Spiral, 2}, {Enm.Block, 2}, {Enm.Base, 1}, {Enm.Breakaway, 1}}
+   self.enemyTable[6] = {{Enm.Bee, 2}, {Enm.Base, 2}, {Enm.Bug, 3}, {Enm.Conveyor, 1}, {Enm.Breakaway, 1}}
+   self.enemyTable[7] = {{Enm.Sharp, 2}, {Enm.Bug, 2}, {Enm.Conveyor, 2}, {Enm.Sniper, 1}, {Enm.Block, 1}}
+   self.enemyTable[8] = {{Enm.Back, 1}, {Enm.Sharp, 2}, {Enm.Fatal, 2}, {Enm.Block, 1}, {Enm.Curtain, 1}}
+   self.enemyTable[9] = {{Enm.Back, 1}, {Enm.Radio, 2}, {Enm.Fatal, 2}, {Enm.Bug, 1}, {Enm.Curtain, 1}}
+   self.enemyTable[10] = {{Enm.Back, 1}, {Enm.Sharp, 2}, {Enm.Radio, 2}, {Enm.Fatal, 2}, {Enm.Bug, 1}, {Enm.Block, 1}, {Enm.Reflect, 1}, {Enm.Splash, 1}}
+   self.enemyTable[11] = {{Enm.Zaco, 2}, {Enm.Winder, 2}, {Enm.Sniper, 1}, {Enm.Quick, 1}, {Enm.Conveyor, 2}, {Enm.Block, 2}, {Enm.Splash, 1}}
+   self.enemyTable[12] = {{Enm.Base, 2}, {Enm.Back, 1}, {Enm.Bee, 1}, {Enm.Curtain, 1}, {Enm.Breakaway, 1}, {Enm.Radio, 1}}
+   self.enemyTable[13] = {{Enm.Spiral, 2}, {Enm.Splash, 2}, {Enm.Sharp, 2}, {Enm.Curtain, 2}, {Enm.Scatter, 2}}
+   self.enemyTable[14] = {{Enm.Back, 3}, {Enm.Zaco, 2}, {Enm.Conveyor, 2}, {Enm.Spiral, 1}}
+   self.enemyTable[15] = {{Enm.Bee, 3}, {Enm.Curtain, 1}, {Enm.Base, 1}, {Enm.Breakaway, 1}}
+   self.enemyTable[16] = {{Enm.Conveyor, 3}, {Enm.Back, 1}, {Enm.Block, 1}, {Enm.Bug, 1}, {Enm.Base, 1}, {Enm.Scatter, 1}}
+   self.enemyTable[17] = {{Enm.Sharp, 2}, {Enm.Sniper, 2}, {Enm.Block, 2}, {Enm.Quick, 2}, {Enm.Winder, 1}}
+   self.enemyTable[18] = {{Enm.Curtain, 2}, {Enm.Bee, 2}, {Enm.Winder, 2}, {Enm.Back, 1}, {Enm.Fatal, 2}, {Enm.Bug, 2}}
+   self.enemyTable[19] = {{Enm.Zaco, 2}, {Enm.Winder, 2}, {Enm.Sniper, 2}, {Enm.Quick, 2}, {Enm.Scatter, 2}, {Enm.Block, 2},
+			  {Enm.Spiral, 2}, {Enm.Bee, 2}, {Enm.Breakaway, 1}}
+   self.enemyTable[20] = {{Enm.Bug, 2}, {Enm.Base, 2}, {Enm.Sharp, 2}, {Enm.Fatal, 2}, {Enm.Back, 2},
+			  {Enm.Reflect, 1}, {Enm.Radio, 1}, {Enm.Conveyor, 1}, {Enm.Splash, 1}, {Enm.Curtain, 1}}
+
    self.enemyWeight = {}
    for stage, stageTable in ipairs(self.enemyTable) do
       self.enemyWeight[stage] = Mys.tableToWeightArray(stageTable)
@@ -44,12 +56,10 @@ function Stage:update(model)
    if self.count > 0 then
       local noEnemy = model.enemies:isEmpty()
       if model.random:next() < self.enemyProbability or noEnemy then
-	 local tableNum = (self.count - 1) % 10 + 1
+	 local tableNum = self.count
 	 local en = Mys.choiceWithWeight(self.enemyWeight[tableNum], model.random)
 	 local enemy = self.enemyTable[tableNum][en][1](model)
-	 if self.count > 10 then
-	    enemy:takeExp(math.floor((self.count - 1) / 10) * 27000)
-	 end
+	 enemy:takeExp(math.ceil(self.count ^ 3) - 1)
 	 model.enemies:add(enemy)
       end
    end
@@ -86,6 +96,21 @@ function Stage:update(model)
 end
 
 function Stage:next(model)
+   local player = false
+   for k, player_ in model.players:pairs() do
+      player = player_
+   end
+   
+   for id, bullet in model.enemiesBullets:pairs() do
+      bullet.isExisting = false
+      model.experiences:add(Exp.Bullet(player, bullet, bullet.shooter.expBulletShape))
+   end
+
+   for k, enemy in model.enemies:pairs() do
+      enemy.killer = player
+      enemy:death()
+   end
+   
    if self.count == self.countMax then
       self:clear(model)
       return
@@ -106,21 +131,5 @@ end
 
 function Stage:clear(model)
    self.isCleared = true
-
-   local player = false
-   for k, player_ in model.players:pairs() do
-      player = player_
-   end
-   
-   for id, bullet in model.enemiesBullets:pairs() do
-      bullet.isExisting = false
-      model.experiences:add(Exp.Bullet(player, bullet, bullet.shooter.expBulletShape))
-   end
-
-   for k, enemy in model.enemies:pairs() do
-      enemy.killer = player
-      enemy:death()
-   end
-
    -- Main.scene = GameClear(Main.scene)
 end

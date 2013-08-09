@@ -9,7 +9,7 @@ function Scn.GameClear:new(oldScene)
 	self.oldScene = oldScene
 	Mxr:fadeOut(oldScene.model.stage.nowPlaying, Mys.fps * 5)
 	
-	local textColor = {0.2, 0.2, 0.2, 1}
+	local textColor = Col.text
 	self.input = Input()
 	self.gameClear = Rct.Text("GAME CLEAR", "thin", 48, textColor, "c")
 	self.scoreText = Rct.Text("Score : 0", "regular", 16, textColor, "c")
