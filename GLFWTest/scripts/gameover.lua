@@ -26,9 +26,7 @@ function Scn.GameOver:update()
 	end
 	self.scoreText:renew("Score : " .. self.score)
 	
-	if self.frame > Mys.fps * 1 and self.input:isJustPressed("Z")
-	   or self.frame > Mys.fps * 10
-	then
+	if self.frame > Mys.fps * 1 and self.input:isJustPressed("Z") then
 		if self.oldScene.model.input.classname == "LoggingInput" then
 			local replayData = {}
 			replayData.date = os.date("%y/%m/%d %T")

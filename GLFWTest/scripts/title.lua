@@ -44,7 +44,7 @@ function Scn.Title:update()
    self.background:update()
    if #self.capturedArray ~= 0 and (self.random:next() < 0.01 or self.enemies:isEmpty()) then
       local name = self.capturedArray[self.random:nextInt(1, #self.capturedArray)]
-      name = "Test"
+      -- name = "Test"
       self.enemies:add(Enm[name](self))
    end
    
