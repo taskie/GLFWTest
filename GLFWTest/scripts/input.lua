@@ -23,6 +23,12 @@ function Joystick:new()
 end
 
 function Joystick:isPressed(query)
+	if Joystick.buttonMap.stick then
+		local pressed = self.device:xyState(Joystick.buttonMap.stick):direction(query):pressed()
+		if pressed then
+			return true
+		end
+	end
 	local key = Joystick.buttonMap[query]
 	if not key then return false end
 	return self.device:buttonState(key):pressed()

@@ -5,7 +5,11 @@ return {
 	RIGHT = 13,
 	DOWN = 14,
 	LEFT = 15,
-	LSHIFT = 11
+	LSHIFT = 4,
+	ESC = 9,
+	
+	stick = 0,
+	threshold = 0.5
 }
 
 --[[
@@ -19,6 +23,10 @@ return {
 	RIGHT = 13,
 	DOWN = 14,
 	LEFT = 15,
-	LSHIFT = 11
+	LSHIFT = 11,
+	ESC = 9,
+	
+	stick = 0,
+	threshold = 0.5
 }
 --]]

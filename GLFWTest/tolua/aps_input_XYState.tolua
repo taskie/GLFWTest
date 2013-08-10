@@ -12,5 +12,6 @@ module input
 		double y() const;
 		double circledX() const;
 		double circledY() const;
+		ButtonState direction(std::string key) const;
 	};
 }

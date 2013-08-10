@@ -1,6 +1,6 @@
 /*
 ** Lua binding: aps_input_XYState
-** Generated automatically by tolua++-1.0.92 on Sat Dec 22 05:38:52 2012.
+** Generated automatically by tolua++-1.0.92 on 08/11/13 02:56:58.
 */
 
 /* Exported function */

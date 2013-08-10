@@ -1,6 +1,6 @@
 /*
 ** Lua binding: aps_input_XYState
-** Generated automatically by tolua++-1.0.92 on Sat Dec 22 05:38:52 2012.
+** Generated automatically by tolua++-1.0.92 on 08/11/13 02:56:58.
 */
 
 #ifndef __cplusplus
@@ -25,12 +25,20 @@ static int tolua_collect_XYState (lua_State* tolua_S)
 	Mtolua_delete(self);
 	return 0;
 }
+
+static int tolua_collect_ButtonState (lua_State* tolua_S)
+{
+ ButtonState* self = (ButtonState*) tolua_tousertype(tolua_S,1,0);
+	Mtolua_delete(self);
+	return 0;
+}
 #endif
 
 
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
+ tolua_usertype(tolua_S,"ButtonState");
  tolua_usertype(tolua_S,"XYState");
 }
 
@@ -254,6 +262,50 @@ static int tolua_aps_input_XYState_input_XYState_circledY00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: direction of class  XYState */
+#ifndef TOLUA_DISABLE_tolua_aps_input_XYState_input_XYState_direction00
+static int tolua_aps_input_XYState_input_XYState_direction00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"const XYState",0,&tolua_err) ||
+     !tolua_iscppstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  const XYState* self = (const XYState*)  tolua_tousertype(tolua_S,1,0);
+  std::string key = ((std::string)  tolua_tocppstring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'direction'", NULL);
+#endif
+  {
+   ButtonState tolua_ret = (ButtonState)  self->direction(key);
+   {
+#ifdef __cplusplus
+    void* tolua_obj = Mtolua_new((ButtonState)(tolua_ret));
+     tolua_pushusertype(tolua_S,tolua_obj,"ButtonState");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#else
+    void* tolua_obj = tolua_copy(tolua_S,(void*)&tolua_ret,sizeof(ButtonState));
+     tolua_pushusertype(tolua_S,tolua_obj,"ButtonState");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#endif
+   }
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'direction'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_aps_input_XYState_open (lua_State* tolua_S)
 {
@@ -277,6 +329,7 @@ TOLUA_API int tolua_aps_input_XYState_open (lua_State* tolua_S)
     tolua_function(tolua_S,"y",tolua_aps_input_XYState_input_XYState_y00);
     tolua_function(tolua_S,"circledX",tolua_aps_input_XYState_input_XYState_circledX00);
     tolua_function(tolua_S,"circledY",tolua_aps_input_XYState_input_XYState_circledY00);
+    tolua_function(tolua_S,"direction",tolua_aps_input_XYState_input_XYState_direction00);
    tolua_endmodule(tolua_S);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);

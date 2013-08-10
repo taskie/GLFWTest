@@ -280,11 +280,15 @@ void MyGLFW::draw()
 	{
 		joystickInput->update();
 		
-		int joystickNo;
-		for (joystickNo = GLFW_JOYSTICK_1; joystickNo < GLFW_JOYSTICK_LAST; ++joystickNo)
-		{
-			bool joyStickOn = glfwGetJoystickParam(GLFW_JOYSTICK_1, GLFW_PRESENT);
-			if (joyStickOn) break;
+		static int frame = 0;
+		static int joystickNo;
+		
+		if (frame % 300 == 0) {
+			for (joystickNo = GLFW_JOYSTICK_1; joystickNo < GLFW_JOYSTICK_LAST; ++joystickNo)
+			{
+				bool joyStickOn = glfwGetJoystickParam(joystickNo, GLFW_PRESENT);
+				if (joyStickOn) break;
+			}
 		}
 		
 		if (joystickNo != GLFW_JOYSTICK_LAST)
@@ -308,6 +312,8 @@ void MyGLFW::draw()
 				}
 			}
 		}
+		
+		++frame;
 	}
 		
 	auto ret = lua->callFunction("update", aps::lua::LuaTuple());

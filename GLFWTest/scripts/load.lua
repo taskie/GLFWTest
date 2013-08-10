@@ -13,7 +13,7 @@ fontManager:loadFont("regular", "fonts/mplus-2p-regular.ttf", 0)
 fontManager:loadFont("black", "fonts/mplus-2p-black.ttf", 0)
 --]]
 --[[
-local varFont = "C:\\Windows\\Fonts\\verdana.ttf"
+local varFont = "C:\\Windows\\Fonts\\meiryo.ttc"
 fontManager:loadFont("thin", varFont, 0)
 fontManager:loadFont("regular", varFont, 0)
 fontManager:loadFont("black", varFont, 0)

@@ -13,6 +13,7 @@ function Scn.Title:new()
    self.mystig = Rct.Text("MYSTiG", "thin", 96, textColor, "l")
    self.infration = Rct.Text("hyper inflation", "thin", 48, textColor, "l")
    self.version = Rct.Text("Ver. " .. Mys.version, "regular", 16, textColor, "l")
+   self.debug = Rct.Text("", "regular", 16, textColor, "l")
    
    self.items = {}
    self.items.texts = {"Start", "Customize", "Records", "Settings", "Quit"}
@@ -42,6 +43,9 @@ end
 
 function Scn.Title:update()
    self.background:update()
+   
+   self.debug:renew(joystickInput:xyState(0):x() .. " " .. joystickInput:xyState(0):y())
+   
    if #self.capturedArray ~= 0 and (self.random:next() < 0.01 or self.enemies:isEmpty()) then
       local name = self.capturedArray[self.random:nextInt(1, #self.capturedArray)]
       -- name = "Test"
@@ -126,6 +130,7 @@ function Scn.Title:draw()
    self.barRect:draw(Mys.field.wx)
    --	self.maskRect:draw(Mys.field.x)
    self.mystig:draw(Mys.screen.x + 50, 120)
+   self.debug:draw(Mys.screen.x + 50, 400)
    self.infration:draw(Mys.screen.x + 50, 180)
    self.version:draw(Mys.screen.x + 50, 240)
    self.items.choiceTriangle:draw(Mys.screen.wx - 40, 260 - 12 + (self.items.choice - 1) * 40, 180)
