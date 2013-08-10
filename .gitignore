@@ -170,3 +170,4 @@ pip-log.txt
 *.wav
 *.dat
 *.dylib
+UserInterfaceState.xcuserstate
