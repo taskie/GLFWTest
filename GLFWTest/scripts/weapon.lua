@@ -27,7 +27,7 @@ end
 function Weapon:takeExp(exp)
    local cexp = exp
    if self.owner.combo then
-      cexp = cexp * (1 + 0.01 * self.owner.combo)
+      cexp = cexp * math.max(1, 0.01 * self.owner.combo)
    end
    self.owner:takeExp(math.ceil(cexp / 2))
    return Weapon.super.takeExp(self, math.ceil(cexp / 2))

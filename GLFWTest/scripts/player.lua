@@ -139,7 +139,7 @@ function Player:updateCapture()
 	    expBase = self.weapon.actors[choice].exp
 	 end
 	 self.weapon.actors[choice] = Weapon(nearest, self)
-	 self.weapon.actors[choice].exp = expBase + nearest.exp
+	 self.weapon.actors[choice].exp = math.max(expBase, nearest.exp)
 	 self.weapon.actors[choice]:levelUp()
 	 local nextchoice = self.weapon.choice % self.weapon.lengthMax + 1
 	 if self.weapon.actors[nextchoice] == nil then
@@ -190,8 +190,4 @@ end
 
 function Player:incrementCombo()
    self.combo = self.combo + 1
-   if self.combo % 10 == 0 then
-      self.exp = self.exp + self.combo / 10
-      self:levelUp()
-   end
 end

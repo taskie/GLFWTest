@@ -36,15 +36,14 @@ function GameView:draw()
    for id, player in self.model.players:pairs() do
       Rct.Circle(player.capture.r, "polygon", {0, 0, 0, 0.1}):draw(player.x, player.y, 0)
    end
-   if self.verboseMode then
-      for id, enemy in self.model.enemies:pairs() do
-	 Rct.Circle(enemy.hp / enemy.hpmax * 20, "polygon", {1, 0.8, 0.1, 0.2}):draw(enemy.x, enemy.y, 0)
-      end
+   for id, enemy in self.model.enemies:pairs() do
+      Rct.Circle(enemy.hp / enemy.hpmax * 20, "polygon", {1, 0.8, 0.1, 0.2}):draw(enemy.x, enemy.y, 0)
    end
    drawField(self.model.enemies)
    if self.verboseMode then
       for id, enemy in self.model.enemies:pairs() do
-	 Rct.Text(enemy.exp, "black", 9, {0, 0, 0, 1}, "c"):draw(enemy.x, enemy.y + 3, 0)
+	 Rct.Text(enemy.exp, "black", 9, {0, 0, 0.5, 1}, "c"):draw(enemy.x, enemy.y - 3, 0)
+	 Rct.Text(enemy.hp, "black", 9, {0, 0.5, 0, 1}, "c"):draw(enemy.x, enemy.y + 3, 0)
       end
    end
    drawField(self.model.enemiesBullets)

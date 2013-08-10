@@ -174,7 +174,7 @@ end
 function Enm.Block:fire()
    local n = math.floor(self.level / 3)
    if n > 10 then n = 10 end
-   if self.frame % 2 == 0 and self.frame % 30 < n then
+   if self.frame % 2 == 0 and self.frame % 60 < n then
       local way = self.level >= 10 and 8 or 4
       for i = 0, way - 1 do
 	 local angle = 90
@@ -182,7 +182,7 @@ function Enm.Block:fire()
 	 if nearest then
 	    angle = Mys.angle(self, nearest)
 	 end
-	 self:shoot(self.x, self.y, i * 360 / way + angle, 3, 1)
+	 self:shoot(self.x, self.y, i * 360 / way + angle, 2, 3, 1)
       end
    end
 end
@@ -291,7 +291,7 @@ end
 
 function Enm.Bee:fire()
    local interval = 60
-   if self.level >= 10 then interval = 30 end
+   if self.level >= 10 then interval = 45 end
    if self.frame % interval < 1 then
       local way = 1 + self.level
       if way > 10 then way = 10 end

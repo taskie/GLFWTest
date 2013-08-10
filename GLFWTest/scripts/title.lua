@@ -51,6 +51,7 @@ function Scn.Title:update()
       -- name = "Test"
       local enemy = Enm[name](self)
       if not enemy.isBoss then
+	 enemy:takeExp(5 ^ 4)
 	 self.enemies:add(enemy)
       end
    end

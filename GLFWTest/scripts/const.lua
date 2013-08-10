@@ -26,7 +26,7 @@ Col.bar = Rct.color({1.0, 0.9, 0.2, 0.5})
 Mys = {}
 
 -- ƒŠƒvƒŒƒCŒİŠ·«
-Mys.version = "0.1.0"
+Mys.version = "1.0.0"
 
 Mys.fps = 60
 

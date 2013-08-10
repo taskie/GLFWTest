@@ -12,6 +12,7 @@ local function getReplayHeader(n)
 	if rep.parameter.enemyProbability ~= 0.01 then detailstr = detailstr .. "[ER Lv. " .. (rep.parameter.enemyProbability * 100) .. "] " end
 	if rep.parameter.enemyWithEnemyMode then detailstr = detailstr .. "[IS] " end
 	if rep.parameter.bulletExpMode then detailstr = detailstr .. "[BE] " end
+	if rep.parameter.verboseMode then detailstr = detailstr .. "[V] " end
 	detailstr = detailstr .. " "
 	return str, detailstr
 end

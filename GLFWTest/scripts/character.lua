@@ -30,7 +30,8 @@ function Character:takeExp(exp)
 end
 
 function Character:calcRequiredExp(level)
-   return (self.level + 1) ^ 4
+   level = level or (self.level + 1)
+   return level ^ 4
 end
 
 function Character:levelUp()
