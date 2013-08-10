@@ -30,7 +30,11 @@ void XYState::setXY(double x, double y)
 	if (x_ >  0.5) { directionMap_["RIGHT"].down(); } else { directionMap_["RIGHT"].up(); }
 	if (y_ < -0.5) { directionMap_["DOWN"].down();  } else { directionMap_["DOWN"].up();  }
 	if (y_ >  0.5) { directionMap_["UP"].down();    } else { directionMap_["UP"].up();    }
-	for (auto pair : directionMap_) pair.second.update();
+}
+
+void XYState::update()
+{
+	for (auto& pair : directionMap_) pair.second.update();
 }
 
 double XYState::x() const { return x_; }

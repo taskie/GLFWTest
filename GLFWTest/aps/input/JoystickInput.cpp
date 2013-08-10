@@ -27,6 +27,7 @@ void JoystickInput::setXY(int num, double x, double y)
 void JoystickInput::update()
 {
 	buttonInput_.update();
+	xyInput_.update();
 }
 
 ButtonState JoystickInput::buttonState(int key) const

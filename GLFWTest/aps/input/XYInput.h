@@ -21,6 +21,7 @@ namespace aps
 		{
 		public:
 			void setXY(int type, double x, double y);
+			void update();
 			XYState xyState(int type) const;
 			
 		public:

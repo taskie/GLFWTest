@@ -281,7 +281,7 @@ void MyGLFW::draw()
 		joystickInput->update();
 		
 		static int frame = 0;
-		static int joystickNo;
+		static int joystickNo = GLFW_JOYSTICK_LAST;
 		
 		if (frame % 300 == 0) {
 			for (joystickNo = GLFW_JOYSTICK_1; joystickNo < GLFW_JOYSTICK_LAST; ++joystickNo)

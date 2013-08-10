@@ -25,6 +25,14 @@ void XYInput::setXY(int type, double x, double y)
 	}
 }
 
+void XYInput::update()
+{
+	for (auto& keyStatusPair : xyStateMap_)
+	{
+		keyStatusPair.second.update();
+	}
+}
+
 XYState XYInput::xyState(int type) const
 {
 	auto it = xyStateMap_.find(type);

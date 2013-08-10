@@ -21,6 +21,7 @@ namespace aps
 		public:
 			XYState();
 			void setXY(double x, double y);
+			void update();
 			double x() const;
 			double y() const;
 			double circledX() const;
