@@ -16,7 +16,7 @@ function Scn.Title:new()
    self.debug = Rct.Text("", "regular", 16, textColor, "l")
    
    self.items = {}
-   self.items.texts = {"Start", "Customize", "Records", "Settings", "Key Assign", "Quit"}
+   self.items.texts = {"Start", "Customize", "Records", "Settings", "Key Config", "Quit"}
    if not profile.records.cleared then self.items.texts[2] = " " end
    self.items.choice = 1
    self.items.choiceMax = #self.items.texts
@@ -94,9 +94,9 @@ function Scn.Title:update()
       elseif self.items.texts[self.items.choice] == "Records" then
 	 Mxr:play("ok")
 	 self.nextScene = Scn.Records()
-      elseif self.items.texts[self.items.choice] == "Key Assign" then
+      elseif self.items.texts[self.items.choice] == "Key Config" then
 	 Mxr:play("ok")
-	 self.nextScene = Scn.KeyAssign()
+	 self.nextScene = Scn.KeyConfig()
       elseif self.items.texts[self.items.choice] == "Quit" then
 	 return false
       end

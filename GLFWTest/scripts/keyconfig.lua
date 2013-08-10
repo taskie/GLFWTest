@@ -1,6 +1,6 @@
--- KeyAssign
+-- KeyConfig
 
-subclass ("KeyAssign", Actor, Scn) { }
+subclass ("KeyConfig", Actor, Scn) { }
 
 local function atIndex(t, value)
    for i, v in ipairs(t) do
@@ -9,8 +9,8 @@ local function atIndex(t, value)
    return nil
 end
 
-function Scn.KeyAssign:new(old)
-   Scn.KeyAssign.super.new(self)
+function Scn.KeyConfig:new(old)
+   Scn.KeyConfig.super.new(self)
    
    local textColor = Col.text
    self.oldScene = old
@@ -48,7 +48,7 @@ function Scn.KeyAssign:new(old)
 end
 
 
-function Scn.KeyAssign:update()
+function Scn.KeyConfig:update()
    self.background:update()
    Mxr:update()
    
@@ -81,15 +81,16 @@ function Scn.KeyAssign:update()
 	 self.nextScene = Scn.Title()
       end
       else
-      	for i = 1, 16 do
+      	for i = 0, 15 do
       		local state = self.input.joystick.device:buttonState(i)
       		if state:pressed() and state:just() then
       			local values = self.items.values
+      			local valueTextShapes = self.items.valueTextShapes
       			local choice = self.items.choice
       			local index = atIndex(values, i)
       			if index then
       				values[index], values[choice] = values[choice], values[index]
-	      			valueTextShapes[choice]:renew(tostring(values[index]))
+	      			valueTextShapes[index]:renew(tostring(values[index]))
 	      			valueTextShapes[choice]:renew(tostring(values[choice]))
       			else
 	      			values[choice] = i
@@ -101,10 +102,10 @@ function Scn.KeyAssign:update()
       	end
    end
    
-   return Scn.KeyAssign.super.update(self)
+   return Scn.KeyConfig.super.update(self)
 end
 
-function Scn.KeyAssign:draw()
+function Scn.KeyConfig:draw()
    self.background:draw()
    self.barRect:draw()
    self.barRect:draw(Mys.field.wx)
