@@ -38,7 +38,7 @@ function Scn.Settings:new(old)
       local param = profile.settings
       local values = self.items.values
       for i, name in ipairs(self.items.parameterNames) do
-	 self.items.valueChoices[i] = atIndex(values[i], math.floor(param[name] * 100 + 0.5)) or 1
+         self.items.valueChoices[i] = atIndex(values[i], math.floor(param[name] * 100 + 0.5)) or 1
       end
    end
    

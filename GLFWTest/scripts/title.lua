@@ -16,7 +16,7 @@ function Scn.Title:new()
    self.debug = Rct.Text("", "regular", 16, textColor, "l")
    
    self.items = {}
-   self.items.texts = {"Start", "Customize", "Records", "Settings", "Quit"}
+   self.items.texts = {"Start", "Customize", "Records", "Settings", "Key Assign", "Quit"}
    if not profile.records.cleared then self.items.texts[2] = " " end
    self.items.choice = 1
    self.items.choiceMax = #self.items.texts
@@ -44,7 +44,7 @@ end
 function Scn.Title:update()
    self.background:update()
    
-   self.debug:renew(joystickInput:xyState(0):x() .. " " .. joystickInput:xyState(0):y())
+   -- self.debug:renew("")
    
    if #self.capturedArray ~= 0 and (self.random:next() < 0.01 or self.enemies:isEmpty()) then
       local name = self.capturedArray[self.random:nextInt(1, #self.capturedArray)]
@@ -94,6 +94,9 @@ function Scn.Title:update()
       elseif self.items.texts[self.items.choice] == "Records" then
 	 Mxr:play("ok")
 	 self.nextScene = Scn.Records()
+      elseif self.items.texts[self.items.choice] == "Key Assign" then
+	 Mxr:play("ok")
+	 self.nextScene = Scn.KeyAssign()
       elseif self.items.texts[self.items.choice] == "Quit" then
 	 return false
       end
