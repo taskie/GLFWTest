@@ -7,17 +7,9 @@ dofile("scripts/set.lua")
 -- Rct
 dofile("scripts/recta.lua")
 local fontManager = font.Manager()
--- [[
 fontManager:loadFont("thin", "fonts/mplus-2p-thin.ttf", 0)
 fontManager:loadFont("regular", "fonts/mplus-2p-regular.ttf", 0)
 fontManager:loadFont("black", "fonts/mplus-2p-black.ttf", 0)
---]]
---[[
-local varFont = "C:\\Windows\\Fonts\\meiryo.ttc"
-fontManager:loadFont("thin", varFont, 0)
-fontManager:loadFont("regular", varFont, 0)
-fontManager:loadFont("black", varFont, 0)
---]]
 Rct.Text.fontex = fontex.Fontex(fontManager)
 
 -- Mys, Col
@@ -93,6 +85,7 @@ dofile("scripts/gameover.lua")
 dofile("scripts/gameclear.lua")
 dofile("scripts/customize.lua")
 dofile("scripts/settings.lua")
+dofile("scripts/keyconfig.lua")
 dofile("scripts/savereplay.lua")
 dofile("scripts/records.lua")
 dofile("scripts/pause.lua")

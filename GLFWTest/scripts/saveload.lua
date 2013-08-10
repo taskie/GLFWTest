@@ -31,3 +31,14 @@ setDefaultValue(profile.settings, "seVolume", 1.0)
 setDefaultValue(profile, "records", {})
 setDefaultValue(profile.records, "captured", {})
 setDefaultValue(profile.records, "cleared", false)
+setDefaultValue(profile, "joystick", {
+	Z = 1,
+	X = 5,
+	UP = 12,
+	RIGHT = 13,
+	DOWN = 14,
+	LEFT = 15,
+	LSHIFT = 4,
+	ESC = 9,
+	axis = 0,
+})
