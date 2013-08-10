@@ -30,7 +30,7 @@ function Character:takeExp(exp)
 end
 
 function Character:calcRequiredExp(level)
-   return math.pow(self.level + 1, 3)
+   return (self.level + 1) ^ 4
 end
 
 function Character:levelUp()
@@ -41,7 +41,8 @@ function Character:levelUp()
       self.power = math.ceil(self.power * Mys.levelUpRatio)
       self.defence = math.ceil(self.defence * Mys.levelUpRatio)
       local oldhpmax = self.hpmax
-      self.hpmax = math.ceil(self.hpmax + 1)
+      self.hpmax = math.ceil(self.hpmax * Mys.levelUpRatio)
+      self.hpmax = math.ceil(self.hpmax * Mys.levelUpRatio)
       self.hp = self.hp + self.hpmax - oldhpmax
       up = true
    end

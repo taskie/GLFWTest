@@ -105,6 +105,11 @@ function Player:updateCapture()
    
    local nearest = self:nearestEnemy()
    if nearest and Mys.distance(self, nearest) < self.capture.r then
+      for id, bullet in nearest.bullets:pairs() do
+	 bullet.isExisting = false
+	 self.model.experiences:add(Exp.Bullet(self, bullet, bullet.shooter.expBulletShape))
+      end
+
       local choice = self.weapon.choice
       local upgradeFlag = false
       
@@ -160,11 +165,20 @@ function Player:shoot(...)
 end
 
 function Player:levelUp(...)
-   local ret = Player.super.levelUp(self, ...)
-   if ret then
+   local up = false
+   while self.exp >= self:calcRequiredExp() do
+      self.level = self.level + 1
+      self.power = math.ceil(self.power * Mys.levelUpRatio)
+      self.defence = math.ceil(self.defence * Mys.levelUpRatio)
+      local oldhpmax = self.hpmax
+      self.hpmax = math.ceil(self.hpmax + 1)
+      self.hp = self.hp + self.hpmax - oldhpmax
+      up = true
+   end
+   if up then
       Mxr:rewindAndPlay("levelup")
    end
-   return ret
+   return up
 end
 
 function Player:damaged(...)

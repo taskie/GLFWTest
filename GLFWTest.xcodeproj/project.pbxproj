@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D60265E417802908004FBC0D /* libluajit-5.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D60265E317802908004FBC0D /* libluajit-5.1.a */; };
+		D604AC9D17B5770F00CA3821 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D604AC9C17B5770F00CA3821 /* libglfw.a */; };
+		D604AC9F17B5773000CA3821 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D604AC9E17B5773000CA3821 /* libfreetype.a */; };
 		D60934A61684DE2800F85074 /* JoystickInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934A41684DE2800F85074 /* JoystickInput.cpp */; };
 		D60934B21684EC0400F85074 /* XYInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934B01684EC0300F85074 /* XYInput.cpp */; };
 		D60934B91684EC6300F85074 /* XYState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934B71684EC6300F85074 /* XYState.cpp */; };
@@ -15,7 +17,6 @@
 		D60934C21685007000F85074 /* aps_input_XYState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60934BE1685007000F85074 /* aps_input_XYState.cpp */; };
 		D60A7A0F166520C900AE87C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A7A0E166520C900AE87C5 /* main.cpp */; };
 		D60A7A11166520C900AE87C5 /* GLFWTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D60A7A10166520C900AE87C5 /* GLFWTest.1 */; };
-		D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A17166521EC00AE87C5 /* libglfw.a */; };
 		D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60A7A191665228300AE87C5 /* OpenGL.framework */; };
 		D60C6650166DE78A005C7CC8 /* Texture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAD166B8B7900C6E53C /* Texture2D.cpp */; };
 		D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60C6657166DF004005C7CC8 /* OpenAL.framework */; };
@@ -40,7 +41,6 @@
 		D691348116831A1600BDBFB3 /* BinaryReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D691347F16831A1600BDBFB3 /* BinaryReader.cpp */; };
 		D6965BAF166B8B7900C6E53C /* GlyphBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BA7166B8B7900C6E53C /* GlyphBitmap.cpp */; };
 		D6965BB1166B8B7900C6E53C /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BAA166B8B7900C6E53C /* Manager.cpp */; };
-		D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965BB4166B921E00C6E53C /* libfreetype.a */; };
 		D6965BBA166B95E900C6E53C /* ShapeContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */; };
 		D6965BC3166BA42500C6E53C /* Fontex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6965BC1166BA42500C6E53C /* Fontex.cpp */; };
 		D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD449D166E4365009F9455 /* libtolua++.a */; };
@@ -74,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		D60265E317802908004FBC0D /* libluajit-5.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluajit-5.1.a"; path = "/usr/local/Cellar/luajit/2.0.2/lib/libluajit-5.1.a"; sourceTree = "<absolute>"; };
+		D604AC9C17B5770F00CA3821 /* libglfw.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw.a; path = /usr/local/Cellar/glfw/2.7.9/lib/libglfw.a; sourceTree = "<absolute>"; };
+		D604AC9E17B5773000CA3821 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../../../../../usr/local/Cellar/freetype/2.4.11/lib/libfreetype.a; sourceTree = "<group>"; };
 		D60934A41684DE2800F85074 /* JoystickInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JoystickInput.cpp; sourceTree = "<group>"; };
 		D60934A51684DE2800F85074 /* JoystickInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickInput.h; sourceTree = "<group>"; };
 		D60934B01684EC0300F85074 /* XYInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XYInput.cpp; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		D60A7A0A166520C900AE87C5 /* GLFWTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLFWTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60A7A0E166520C900AE87C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D60A7A10166520C900AE87C5 /* GLFWTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GLFWTest.1; sourceTree = "<group>"; };
-		D60A7A17166521EC00AE87C5 /* libglfw.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw.a; path = /usr/local/Cellar/glfw/2.7.6/lib/libglfw.a; sourceTree = "<absolute>"; };
 		D60A7A191665228300AE87C5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D60A7A1B1665282300AE87C5 /* GLFW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFW.cpp; sourceTree = "<group>"; };
 		D60A7A1C1665282300AE87C5 /* GLFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFW.h; sourceTree = "<group>"; };
@@ -135,7 +136,6 @@
 		D6965BAB166B8B7900C6E53C /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
 		D6965BAD166B8B7900C6E53C /* Texture2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture2D.cpp; sourceTree = "<group>"; };
 		D6965BAE166B8B7900C6E53C /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
-		D6965BB4166B921E00C6E53C /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = /usr/local/Cellar/freetype/2.4.10/lib/libfreetype.a; sourceTree = "<absolute>"; };
 		D6965BB6166B95E800C6E53C /* ShapeContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeContainer.cpp; sourceTree = "<group>"; };
 		D6965BB7166B95E800C6E53C /* ShapeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeContainer.h; sourceTree = "<group>"; };
 		D6965BB8166B95E800C6E53C /* ShapeElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeElement.cpp; sourceTree = "<group>"; };
@@ -189,9 +189,9 @@
 				D60C6658166DF004005C7CC8 /* OpenAL.framework in Frameworks */,
 				D60A7A1A1665228300AE87C5 /* OpenGL.framework in Frameworks */,
 				D6FD449E166E4365009F9455 /* libtolua++.a in Frameworks */,
-				D60A7A18166521EC00AE87C5 /* libglfw.a in Frameworks */,
-				D6965BB5166B921E00C6E53C /* libfreetype.a in Frameworks */,
+				D604AC9D17B5770F00CA3821 /* libglfw.a in Frameworks */,
 				D60265E417802908004FBC0D /* libluajit-5.1.a in Frameworks */,
+				D604AC9F17B5773000CA3821 /* libfreetype.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,9 +221,9 @@
 				D6965BA5166B8B7900C6E53C /* aps */,
 				D60A7A191665228300AE87C5 /* OpenGL.framework */,
 				D60C6657166DF004005C7CC8 /* OpenAL.framework */,
-				D60A7A17166521EC00AE87C5 /* libglfw.a */,
+				D604AC9C17B5770F00CA3821 /* libglfw.a */,
+				D604AC9E17B5773000CA3821 /* libfreetype.a */,
 				D6FD449D166E4365009F9455 /* libtolua++.a */,
-				D6965BB4166B921E00C6E53C /* libfreetype.a */,
 				D691345C1680CC3400BDBFB3 /* libvorbis.a */,
 				D691345D1680CC3400BDBFB3 /* libvorbisfile.a */,
 				D691345A1680CBD900BDBFB3 /* libogg.a */,
@@ -583,6 +583,8 @@
 					"\"$(SRCROOT)/GLFWTest\"",
 					/usr/local/Cellar/lua/5.1.5/lib,
 					/usr/local/Cellar/luajit/2.0.2/lib,
+					/usr/local/Cellar/glfw/2.7.9/lib,
+					/usr/local/Cellar/freetype/2.4.11/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-pagezero_size",
@@ -617,6 +619,8 @@
 					"\"$(SRCROOT)/GLFWTest\"",
 					/usr/local/Cellar/lua/5.1.5/lib,
 					/usr/local/Cellar/luajit/2.0.2/lib,
+					/usr/local/Cellar/glfw/2.7.9/lib,
+					/usr/local/Cellar/freetype/2.4.11/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-pagezero_size",

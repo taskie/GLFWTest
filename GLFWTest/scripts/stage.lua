@@ -9,8 +9,8 @@ function Stage:new(parameter)
    self.enemyProbability = parameter.enemyProbability or 0.01
    self.enemyTable = {}
    self.enemyTable[1] = {{Enm.Zaco, 2}, {Enm.Winder, 2}, {Enm.Sniper, 1}, {Enm.Quick, 1}}
-   self.enemyTable[2] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Sniper, 2}, {Enm.Quick, 2}, {Enm.Scatter, 1}}
-   self.enemyTable[3] = {{Enm.Winder, 2}, {Enm.Sniper, 1}, {Enm.Block, 2}, {Enm.Quick, 1}, {Enm.Scatter, 2}}
+   self.enemyTable[2] = {{Enm.Zaco, 1}, {Enm.Winder, 1}, {Enm.Sniper, 2}, {Enm.Quick, 2}, {Enm.Scatter, 1}, {Enm.Conveyor, 1}}
+   self.enemyTable[3] = {{Enm.Winder, 2}, {Enm.Sniper, 1}, {Enm.Block, 2}, {Enm.Quick, 1}, {Enm.Scatter, 2}, {Enm.Conveyor, 1}}
    self.enemyTable[4] = {{Enm.Spiral, 2}, {Enm.Block, 2}, {Enm.Scatter, 2}, {Enm.Breakaway, 1}}
    self.enemyTable[5] = {{Enm.Bee, 2}, {Enm.Spiral, 2}, {Enm.Block, 2}, {Enm.Base, 1}, {Enm.Breakaway, 1}}
    self.enemyTable[6] = {{Enm.Bee, 2}, {Enm.Base, 2}, {Enm.Bug, 3}, {Enm.Conveyor, 1}, {Enm.Breakaway, 1}}
@@ -59,7 +59,7 @@ function Stage:update(model)
 	 local tableNum = self.count
 	 local en = Mys.choiceWithWeight(self.enemyWeight[tableNum], model.random)
 	 local enemy = self.enemyTable[tableNum][en][1](model)
-	 enemy:takeExp(math.ceil(self.count ^ 3) - 1)
+	 enemy:takeExp(math.ceil(self.count ^ 4) - 1)
 	 model.enemies:add(enemy)
       end
    end

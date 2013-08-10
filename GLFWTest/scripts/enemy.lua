@@ -119,7 +119,7 @@ subclass ("Quick", Enemy, Enm)
    vertices = {{0, 0}, {20, 10}, {0, 20}, {10, 10}},
    cx = 10, cy = 10,
    color = {0.7, 0.5, 0.1, 1.0},
-   param = {r = 10, hp = 5, power = 1, defence = 3,  exp = 1}
+   param = {r = 10, hp = 3, power = 1, defence = 3,  exp = 1}
 }
 Enemy.setEnemy(Enm.Quick)
 Enm.Quick.move = Motion.uniform
@@ -156,8 +156,8 @@ subclass ("Block", Enemy, Enm)
 {
    vertices = {{0, 0}, {20, 0}, {20, 20}, {0, 20}},
    cx = 10, cy = 10,
-   color = {0.5, 0.5, 0.5, 1.0},
-   param = {r = 10, hp = 10, power = 1, defence = 4,  exp = 1}
+   color = {0.3, 0.3, 0.3, 1.0},
+   param = {r = 10, hp = 5, power = 1, defence = 4,  exp = 1}
 }
 Enemy.setEnemy(Enm.Block)
 Enm.Block.move = Motion.uniform
@@ -194,7 +194,7 @@ subclass ("Scatter", Enemy, Enm)
    vertices = {{0,0},{5,0},{10,10},{15,0},{20,0},{20,5},{10,10},{20,15},{20,20},{15,20},{10,10},{5,20},{0,20},{0,15},{10,10},{0,5}},
    cx = 10, cy = 10,
    color = {0.4, 0.4, 0.7, 1.0},
-   param = {r = 10, hp = 7, power = 2, defence = 5,  exp = 1}
+   param = {r = 10, hp = 5, power = 2, defence = 5,  exp = 1}
 }
 Enemy.setEnemy(Enm.Scatter)
 Enm.Scatter.move = Motion.uniform
@@ -232,7 +232,7 @@ subclass ("Spiral", Enemy, Enm)
    vertices = {{10, 10},{0, 10},{0, 20},{20, 0},{20, 10},{10, 10},{10, 0},{0, 0},{20, 20},{10,20}},
    cx = 10, cy = 10,
    color = {0.3, 0.5, 0.9, 1.0},
-   param = {r = 10, hp = 6, power = 3, defence = 6,  exp = 1}
+   param = {r = 10, hp = 7, power = 3, defence = 6,  exp = 1}
 }
 Enemy.setEnemy(Enm.Spiral)
 
@@ -274,7 +274,7 @@ subclass ("Bee", Enemy, Enm)
    vertices = {{0, 0}, {5, 0}, {5, 20}, {0, 20}, {0, 15}, {20, 15}, {20, 20}, {15, 20}, {15, 0}, {20, 0}, {20, 5}, {0, 5}},
    cx = 10, cy = 10,
    color = {0.7, 0.7, 0.1, 1.0},
-   param = {r = 10, hp = 10, power = 1, defence = 5,  exp = 1}
+   param = {r = 10, hp = 7, power = 1, defence = 5,  exp = 1}
 }
 Enemy.setEnemy(Enm.Bee)
 Enm.Bee.move = Motion.uniform
@@ -311,8 +311,8 @@ subclass ("Base", Enemy, Enm)
 {
    vertices = {{0, 20}, {10, 20}, {20, 10}, {10, 0}, {0, 0}},
    cx = 10, cy = 10,
-   color = {0.2, 0.8, 0.6, 1.0},
-   param = {r = 10, hp = 15, power = 3, defence = 10,  exp = 1}
+   color = {0.1, 0.6, 0.4, 1.0},
+   param = {r = 10, hp = 8, power = 3, defence = 10,  exp = 1}
 }
 Enemy.setEnemy(Enm.Base)
 Enm.Base.move = Motion.uniform
@@ -348,7 +348,7 @@ subclass ("Sniper", Enemy, Enm)
    vertices = {{0, 10}, {10, 0}, {10, 5}, {20, 10}, {10, 15}, {10, 20}},
    cx = 10, cy = 10,
    color = {0.5, 0.3, 0.3, 1.0},
-   param = {r = 10, hp = 20, power = 5, defence = 20,  exp = 1}
+   param = {r = 10, hp = 3, power = 1, defence = 3,  exp = 1}
 }
 Enemy.setEnemy(Enm.Sniper)
 
@@ -391,7 +391,7 @@ subclass ("Bug", Enemy, Enm)
    vertices = {{0, 0}, {5, 5}, {10, 0}, {15, 5}, {20, 0}, {18, 10}, {20, 20}, {15, 15}, {10, 20}, {5, 15}, {0, 20}, {2, 10}},
    cx = 10, cy = 10,
    color = {0.7, 0.1, 0.7, 1.0},
-   param = {r = 10, hp = 25, power = 10, defence = 30,  exp = 1}
+   param = {r = 10, hp = 10, power = 10, defence = 30,  exp = 1}
 }
 Enemy.setEnemy(Enm.Bug)
 Enm.Bug.move = Motion.uniform
@@ -466,7 +466,7 @@ subclass ("Fatal", Enemy, Enm)
    vertices = {{0, 0}, {20, 15}, {20, 5}, {0, 20}},
    cx = 10, cy = 10,
    color = {0.8, 0.4, 0.2, 1.0},
-   param = {r = 10, hp = 30, power = 20, defence = 30,  exp = 1}
+   param = {r = 10, hp = 12, power = 20, defence = 30,  exp = 1}
 }
 Enemy.setEnemy(Enm.Fatal)
 
@@ -516,7 +516,7 @@ subclass ("Back", Enemy, Enm)
    vertices = {{0, 0}, {0, 20}, {10, 10}, {10, 20}, {20, 20}, {10, 10}, {20, 0}, {10, 0}, {10, 10}},
    cx = 10, cy = 10,
    color = {0.5, 0.5, 0.8, 1.0},
-   param = {r = 10, hp = 50, power = 30, defence = 70,  exp = 1}
+   param = {r = 10, hp = 15, power = 30, defence = 70,  exp = 1}
 }
 Enemy.setEnemy(Enm.Back)
 Enm.Back.move = Motion.uniform
@@ -562,7 +562,7 @@ subclass ("Reflect", Enemy, Enm)
    vertices = {{10, 0}, {0, 10}, {10, 20}, {20, 10}},
    cx = 10, cy = 10,
    color = {0.9, 0.1, 0.3, 1.0},
-   param = {r = 10, hp = 100, power = 20, defence = 80,  exp = 1}
+   param = {r = 10, hp = 20, power = 20, defence = 80,  exp = 1}
 }
 Enemy.setEnemy(Enm.Reflect)
 Enm.Reflect.move = Motion.uniform
@@ -610,7 +610,7 @@ subclass ("Ring", Enemy, Enm)
    vertices = {{0, 0}, {20, 0}, {0, 20}, {20, 20}},
    cx = 10, cy = 10,
    color = {1, 0, 1, 1.0},
-   param = {r = 10, hp = 1000, power = 10, defence = 50,  exp = 1}
+   param = {r = 10, hp = 1000, power = 10, defence = 30,  exp = 10000}
 }
 Enemy.setEnemy(Enm.Ring)
 Enm.Ring.move = Motion.uniform
@@ -624,10 +624,11 @@ function Enm.Ring:new(model, x, y, rot)
    self.v = 0.1
    self.k = model.random:next(0, 360)
    self.k2 = model.random:next(0, 360)
+   self.isBoss = true
 end
 
 function Enm.Ring:fire()
-   local interval = 5
+   local interval = 15
    if self.frame % interval < 1 then
       local way = 5
       for i = 0, way - 1 do
@@ -662,7 +663,7 @@ subclass ("BlackRing", Enemy, Enm)
    vertices = {{0, 0}, {20, 0}, {0, 20}, {20, 20}},
    cx = 10, cy = 10,
    color = {0, 0, 0.2, 1.0},
-   param = {r = 10, hp = 1000, power = 10, defence = 100,  exp = 1}
+   param = {r = 10, hp = 2000, power = 10, defence = 100,  exp = 100000}
 }
 Enemy.setEnemy(Enm.BlackRing)
 Enm.BlackRing.move = Motion.uniform
@@ -676,10 +677,11 @@ function Enm.BlackRing:new(model, x, y, rot)
    self.v = 0.1
    self.k = model.random:next(0, 360)
    self.k2 = model.random:next(0, 360)
+   self.isBoss = true
 end
 
 function Enm.BlackRing:fire()
-   local interval = 5
+   local interval = 15
    if self.frame % interval < 1 then
       local way = 13
       for i = 0, way - 1 do
@@ -714,7 +716,7 @@ subclass ("BlackSide", Enemy, Enm)
    vertices = {{0, 0}, {0, 20}, {10, 0}, {20, 0}, {20, 20}, {10, 20}},
    cx = 10, cy = 10,
    color = {0, 0, 0.2, 1.0},
-   param = {r = 10, hp = 1000, power = 10, defence = 50,  exp = 1}
+   param = {r = 10, hp = 1000, power = 10, defence = 50,  exp = 10000}
 }
 Enemy.setEnemy(Enm.BlackSide)
 Enm.BlackSide.move = Motion.uniform
@@ -726,6 +728,7 @@ function Enm.BlackSide:new(model, x, y, rot)
    rot = rot or 90
    Enemy.new(self, x, y, rot, model, self.param)
    self.v = 0.1
+   self.isBoss = true
 end
 
 function Enm.BlackSide:fire()
@@ -764,7 +767,7 @@ subclass ("Radio", Enemy, Enm)
    vertices = {{0, 0}, {10, 10}, {0, 20}, {20, 15}, {15, 10}, {20, 5}},
    cx = 10, cy = 10,
    color = {0.9, 0.4, 0.5, 1.0},
-   param = {r = 10, hp = 1, power = 5, defence = 1,  exp = 1}
+   param = {r = 10, hp = 10, power = 5, defence = 15,  exp = 1}
 }
 Enemy.setEnemy(Enm.Radio)
 Enm.Radio.move = Motion.uniform
@@ -799,7 +802,7 @@ subclass ("Breakaway", Enemy, Enm)
    vertices = {{0, 0}, {10, 0}, {10, 20}, {0, 20}, {20, 10}},
    cx = 10, cy = 10,
    color = {0.1, 0.2, 0.2, 1.0},
-   param = {r = 10, hp = 20, power = 5, defence = 1,  exp = 1}
+   param = {r = 10, hp = 10, power = 5, defence = 5,  exp = 1}
 }
 Enemy.setEnemy(Enm.Breakaway)
 Enm.Breakaway.move = Motion.uniaccel
@@ -833,7 +836,7 @@ end
 
 subclass ("Splash", Enemy, Enm)
 {
-   vertices = {{0, 0}, {0, 20}, {10, 20}, {10, 15}, {20, 10}, {10, 5}, {10, 0}},
+   vertices = {{0, 0}, {10, 10}, {0, 20}, {10, 20}, {10, 15}, {20, 10}, {10, 5}, {10, 0}},
    cx = 10, cy = 10,
    color = {0.2, 0.4, 0.9, 1.0},
    param = {r = 10, hp = 20, power = 10, defence = 1,  exp = 1}
@@ -872,7 +875,7 @@ subclass ("Conveyor", Enemy, Enm)
    vertices = {{0, 0}, {0, 20}, {10, 20}, {10, 15}, {20, 10}, {10, 5}, {10, 0}},
    cx = 10, cy = 10,
    color = {0.5, 0.3, 0.5, 1.0},
-   param = {r = 10, hp = 50, power = 1, defence = 10,  exp = 1}
+   param = {r = 10, hp = 20, power = 1, defence = 20,  exp = 1}
 }
 Enemy.setEnemy(Enm.Conveyor)
 function Enm.Conveyor:move()
@@ -909,7 +912,7 @@ subclass ("Curtain", Enemy, Enm)
    vertices = {{0, 0}, {0, 20}, {20, 20}, {20, 15}, {15, 15}, {15, 5}, {20, 5}, {20, 0}},
    cx = 10, cy = 10,
    color = {0.1, 0.3, 0.3, 1.0},
-   param = {r = 10, hp = 30, power = 1, defence = 10,  exp = 1}
+   param = {r = 10, hp = 20, power = 1, defence = 10,  exp = 1}
 }
 Enemy.setEnemy(Enm.Curtain)
 Enm.Curtain.move = Motion.uniform

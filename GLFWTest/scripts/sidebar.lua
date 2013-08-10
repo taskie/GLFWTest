@@ -53,7 +53,7 @@ function SideBar:update()
 		local hpRatio = player.hp / player.hpmax
 		self.playersInfo.hpValue:renew(hp .. " / " .. hpmax)
 		self.playersInfo.hpBar.shape:setScale(hpRatio, 1)
-		local expBarBias = player.level ^ 3
+		local expBarBias = player.level ^ 4
 		local expBarMax =player:calcRequiredExp() - expBarBias
 		local expBarRatio = (player.exp - expBarBias) / expBarMax
 		if player.level == player.levelMax then expBarRatio = 0 end
@@ -68,7 +68,7 @@ function SideBar:update()
 			if actor then
 				self.weaponInfo.actors[i].shape = actor.shape
 				self.weaponInfo.actors[i].level:renew("Lv. " .. actor.level)
-				local expBarBias = actor.level ^ 3
+				local expBarBias = actor.level ^ 4
 				local expBarMax = actor:calcRequiredExp() - expBarBias
 				local expBarRatio = (actor.exp - expBarBias) / expBarMax
 				if actor.level == actor.levelMax then expBarRatio = 0 end

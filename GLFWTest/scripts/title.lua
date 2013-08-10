@@ -45,7 +45,10 @@ function Scn.Title:update()
    if #self.capturedArray ~= 0 and (self.random:next() < 0.01 or self.enemies:isEmpty()) then
       local name = self.capturedArray[self.random:nextInt(1, #self.capturedArray)]
       -- name = "Test"
-      self.enemies:add(Enm[name](self))
+      local enemy = Enm[name](self)
+      if not enemy.isBoss then
+	 self.enemies:add(enemy)
+      end
    end
    
    self.enemies:update()
