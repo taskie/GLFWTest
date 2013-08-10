@@ -136,8 +136,8 @@ function Scn.Title:draw()
    self.debug:draw(Mys.screen.x + 50, 400)
    self.infration:draw(Mys.screen.x + 50, 180)
    self.version:draw(Mys.screen.x + 50, 240)
-   self.items.choiceTriangle:draw(Mys.screen.wx - 40, 260 - 12 + (self.items.choice - 1) * 40, 180)
+   self.items.choiceTriangle:draw(Mys.screen.wx - 40, 220 - 12 + (self.items.choice - 1) * 40, 180)
    for i, shape in ipairs(self.items.textShapes) do
-      shape:draw(Mys.screen.wx - 50 - self.items.xShifts[i], 260 + (i - 1) * 40)
+      shape:draw(Mys.screen.wx - 50 - self.items.xShifts[i], 220 + (i - 1) * 40)
    end
 end

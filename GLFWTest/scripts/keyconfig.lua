@@ -52,7 +52,10 @@ function Scn.KeyConfig:update()
    self.background:update()
    Mxr:update()
    
+   local move = false;
+
    if self.input:isJustPressed("DOWN") then
+      move = true
       Mxr:play("weaponchoice")
       self.items.choice = self.items.choice + 1
       if self.items.choice > self.items.choiceMax then
@@ -61,6 +64,7 @@ function Scn.KeyConfig:update()
    end
    
    if self.input:isJustPressed("UP") then
+      move = true
       Mxr:play("weaponchoice")
       self.items.choice = self.items.choice - 1
       if self.items.choice < 1 then
@@ -69,7 +73,7 @@ function Scn.KeyConfig:update()
    end
    
    if self.items.texts[self.items.choice] == "Exit" then
-   if self.input:isJustPressed("Z") then
+      if self.input:isJustPressed("Z") then
 	 Mxr:play("ok")
 	 do
 	    local param = profile.joystick
@@ -80,26 +84,26 @@ function Scn.KeyConfig:update()
 	 end
 	 self.nextScene = Scn.Title()
       end
-      else
-      	for i = 0, 15 do
-      		local state = self.input.joystick.device:buttonState(i)
-      		if state:pressed() and state:just() then
-      			local values = self.items.values
-      			local valueTextShapes = self.items.valueTextShapes
-      			local choice = self.items.choice
-      			local index = atIndex(values, i)
-      			if index then
-      				values[index], values[choice] = values[choice], values[index]
-	      			valueTextShapes[index]:renew(tostring(values[index]))
-	      			valueTextShapes[choice]:renew(tostring(values[choice]))
-      			else
-	      			values[choice] = i
-	      			valueTextShapes[choice]:renew(tostring(i))
-      			end
-	 			Mxr:play("ok")
-      			break
-      		end
-      	end
+   elseif not move then
+      for i = 0, 15 do
+	 local state = self.input.joystick.device:buttonState(i)
+	 if state:pressed() and state:just() then
+	    local values = self.items.values
+	    local valueTextShapes = self.items.valueTextShapes
+	    local choice = self.items.choice
+	    local index = atIndex(values, i)
+	    if index then
+	       values[index], values[choice] = values[choice], values[index]
+	       valueTextShapes[index]:renew(tostring(values[index]))
+	       valueTextShapes[choice]:renew(tostring(values[choice]))
+	    else
+	       values[choice] = i
+	       valueTextShapes[choice]:renew(tostring(i))
+	    end
+	    Mxr:play("ok")
+	    break
+	 end
+      end
    end
    
    return Scn.KeyConfig.super.update(self)
@@ -109,11 +113,11 @@ function Scn.KeyConfig:draw()
    self.background:draw()
    self.barRect:draw()
    self.barRect:draw(Mys.field.wx)
-   self.items.choiceTriangle:draw(Mys.field.x + 15, 100 - 12 + (self.items.choice - 1) * 80)
+   self.items.choiceTriangle:draw(Mys.field.x + 15, 130 - 12 + (self.items.choice - 1) * 80)
    for i, shape in ipairs(self.items.valueTextShapes) do
-      shape:draw(Mys.field.wx - 30, 100 + 40 + (i - 1) * 80)
+      shape:draw(Mys.field.wx - 30, 130 + 40 + (i - 1) * 80)
    end
    for i, shape in ipairs(self.items.textShapes) do
-      shape:draw(Mys.field.x + 30, 100 + (i - 1) * 80)
+      shape:draw(Mys.field.x + 30, 130 + (i - 1) * 80)
    end
 end

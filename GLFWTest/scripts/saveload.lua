@@ -38,7 +38,7 @@ setDefaultValue(profile, "joystick", {
 	RIGHT = 13,
 	DOWN = 14,
 	LEFT = 15,
-	LSHIFT = 4,
+	LSHIFT = 0,
 	ESC = 9,
 	axis = 0,
 })
