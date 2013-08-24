@@ -96,12 +96,12 @@ Texture2D Texture2D::fromData(const GLubyte data[], int rawWidth, int rawHeight)
 	int width = powOfTwo(rawWidth);
 	int height = powOfTwo(rawHeight);
 	
-	std::vector<GLubyte> dataEx(width * height * 4);
-	std::fill(dataEx.begin(), dataEx.end(), 0);
+	std::vector<GLubyte> dataEx(width * height * 4, 0);
 	for (int y = 0; y < rawHeight; ++y)
 	{
 		for (int x = 0; x < rawWidth; ++x)
 		{
+			// RGBA
 			for (int k = 0; k < 4; ++k)
 			{
 				dataEx[(y * width + x) * 4 + k] = data[(y * rawWidth + x) * 4 + k];
@@ -110,7 +110,7 @@ Texture2D Texture2D::fromData(const GLubyte data[], int rawWidth, int rawHeight)
 	}
 	
 	Texture2D texture(rawWidth, rawHeight, width, height);
-	texture.image2D(GL_TEXTURE_2D, 0, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE, &dataEx[0]);
+	texture.image2D(GL_TEXTURE_2D, 0, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE, dataEx.data());
 	
 	std::unordered_map<GLenum, GLenum> parameter = {
 		{GL_TEXTURE_MAG_FILTER, GL_LINEAR}, {GL_TEXTURE_MIN_FILTER, GL_LINEAR}

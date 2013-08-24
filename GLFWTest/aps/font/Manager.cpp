@@ -102,14 +102,14 @@ public:
 		auto face = keyFacePairIter->second.get();
 		FT_UInt index = FT_Get_Char_Index(face, charCode);
 		
-		FT_Set_Char_Size(face, 0, size * 64, 0, 0);
+		FT_Set_Char_Size(face, 0, size << 6, 0, 0);
 		FT_Load_Glyph(face, index, FT_LOAD_RENDER);
 		
 		const auto& glyph = face->glyph;
 		const auto& bitmap = glyph->bitmap;
 		
 		return GlyphBitmap(bitmap.buffer, bitmap.width, bitmap.rows,
-						   glyph->bitmap_left, glyph->bitmap_top, bitmap.pitch, glyph->advance.x / 64.0);
+						   glyph->bitmap_left, glyph->bitmap_top, bitmap.pitch, glyph->advance.x >> 6);
 	}
 	
 	double kerning(std::string name, FT_UInt left, FT_UInt right, int size)
@@ -119,11 +119,11 @@ public:
 		auto face = facePairIter->second.get();
 		if (!FT_HAS_KERNING(face)) return 0;
 		
-		FT_Set_Char_Size(face, 0, size * 64, 0, 0);
+		FT_Set_Char_Size(face, 0, size << 6, 0, 0);
 		FT_Vector delta;
 		FT_Get_Kerning(face, left, right, FT_KERNING_DEFAULT, &delta);
 		
-		return delta.x / 64.0;
+		return delta.x >> 6;
 	}
 	
 	std::string errorMessage() const { return errorMessage_; }
