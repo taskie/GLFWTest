@@ -4,7 +4,7 @@
 
 #include <unordered_map>
 #include <locale>
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__linux)
 #include <codecvt>
 #endif
 #include <iterator>
@@ -72,7 +72,7 @@ public:
 	
 	StringShape utf8StringShape(std::string text, std::string fontName, int size, aps::gl::Color color)
 	{
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__linux)
 		std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> ucs2conv;
 		std::u16string ucs2 = ucs2conv.from_bytes(text);
 		

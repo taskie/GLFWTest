@@ -1,6 +1,6 @@
 require 'rake/clean'
 
-Compiler = 'g++'
+Compiler = 'icpc'
 
 Out = 'myshyp'
 task :default => Out
@@ -8,8 +8,8 @@ task :default => Out
 Sources = FileList['**/*.cpp']
 Objects = Sources.ext('o')
 
-HeaderFlags = '-I/usr/local/include -I/usr/local/include/freetype'
-LibraryFlags = '-static -lstdc++ -lmingw32 -m32 -mwindows -lm -lglfw -lopengl32 -lglu32 -ltolua++ -lfreetype -lOpenAL32.dll -logg.dll -lvorbis.dll -lvorbisfile.dll lua51.dll'
+HeaderFlags = '-I/usr/include -I/usr/include/freetype2 -I/usr/include/lua5.1'
+statLibraryFlags = '-lopenal -lGL -lGLU -lXrandr -lX11 -pthread -lm -lglfw -ltolua++5.1 -lfreetype -logg -lvorbis -lvorbisfile -lpng -lz -Bstatic -lluajit-5.1'
 
 CLEAN.include(Objects)
 
@@ -21,5 +21,5 @@ file Out => Objects do |t|
 end
 
 rule '.o' => '.cpp' do |t|
-  sh "#{Compiler} -std=c++11 -O3 -Wall #{HeaderFlags} -DNDEBUG -c #{t.source} -o #{t.source.ext('o')}"
+  sh "#{Compiler} -std=c++11 -O3 -xHOST -ip -fPIC -fma -no-prec-div -Wall #{HeaderFlags} -DNDEBUG -c #{t.source} -o #{t.source.ext('o')}"
 end
